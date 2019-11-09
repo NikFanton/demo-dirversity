@@ -1,0 +1,27 @@
+{
+  "dirversityApp": {
+    "rule": {
+      "home": {
+        "title": "Rules",
+        "createLabel": "Создать новый Rule",
+        "createOrEditLabel": "Создать или отредактировать Rule",
+        "notFound": "No Rules found"
+      },
+      "created": "Новый Rule создан с идентификатором {{ param }}",
+      "updated": "Rule обновлен с идентификатором {{ param }}",
+      "deleted": "Rule удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Rule {{ id }}?"
+      },
+      "detail": {
+        "title": "Rule"
+      },
+      "name": "Name",
+      "accessType": "Access Type",
+      "from": "From",
+      "users": "Users",
+      "userGroups": "User Groups",
+      "resources": "Resources"
+    }
+  }
+}

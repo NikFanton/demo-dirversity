@@ -1,0 +1,56 @@
+{
+    "name": "Resource",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "author",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "accessUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createDate",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "resource",
+            "relationshipName": "publisher",
+            "otherEntityField": "lastName"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "resourceType",
+            "otherEntityRelationshipName": "resource",
+            "relationshipName": "resourceType",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "rule",
+            "otherEntityRelationshipName": "resources",
+            "relationshipName": "rules",
+            "otherEntityField": "name",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20191109121629",
+    "entityTableName": "resource",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

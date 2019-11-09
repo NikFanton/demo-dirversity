@@ -42,6 +42,23 @@ public class CacheConfiguration {
             createCache(cm, com.dirversity.domain.User.class.getName());
             createCache(cm, com.dirversity.domain.Authority.class.getName());
             createCache(cm, com.dirversity.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.dirversity.domain.UserGroup.class.getName());
+            createCache(cm, com.dirversity.domain.UserGroup.class.getName() + ".users");
+            createCache(cm, com.dirversity.domain.UserGroup.class.getName() + ".rules");
+            createCache(cm, com.dirversity.domain.UserGroupType.class.getName());
+            createCache(cm, com.dirversity.domain.Resource.class.getName());
+            createCache(cm, com.dirversity.domain.Resource.class.getName() + ".resourceTypes");
+            createCache(cm, com.dirversity.domain.Resource.class.getName() + ".rules");
+            createCache(cm, com.dirversity.domain.ResourceType.class.getName());
+            createCache(cm, com.dirversity.domain.ResourceType.class.getName() + ".resources");
+            createCache(cm, com.dirversity.domain.Rule.class.getName());
+            createCache(cm, com.dirversity.domain.Rule.class.getName() + ".users");
+            createCache(cm, com.dirversity.domain.Rule.class.getName() + ".userGroups");
+            createCache(cm, com.dirversity.domain.Rule.class.getName() + ".resources");
+            createCache(cm, com.dirversity.domain.Subject.class.getName());
+            createCache(cm, com.dirversity.domain.Subject.class.getName() + ".teachers");
+            createCache(cm, com.dirversity.domain.Position.class.getName());
+            createCache(cm, com.dirversity.domain.Position.class.getName() + ".employees");
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,74 @@
+//entity ExtraUser {
+//	patronymic String,
+//    telephoneNumber String,
+//    hireDate Instant
+//}
+
+entity UserGroup {
+	name String required,
+    creationDate Instant,
+}
+
+//STUDENTS_GROUP,
+//DEPARTMENT,
+//MANAGEMENT_GROUP
+entity UserGroupType {
+	name String required,
+    description String
+}
+
+entity Resource {
+    name String,
+    author String,
+    accessUrl String,
+    createDate Instant
+}
+
+// BOOK, TRAINING_MANUAL
+entity ResourceType {
+	name String required,
+    description String
+}
+
+entity Rule {
+	name String required,
+    accessType AccessType,
+    from Instant
+}
+
+enum AccessType {
+	ALLOWED_ACCESS,
+    DENIED_ACCESS
+}
+
+entity Subject {
+	fullName String required,
+    description String
+}
+
+entity Position {
+	title String required,
+    titleShortForm String required,
+    description String
+}
+
+relationship ManyToOne {
+	UserGroup{userGroupType(name)} to UserGroupType,
+    Resource{publisher(lastName)} to User
+}
+
+relationship ManyToMany {
+  UserGroup{users(login)} to User{groups(name)},
+  Rule{users(login)} to User,
+  Rule{userGroups(name)} to UserGroup{rules},
+  Resource{resourceType(name)} to ResourceType{resource},
+  Subject{teachers(lastName)} to User{subjects(fullName)},
+  Position{employees(lastName)} to User{positions(title)},
+  Resource{rules(name)} to Rule{resources(name)}
+}
+
+dto * with mapstruct
+
+service * with serviceImpl
+
+paginate * with pagination

@@ -1,0 +1,57 @@
+{
+    "name": "Rule",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "accessType",
+            "fieldType": "AccessType",
+            "fieldValues": "ALLOWED_ACCESS,DENIED_ACCESS"
+        },
+        {
+            "fieldName": "from",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "rule",
+            "relationshipName": "users",
+            "otherEntityField": "login",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "userGroup",
+            "otherEntityRelationshipName": "rules",
+            "relationshipName": "userGroups",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "resource",
+            "otherEntityRelationshipName": "rules",
+            "relationshipName": "resources",
+            "otherEntityField": "name",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20191109121631",
+    "entityTableName": "rule",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

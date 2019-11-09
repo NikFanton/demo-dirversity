@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-rule-heading" jhiTranslate="dirversityApp.rule.home.createOrEditLabel">Create or edit a Rule</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dirversityApp.rule.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                    <div *ngIf="editForm.get('name').invalid && (editForm.get('name').dirty || editForm.get('name').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('name').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dirversityApp.rule.accessType" for="field_accessType">Access Type</label>
+                    <select class="form-control" name="accessType" formControlName="accessType" id="field_accessType">
+                        <option value="ALLOWED_ACCESS">{{'dirversityApp.AccessType.ALLOWED_ACCESS' | translate}}</option>
+                        <option value="DENIED_ACCESS">{{'dirversityApp.AccessType.DENIED_ACCESS' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dirversityApp.rule.from" for="field_from">From</label>
+                    <div class="d-flex">
+                        <input id="field_from" type="datetime-local" class="form-control" name="from" formControlName="from" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="dirversityApp.rule.users" for="field_users">Users</label>
+                    <select class="form-control" id="field_users" multiple name="users" formControlName="users">
+                        <option [ngValue]="getSelected(editForm.get('users').value, userOption)" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="dirversityApp.rule.userGroups" for="field_userGroups">User Groups</label>
+                    <select class="form-control" id="field_userGroups" multiple name="userGroups" formControlName="userGroups">
+                        <option [ngValue]="getSelected(editForm.get('userGroups').value, userGroupOption)" *ngFor="let userGroupOption of usergroups; trackBy: trackUserGroupById">{{userGroupOption.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

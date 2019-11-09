@@ -1,0 +1,9 @@
+{
+  "dirversityApp": {
+    "AccessType": {
+      "null": "",
+      "ALLOWED_ACCESS": "ALLOWED_ACCESS",
+      "DENIED_ACCESS": "DENIED_ACCESS"
+    }
+  }
+}

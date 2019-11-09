@@ -1,0 +1,25 @@
+{
+  "dirversityApp": {
+    "position": {
+      "home": {
+        "title": "Positions",
+        "createLabel": "Создать новый Position",
+        "createOrEditLabel": "Создать или отредактировать Position",
+        "notFound": "No Positions found"
+      },
+      "created": "Новый Position создан с идентификатором {{ param }}",
+      "updated": "Position обновлен с идентификатором {{ param }}",
+      "deleted": "Position удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Position {{ id }}?"
+      },
+      "detail": {
+        "title": "Position"
+      },
+      "title": "Title",
+      "titleShortForm": "Title Short Form",
+      "description": "Description",
+      "employees": "Employees"
+    }
+  }
+}

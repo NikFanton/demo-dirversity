@@ -1,0 +1,28 @@
+{
+  "dirversityApp": {
+    "resource": {
+      "home": {
+        "title": "Resources",
+        "createLabel": "Створити новий Resource",
+        "createOrEditLabel": "Створити чи редагувати Resource",
+        "notFound": "No Resources found"
+      },
+      "created": "Новий Resource створений з ідентифікатором {{ param }}",
+      "updated": "Resource оновлений з ідентифікатором {{ param }}",
+      "deleted": "Resource видалений з ідентифікатором {{ param }}",
+      "delete": {
+        "question": "Ви впевнені, що хочете видалити Resource {{ id }}?"
+      },
+      "detail": {
+        "title": "Resource"
+      },
+      "name": "Name",
+      "author": "Author",
+      "accessUrl": "Access Url",
+      "createDate": "Create Date",
+      "publisher": "Publisher",
+      "resourceType": "Resource Type",
+      "rules": "Rules"
+    }
+  }
+}

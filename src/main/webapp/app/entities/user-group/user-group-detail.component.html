@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="userGroup">
+            <h2><span jhiTranslate="dirversityApp.userGroup.detail.title">User Group</span> {{userGroup.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="dirversityApp.userGroup.name">Name</span></dt>
+                <dd>
+                    <span>{{userGroup.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.userGroup.creationDate">Creation Date</span></dt>
+                <dd>
+                    <span>{{userGroup.creationDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.userGroup.userGroupType">User Group Type</span></dt>
+                <dd>
+                    <div *ngIf="userGroup.userGroupTypeId">
+                        <a [routerLink]="['/user-group-type', userGroup.userGroupTypeId, 'view']">{{userGroup.userGroupTypeName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.userGroup.users">Users</span></dt>
+                <dd>
+                    <span *ngFor="let users of userGroup.users; let last = last">
+                        {{users.login}}{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/user-group', userGroup.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

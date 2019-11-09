@@ -1,0 +1,26 @@
+{
+  "dirversityApp": {
+    "userGroup": {
+      "home": {
+        "title": "User Groups",
+        "createLabel": "Создать новый User Group",
+        "createOrEditLabel": "Создать или отредактировать User Group",
+        "notFound": "No User Groups found"
+      },
+      "created": "Новый User Group создан с идентификатором {{ param }}",
+      "updated": "User Group обновлен с идентификатором {{ param }}",
+      "deleted": "User Group удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить User Group {{ id }}?"
+      },
+      "detail": {
+        "title": "User Group"
+      },
+      "name": "Name",
+      "creationDate": "Creation Date",
+      "userGroupType": "User Group Type",
+      "users": "Users",
+      "rules": "Rules"
+    }
+  }
+}

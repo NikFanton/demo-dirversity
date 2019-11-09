@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="resource">
+            <h2><span jhiTranslate="dirversityApp.resource.detail.title">Resource</span> {{resource.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="dirversityApp.resource.name">Name</span></dt>
+                <dd>
+                    <span>{{resource.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.resource.author">Author</span></dt>
+                <dd>
+                    <span>{{resource.author}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.resource.accessUrl">Access Url</span></dt>
+                <dd>
+                    <span>{{resource.accessUrl}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.resource.createDate">Create Date</span></dt>
+                <dd>
+                    <span>{{resource.createDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.resource.publisher">Publisher</span></dt>
+                <dd>
+                    {{resource.publisherLastName}}
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.resource.resourceType">Resource Type</span></dt>
+                <dd>
+                    <span *ngFor="let resourceType of resource.resourceTypes; let last = last">
+                        <a [routerLink]="['/resource-type', resourceType?.id, 'view' ]">{{resourceType.name}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.resource.rules">Rules</span></dt>
+                <dd>
+                    <span *ngFor="let rules of resource.rules; let last = last">
+                        <a [routerLink]="['/rule', rules?.id, 'view' ]">{{rules.name}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/resource', resource.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

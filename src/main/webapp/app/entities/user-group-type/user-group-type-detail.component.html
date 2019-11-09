@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="userGroupType">
+            <h2><span jhiTranslate="dirversityApp.userGroupType.detail.title">User Group Type</span> {{userGroupType.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="dirversityApp.userGroupType.name">Name</span></dt>
+                <dd>
+                    <span>{{userGroupType.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.userGroupType.description">Description</span></dt>
+                <dd>
+                    <span>{{userGroupType.description}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/user-group-type', userGroupType.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

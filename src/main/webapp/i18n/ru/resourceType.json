@@ -1,0 +1,24 @@
+{
+  "dirversityApp": {
+    "resourceType": {
+      "home": {
+        "title": "Resource Types",
+        "createLabel": "Создать новый Resource Type",
+        "createOrEditLabel": "Создать или отредактировать Resource Type",
+        "notFound": "No Resource Types found"
+      },
+      "created": "Новый Resource Type создан с идентификатором {{ param }}",
+      "updated": "Resource Type обновлен с идентификатором {{ param }}",
+      "deleted": "Resource Type удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Resource Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Resource Type"
+      },
+      "name": "Name",
+      "description": "Description",
+      "resource": "Resource"
+    }
+  }
+}
