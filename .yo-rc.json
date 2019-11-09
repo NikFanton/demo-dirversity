@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.dirversity",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.4.1",
+    "applicationType": "monolith",
+    "baseName": "dirversity",
+    "packageName": "com.dirversity",
+    "packageFolder": "com/dirversity",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YTMyYTM4ZDNjNGM3YWRlNWRmZTdhMDRmYmRjMDIyODIxYjYxNDE2MWNmM2EyN2VjYzI4MDE1MGNlYWRlNzgwZTZmZGExMWY0ZjY5OWY1YzllMjg4MGIyOTdkYzU0MWIwOWQwZGUwMzY5YjI4OWQ0MjQ1ZTdhNmFkMDNlZWZiOTU=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": ["en", "ru", "ua"],
+    "blueprints": []
+  }
+}
