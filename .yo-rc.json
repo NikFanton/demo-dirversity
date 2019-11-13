@@ -37,6 +37,8 @@
     "enableTranslation": true,
     "nativeLanguage": "en",
     "languages": ["en", "ru", "ua"],
-    "blueprints": []
+    "blueprints": [],
+    "herokuAppName": "dirversity-demo",
+    "herokuDeployType": "git"
   }
 }
