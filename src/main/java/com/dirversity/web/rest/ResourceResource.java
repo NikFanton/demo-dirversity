@@ -4,6 +4,8 @@ import com.dirversity.service.ResourceService;
 import com.dirversity.web.rest.errors.BadRequestAlertException;
 import com.dirversity.service.dto.ResourceDTO;
 
+import com.google.api.client.http.FileContent;
+import com.google.api.services.drive.model.File;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,6 +78,9 @@ public class ResourceResource {
     @PutMapping("/resources")
     public ResponseEntity<ResourceDTO> updateResource(@RequestBody ResourceDTO resourceDTO) throws URISyntaxException {
         log.debug("REST request to update Resource : {}", resourceDTO);
+
+        saveDataToGoogleDrive(resourceDTO);
+
         if (resourceDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -82,6 +88,20 @@ public class ResourceResource {
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, resourceDTO.getId().toString()))
             .body(result);
+    }
+
+    private void saveDataToGoogleDrive(@RequestBody ResourceDTO resourceDTO) {
+        log.info("TESTED TEST " + resourceDTO.getDataContentType() + "\n" + Arrays.toString(resourceDTO.getData()));
+
+//
+//        File fileMetadata = new File();
+//        fileMetadata.setName("photo.jpg");
+//        java.io.File filePath = new java.io.File("files/photo.jpg");
+//        FileContent mediaContent = new FileContent("image/jpeg", filePath);
+//        File file = driveService.files().create(fileMetadata, mediaContent)
+//            .setFields("id")
+//            .execute();
+//        System.out.println("File ID: " + file.getId());
     }
 
     /**

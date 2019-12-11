@@ -12,6 +12,8 @@ export interface IResource {
   publisherId?: number;
   resourceTypes?: IResourceType[];
   rules?: IRule[];
+  dataContentType?: string;
+  data?: any;
 }
 
 export class Resource implements IResource {
@@ -24,6 +26,8 @@ export class Resource implements IResource {
     public publisherLastName?: string,
     public publisherId?: number,
     public resourceTypes?: IResourceType[],
-    public rules?: IRule[]
+    public rules?: IRule[],
+    public dataContentType?: string,
+    public data?: any
   ) {}
 }

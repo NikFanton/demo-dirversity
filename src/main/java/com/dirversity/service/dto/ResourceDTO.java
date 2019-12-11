@@ -1,4 +1,5 @@
 package com.dirversity.service.dto;
+import javax.persistence.Lob;
 import java.time.Instant;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -28,6 +29,11 @@ public class ResourceDTO implements Serializable {
     private Set<ResourceTypeDTO> resourceTypes = new HashSet<>();
 
     private Set<RuleDTO> rules = new HashSet<>();
+
+    @Lob
+    private byte[] data;
+
+    private String dataContentType;
 
     public Long getId() {
         return id;
@@ -99,6 +105,22 @@ public class ResourceDTO implements Serializable {
 
     public void setRules(Set<RuleDTO> rules) {
         this.rules = rules;
+    }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
+
+    public String getDataContentType() {
+        return dataContentType;
+    }
+
+    public void setDataContentType(String dataContentType) {
+        this.dataContentType = dataContentType;
     }
 
     @Override
