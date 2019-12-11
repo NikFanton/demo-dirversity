@@ -1,11 +1,9 @@
 package com.dirversity.web.rest;
 
+import com.dirversity.service.CloudStorageService;
 import com.dirversity.service.ResourceService;
-import com.dirversity.web.rest.errors.BadRequestAlertException;
 import com.dirversity.service.dto.ResourceDTO;
-
-import com.google.api.client.http.FileContent;
-import com.google.api.services.drive.model.File;
+import com.dirversity.web.rest.errors.BadRequestAlertException;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -15,15 +13,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,9 +37,11 @@ public class ResourceResource {
     private String applicationName;
 
     private final ResourceService resourceService;
+    private final CloudStorageService cloudStorageService;
 
-    public ResourceResource(ResourceService resourceService) {
+    public ResourceResource(ResourceService resourceService, CloudStorageService cloudStorageService) {
         this.resourceService = resourceService;
+        this.cloudStorageService = cloudStorageService;
     }
 
     /**
@@ -79,7 +76,7 @@ public class ResourceResource {
     public ResponseEntity<ResourceDTO> updateResource(@RequestBody ResourceDTO resourceDTO) throws URISyntaxException {
         log.debug("REST request to update Resource : {}", resourceDTO);
 
-        saveDataToGoogleDrive(resourceDTO);
+        cloudStorageService.uploadFileData(resourceDTO.getDataContentType(), resourceDTO.getData());
 
         if (resourceDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
@@ -90,25 +87,13 @@ public class ResourceResource {
             .body(result);
     }
 
-    private void saveDataToGoogleDrive(@RequestBody ResourceDTO resourceDTO) {
-        log.info("TESTED TEST " + resourceDTO.getDataContentType() + "\n" + Arrays.toString(resourceDTO.getData()));
 
-//
-//        File fileMetadata = new File();
-//        fileMetadata.setName("photo.jpg");
-//        java.io.File filePath = new java.io.File("files/photo.jpg");
-//        FileContent mediaContent = new FileContent("image/jpeg", filePath);
-//        File file = driveService.files().create(fileMetadata, mediaContent)
-//            .setFields("id")
-//            .execute();
-//        System.out.println("File ID: " + file.getId());
-    }
+
 
     /**
      * {@code GET  /resources} : get all the resources.
      *
-
-     * @param pageable the pagination information.
+     * @param pageable  the pagination information.
      * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of resources in body.
      */

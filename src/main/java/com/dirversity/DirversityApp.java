@@ -2,9 +2,7 @@ package com.dirversity;
 
 import com.dirversity.config.ApplicationProperties;
 import com.dirversity.config.DefaultProfileUtil;
-
 import io.github.jhipster.config.JHipsterConstants;
-
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

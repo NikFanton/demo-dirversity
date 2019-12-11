@@ -3,11 +3,12 @@ package com.dirversity.web.rest;
 import com.dirversity.DirversityApp;
 import com.dirversity.domain.Resource;
 import com.dirversity.repository.ResourceRepository;
+import com.dirversity.service.CloudStorageService;
 import com.dirversity.service.ResourceService;
 import com.dirversity.service.dto.ResourceDTO;
 import com.dirversity.service.mapper.ResourceMapper;
 import com.dirversity.web.rest.errors.ExceptionTranslator;
-
+import com.google.api.services.drive.Drive;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -15,7 +16,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -85,6 +85,9 @@ public class ResourceResourceIT {
     @Autowired
     private Validator validator;
 
+    @Autowired
+    private CloudStorageService cloudStorageService;
+
     private MockMvc restResourceMockMvc;
 
     private Resource resource;
@@ -92,7 +95,7 @@ public class ResourceResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ResourceResource resourceResource = new ResourceResource(resourceService);
+        final ResourceResource resourceResource = new ResourceResource(resourceService, cloudStorageService);
         this.restResourceMockMvc = MockMvcBuilders.standaloneSetup(resourceResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -194,10 +197,10 @@ public class ResourceResourceIT {
             .andExpect(jsonPath("$.[*].accessUrl").value(hasItem(DEFAULT_ACCESS_URL)))
             .andExpect(jsonPath("$.[*].createDate").value(hasItem(DEFAULT_CREATE_DATE.toString())));
     }
-    
+
     @SuppressWarnings({"unchecked"})
     public void getAllResourcesWithEagerRelationshipsIsEnabled() throws Exception {
-        ResourceResource resourceResource = new ResourceResource(resourceServiceMock);
+        ResourceResource resourceResource = new ResourceResource(resourceServiceMock, cloudStorageService);
         when(resourceServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
 
         MockMvc restResourceMockMvc = MockMvcBuilders.standaloneSetup(resourceResource)
@@ -214,7 +217,7 @@ public class ResourceResourceIT {
 
     @SuppressWarnings({"unchecked"})
     public void getAllResourcesWithEagerRelationshipsIsNotEnabled() throws Exception {
-        ResourceResource resourceResource = new ResourceResource(resourceServiceMock);
+        ResourceResource resourceResource = new ResourceResource(resourceServiceMock, cloudStorageService);
             when(resourceServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
             MockMvc restResourceMockMvc = MockMvcBuilders.standaloneSetup(resourceResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
