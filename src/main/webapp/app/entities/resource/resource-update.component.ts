@@ -41,7 +41,8 @@ export class ResourceUpdateComponent implements OnInit {
     resourceTypes: [],
     rules: [],
     data: [],
-    dataContentType: []
+    dataContentType: [],
+    dataDisplayName: []
   });
 
   constructor(
@@ -94,7 +95,8 @@ export class ResourceUpdateComponent implements OnInit {
       resourceTypes: resource.resourceTypes,
       rules: resource.rules,
       data: resource.data,
-      dataContentType: resource.dataContentType
+      dataContentType: resource.dataContentType,
+      dataDisplayName: resource.dataDisplayName
     });
   }
 
@@ -114,10 +116,12 @@ export class ResourceUpdateComponent implements OnInit {
           reject(`File was expected to be an image but was found to be ${file.type}`);
         } else {
           const filedContentType: string = field + 'ContentType';
+          const filedDisplayName: string = field + 'DisplayName';
           this.dataUtils.toBase64(file, base64Data => {
             this.editForm.patchValue({
               [field]: base64Data,
-              [filedContentType]: file.type
+              [filedContentType]: file.type,
+              [filedDisplayName]: file.name
             });
           });
         }
@@ -158,7 +162,8 @@ export class ResourceUpdateComponent implements OnInit {
       resourceTypes: this.editForm.get(['resourceTypes']).value,
       rules: this.editForm.get(['rules']).value,
       dataContentType: this.editForm.get(['dataContentType']).value,
-      data: this.editForm.get(['data']).value
+      data: this.editForm.get(['data']).value,
+      dataDisplayName: this.editForm.get(['dataDisplayName']).value
     };
   }
 

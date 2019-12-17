@@ -14,6 +14,7 @@ export interface IResource {
   rules?: IRule[];
   dataContentType?: string;
   data?: any;
+  dataDisplayName?: string;
 }
 
 export class Resource implements IResource {
@@ -28,6 +29,7 @@ export class Resource implements IResource {
     public resourceTypes?: IResourceType[],
     public rules?: IRule[],
     public dataContentType?: string,
-    public data?: any
+    public data?: any,
+    dataDisplayName?: string
   ) {}
 }

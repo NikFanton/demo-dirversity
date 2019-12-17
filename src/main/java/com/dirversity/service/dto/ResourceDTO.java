@@ -35,6 +35,8 @@ public class ResourceDTO implements Serializable {
 
     private String dataContentType;
 
+    private String dataDisplayName;
+
     public Long getId() {
         return id;
     }
@@ -121,6 +123,14 @@ public class ResourceDTO implements Serializable {
 
     public void setDataContentType(String dataContentType) {
         this.dataContentType = dataContentType;
+    }
+
+    public String getDataDisplayName() {
+        return dataDisplayName;
+    }
+
+    public void setDataDisplayName(String dataDisplayName) {
+        this.dataDisplayName = dataDisplayName;
     }
 
     @Override

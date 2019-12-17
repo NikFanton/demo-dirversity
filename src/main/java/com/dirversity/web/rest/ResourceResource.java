@@ -75,12 +75,12 @@ public class ResourceResource {
     @PutMapping("/resources")
     public ResponseEntity<ResourceDTO> updateResource(@RequestBody ResourceDTO resourceDTO) throws URISyntaxException {
         log.debug("REST request to update Resource : {}", resourceDTO);
-
-        cloudStorageService.uploadFileData(resourceDTO.getDataContentType(), resourceDTO.getData());
-
         if (resourceDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
+        cloudStorageService
+            .uploadFileData(resourceDTO.getDataContentType(), resourceDTO.getDataDisplayName(), resourceDTO.getData())
+            .ifPresent(file -> resourceDTO.setAccessUrl(file.getWebViewLink()));
         ResourceDTO result = resourceService.save(resourceDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, resourceDTO.getId().toString()))
