@@ -2,27 +2,28 @@
   "dirversityApp": {
     "resource": {
       "home": {
-        "title": "Resources",
-        "createLabel": "Создать новый Resource",
-        "createOrEditLabel": "Создать или отредактировать Resource",
-        "notFound": "No Resources found"
+        "title": "Ресурсы",
+        "createLabel": "Создать новый ресурс",
+        "createOrEditLabel": "Создать или отредактировать ресурс",
+        "notFound": "Ресурсов не найдено"
       },
-      "created": "Новый Resource создан с идентификатором {{ param }}",
-      "updated": "Resource обновлен с идентификатором {{ param }}",
-      "deleted": "Resource удален с идентификатором {{ param }}",
+      "created": "Новый ресурс создан с идентификатором {{ param }}",
+      "updated": "Ресурс обновлен с идентификатором {{ param }}",
+      "deleted": "Ресурс удален с идентификатором {{ param }}",
       "delete": {
-        "question": "Вы уверены что хотите удалить Resource {{ id }}?"
+        "question": "Вы уверены что хотите удалить ресурс {{ id }}?"
       },
       "detail": {
-        "title": "Resource"
+        "title": "Ресурс"
       },
-      "name": "Name",
-      "author": "Author",
-      "accessUrl": "Access Url",
-      "createDate": "Create Date",
-      "publisher": "Publisher",
-      "resourceType": "Resource Type",
-      "rules": "Rules"
+      "name": "Наименование",
+      "author": "Автор",
+      "accessUrl": "Url для доступа",
+      "createDate": "Дата загрузки файла",
+      "publisher": "Опубликовал",
+      "resourceType": "Тип ресурса",
+      "rules": "Правила",
+      "dataUpload": "Загрузка данных"
     }
   }
 }

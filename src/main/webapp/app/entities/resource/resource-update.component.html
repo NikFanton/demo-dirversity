@@ -45,7 +45,13 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="fileupload3App.resource.data" for="field_data">Data</label>
+                    <label jhiTranslate="dirversityApp.resource.rules" for="field_rules">Rules</label>
+                    <select class="form-control" id="field_rules" multiple name="rules" formControlName="rules">
+                        <option [ngValue]="getSelected(editForm.get('rules').value, ruleOption)" *ngFor="let ruleOption of rules; trackBy: trackRuleById">{{ruleOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dirversityApp.resource.dataUpload" for="field_data">Data</label>
                     <div>
                         <div *ngIf="editForm.get('data').value" class="form-text text-danger clearfix">
                             <a class="pull-left" (click)="openFile(editForm.get('dataContentType').value, editForm.get('data').value)" jhiTranslate="entity.action.open">open</a><br>
@@ -61,12 +67,6 @@
                            formControlName="data"/>
                     <input type="hidden" class="form-control" name="dataContentType" id="field_dataContentType"
                            formControlName="dataContentType" />
-                </div>
-                <div class="form-group">
-                    <label jhiTranslate="dirversityApp.resource.rules" for="field_rules">Rules</label>
-                    <select class="form-control" id="field_rules" multiple name="rules" formControlName="rules">
-                        <option [ngValue]="getSelected(editForm.get('rules').value, ruleOption)" *ngFor="let ruleOption of rules; trackBy: trackRuleById">{{ruleOption.name}}</option>
-                    </select>
                 </div>
             </div>
             <div>

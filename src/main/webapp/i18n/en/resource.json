@@ -22,7 +22,8 @@
       "createDate": "Create Date",
       "publisher": "Publisher",
       "resourceType": "Resource Type",
-      "rules": "Rules"
+      "rules": "Rules",
+      "dataUpload": "Data Upload"
     }
   }
 }

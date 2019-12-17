@@ -7,13 +7,13 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Сущности",
-        "userGroup": "User Group",
-        "userGroupType": "User Group Type",
-        "resource": "Resource",
-        "resourceType": "Resource Type",
-        "rule": "Rule",
-        "subject": "Subject",
-        "position": "Position",
+        "userGroup": "Групы Пользователей",
+        "userGroupType": "Типы Груп Пользователей",
+        "resource": "Ресурсы",
+        "resourceType": "Типы Ресурсов",
+        "rule": "Правила",
+        "subject": "Предметы",
+        "position": "Должности",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
