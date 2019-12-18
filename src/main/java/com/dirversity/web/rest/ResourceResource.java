@@ -57,6 +57,7 @@ public class ResourceResource {
         if (resourceDTO.getId() != null) {
             throw new BadRequestAlertException("A new resource cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        uploadResourceToCloudStorage(resourceDTO);
         ResourceDTO result = resourceService.save(resourceDTO);
         return ResponseEntity.created(new URI("/api/resources/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
@@ -78,18 +79,20 @@ public class ResourceResource {
         if (resourceDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (resourceDTO.getData() != null && resourceDTO.getDataContentType() != null) {
-            cloudStorageService
-                .uploadFileData(resourceDTO.getDataContentType(), resourceDTO.getDataDisplayName(), resourceDTO.getData())
-                .ifPresent(file -> resourceDTO.setAccessUrl(file.getWebViewLink()));
-        }
+        uploadResourceToCloudStorage(resourceDTO);
         ResourceDTO result = resourceService.save(resourceDTO);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, resourceDTO.getId().toString()))
             .body(result);
     }
 
-
+    private void uploadResourceToCloudStorage(@RequestBody ResourceDTO resourceDTO) {
+        if (resourceDTO.getData() != null && resourceDTO.getDataContentType() != null) {
+            cloudStorageService
+                .uploadFileData(resourceDTO.getDataContentType(), resourceDTO.getDataDisplayName(), resourceDTO.getData())
+                .ifPresent(file -> resourceDTO.setAccessUrl(file.getWebViewLink()));
+        }
+    }
 
 
     /**
