@@ -28,6 +28,9 @@
             <column name="create_date" type="datetime">
                 <constraints nullable="true" />
             </column>
+            <column name="file_id" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="publisher_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -48,7 +51,7 @@
         </createTable>
 
         <addPrimaryKey columnNames="resource_id, resource_type_id" tableName="resource_resource_type"/>
-
+        
         <createTable tableName="resource_rules">
             <column name="rules_id" type="bigint">
                 <constraints nullable="false"/>
@@ -59,7 +62,7 @@
         </createTable>
 
         <addPrimaryKey columnNames="resource_id, rules_id" tableName="resource_rules"/>
-
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 
@@ -81,6 +84,7 @@
             <column name="author" type="string"/>
             <column name="access_url" type="string"/>
             <column name="create_date" type="datetime"/>
+            <column name="file_id" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->
         </loadData>
     </changeSet>

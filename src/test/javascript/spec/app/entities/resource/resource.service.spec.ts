@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Resource(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate);
+      elemDefault = new Resource(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -74,7 +74,8 @@ describe('Service Tests', () => {
             name: 'BBBBBB',
             author: 'BBBBBB',
             accessUrl: 'BBBBBB',
-            createDate: currentDate.format(DATE_TIME_FORMAT)
+            createDate: currentDate.format(DATE_TIME_FORMAT),
+            fileId: 'BBBBBB'
           },
           elemDefault
         );
@@ -100,7 +101,8 @@ describe('Service Tests', () => {
             name: 'BBBBBB',
             author: 'BBBBBB',
             accessUrl: 'BBBBBB',
-            createDate: currentDate.format(DATE_TIME_FORMAT)
+            createDate: currentDate.format(DATE_TIME_FORMAT),
+            fileId: 'BBBBBB'
           },
           elemDefault
         );

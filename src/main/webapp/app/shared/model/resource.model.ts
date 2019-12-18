@@ -8,6 +8,7 @@ export interface IResource {
   author?: string;
   accessUrl?: string;
   createDate?: Moment;
+  fileId?: string;
   publisherLastName?: string;
   publisherId?: number;
   resourceTypes?: IResourceType[];
@@ -24,12 +25,13 @@ export class Resource implements IResource {
     public author?: string,
     public accessUrl?: string,
     public createDate?: Moment,
+    public fileId?: string,
     public publisherLastName?: string,
     public publisherId?: number,
     public resourceTypes?: IResourceType[],
     public rules?: IRule[],
     public dataContentType?: string,
     public data?: any,
-    dataDisplayName?: string
+    public dataDisplayName?: string
   ) {}
 }

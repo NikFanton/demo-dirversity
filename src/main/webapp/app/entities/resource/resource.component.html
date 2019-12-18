@@ -23,6 +23,7 @@
             <th scope="col"  jhiSortBy="author"><span jhiTranslate="dirversityApp.resource.author">Author</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="accessUrl"><span jhiTranslate="dirversityApp.resource.accessUrl">Access Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="createDate"><span jhiTranslate="dirversityApp.resource.createDate">Create Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fileId"><span jhiTranslate="dirversityApp.resource.fileId">File Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="publisherLastName"><span jhiTranslate="dirversityApp.resource.publisher">Publisher</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
@@ -34,6 +35,7 @@
                 <td>{{resource.author}}</td>
                 <td>{{resource.accessUrl}}</td>
                 <td>{{resource.createDate | date:'medium'}}</td>
+                <td>{{resource.fileId}}</td>
                 <td>
                     {{resource.publisherLastName}}
                 </td>

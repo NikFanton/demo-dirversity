@@ -20,6 +20,7 @@
       "author": "Автор",
       "accessUrl": "Url для доступа",
       "createDate": "Дата загрузки файла",
+      "fileId": "File Id",
       "publisher": "Опубликовал",
       "resourceType": "Тип ресурса",
       "rules": "Правила",

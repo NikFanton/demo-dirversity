@@ -36,6 +36,9 @@ public class Resource implements Serializable {
     @Column(name = "create_date")
     private Instant createDate;
 
+    @Column(name = "file_id")
+    private String fileId;
+
     @ManyToOne
     @JsonIgnoreProperties("resources")
     private User publisher;
@@ -113,6 +116,19 @@ public class Resource implements Serializable {
 
     public void setCreateDate(Instant createDate) {
         this.createDate = createDate;
+    }
+
+    public String getFileId() {
+        return fileId;
+    }
+
+    public Resource fileId(String fileId) {
+        this.fileId = fileId;
+        return this;
+    }
+
+    public void setFileId(String fileId) {
+        this.fileId = fileId;
     }
 
     public User getPublisher() {
@@ -203,6 +219,7 @@ public class Resource implements Serializable {
             ", author='" + getAuthor() + "'" +
             ", accessUrl='" + getAccessUrl() + "'" +
             ", createDate='" + getCreateDate() + "'" +
+            ", fileId='" + getFileId() + "'" +
             "}";
     }
 }

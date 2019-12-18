@@ -8,7 +8,7 @@ import com.dirversity.service.ResourceService;
 import com.dirversity.service.dto.ResourceDTO;
 import com.dirversity.service.mapper.ResourceMapper;
 import com.dirversity.web.rest.errors.ExceptionTranslator;
-import com.google.api.services.drive.Drive;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -54,6 +54,9 @@ public class ResourceResourceIT {
 
     private static final Instant DEFAULT_CREATE_DATE = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_CREATE_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final String DEFAULT_FILE_ID = "AAAAAAAAAA";
+    private static final String UPDATED_FILE_ID = "BBBBBBBBBB";
 
     @Autowired
     private ResourceRepository resourceRepository;
@@ -115,7 +118,8 @@ public class ResourceResourceIT {
             .name(DEFAULT_NAME)
             .author(DEFAULT_AUTHOR)
             .accessUrl(DEFAULT_ACCESS_URL)
-            .createDate(DEFAULT_CREATE_DATE);
+            .createDate(DEFAULT_CREATE_DATE)
+            .fileId(DEFAULT_FILE_ID);
         return resource;
     }
     /**
@@ -129,7 +133,8 @@ public class ResourceResourceIT {
             .name(UPDATED_NAME)
             .author(UPDATED_AUTHOR)
             .accessUrl(UPDATED_ACCESS_URL)
-            .createDate(UPDATED_CREATE_DATE);
+            .createDate(UPDATED_CREATE_DATE)
+            .fileId(UPDATED_FILE_ID);
         return resource;
     }
 
@@ -158,6 +163,7 @@ public class ResourceResourceIT {
         assertThat(testResource.getAuthor()).isEqualTo(DEFAULT_AUTHOR);
         assertThat(testResource.getAccessUrl()).isEqualTo(DEFAULT_ACCESS_URL);
         assertThat(testResource.getCreateDate()).isEqualTo(DEFAULT_CREATE_DATE);
+        assertThat(testResource.getFileId()).isEqualTo(DEFAULT_FILE_ID);
     }
 
     @Test
@@ -195,7 +201,8 @@ public class ResourceResourceIT {
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].author").value(hasItem(DEFAULT_AUTHOR)))
             .andExpect(jsonPath("$.[*].accessUrl").value(hasItem(DEFAULT_ACCESS_URL)))
-            .andExpect(jsonPath("$.[*].createDate").value(hasItem(DEFAULT_CREATE_DATE.toString())));
+            .andExpect(jsonPath("$.[*].createDate").value(hasItem(DEFAULT_CREATE_DATE.toString())))
+            .andExpect(jsonPath("$.[*].fileId").value(hasItem(DEFAULT_FILE_ID)));
     }
 
     @SuppressWarnings({"unchecked"})
@@ -245,7 +252,8 @@ public class ResourceResourceIT {
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.author").value(DEFAULT_AUTHOR))
             .andExpect(jsonPath("$.accessUrl").value(DEFAULT_ACCESS_URL))
-            .andExpect(jsonPath("$.createDate").value(DEFAULT_CREATE_DATE.toString()));
+            .andExpect(jsonPath("$.createDate").value(DEFAULT_CREATE_DATE.toString()))
+            .andExpect(jsonPath("$.fileId").value(DEFAULT_FILE_ID));
     }
 
     @Test
@@ -272,7 +280,8 @@ public class ResourceResourceIT {
             .name(UPDATED_NAME)
             .author(UPDATED_AUTHOR)
             .accessUrl(UPDATED_ACCESS_URL)
-            .createDate(UPDATED_CREATE_DATE);
+            .createDate(UPDATED_CREATE_DATE)
+            .fileId(UPDATED_FILE_ID);
         ResourceDTO resourceDTO = resourceMapper.toDto(updatedResource);
 
         restResourceMockMvc.perform(put("/api/resources")
@@ -288,6 +297,7 @@ public class ResourceResourceIT {
         assertThat(testResource.getAuthor()).isEqualTo(UPDATED_AUTHOR);
         assertThat(testResource.getAccessUrl()).isEqualTo(UPDATED_ACCESS_URL);
         assertThat(testResource.getCreateDate()).isEqualTo(UPDATED_CREATE_DATE);
+        assertThat(testResource.getFileId()).isEqualTo(UPDATED_FILE_ID);
     }
 
     @Test
