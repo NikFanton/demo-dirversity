@@ -25,7 +25,6 @@ public class GoogleDriveServiceImpl implements CloudStorageService {
 
     private java.io.File convertBytesToFile(byte[] bytes) throws IOException {
         String fileName = "upload.tmp";
-//        java.io.File file = new java.io.File("/Users/nikita/Projects/diploma/demo-dirversity/src/main/resources/" + fileName);
         java.io.File file = new java.io.File("src/main/resources/" + fileName);
         OutputStream os = new FileOutputStream(file);
         os.write(bytes);

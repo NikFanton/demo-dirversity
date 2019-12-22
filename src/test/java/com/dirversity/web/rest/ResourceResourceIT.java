@@ -5,6 +5,7 @@ import com.dirversity.domain.Resource;
 import com.dirversity.repository.ResourceRepository;
 import com.dirversity.service.CloudStorageService;
 import com.dirversity.service.ResourceService;
+import com.dirversity.service.UserService;
 import com.dirversity.service.dto.ResourceDTO;
 import com.dirversity.service.mapper.ResourceMapper;
 import com.dirversity.web.rest.errors.ExceptionTranslator;
@@ -74,6 +75,9 @@ public class ResourceResourceIT {
     private ResourceService resourceService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -98,7 +102,7 @@ public class ResourceResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final ResourceResource resourceResource = new ResourceResource(resourceService, cloudStorageService);
+        final ResourceResource resourceResource = new ResourceResource(resourceService, userService, cloudStorageService);
         this.restResourceMockMvc = MockMvcBuilders.standaloneSetup(resourceResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -207,7 +211,7 @@ public class ResourceResourceIT {
 
     @SuppressWarnings({"unchecked"})
     public void getAllResourcesWithEagerRelationshipsIsEnabled() throws Exception {
-        ResourceResource resourceResource = new ResourceResource(resourceServiceMock, cloudStorageService);
+        ResourceResource resourceResource = new ResourceResource(resourceServiceMock, userService, cloudStorageService);
         when(resourceServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
 
         MockMvc restResourceMockMvc = MockMvcBuilders.standaloneSetup(resourceResource)
@@ -224,7 +228,7 @@ public class ResourceResourceIT {
 
     @SuppressWarnings({"unchecked"})
     public void getAllResourcesWithEagerRelationshipsIsNotEnabled() throws Exception {
-        ResourceResource resourceResource = new ResourceResource(resourceServiceMock, cloudStorageService);
+        ResourceResource resourceResource = new ResourceResource(resourceServiceMock, userService, cloudStorageService);
             when(resourceServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
             MockMvc restResourceMockMvc = MockMvcBuilders.standaloneSetup(resourceResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)

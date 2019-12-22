@@ -20,6 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.html.Option;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -47,6 +48,11 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
         this.authorityRepository = authorityRepository;
         this.cacheManager = cacheManager;
+    }
+
+    public Optional<User> findUserByLogin(String login) {
+        log.debug("Search user for login {}", login);
+        return userRepository.findOneByLogin(login);
     }
 
     public Optional<User> activateRegistration(String key) {

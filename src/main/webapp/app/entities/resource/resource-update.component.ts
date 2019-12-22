@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
-import { JhiAlertService } from 'ng-jhipster';
+import { JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 import { IResource, Resource } from 'app/shared/model/resource.model';
 import { ResourceService } from './resource.service';
 import { IUser } from 'app/core/user/user.model';
@@ -40,10 +40,14 @@ export class ResourceUpdateComponent implements OnInit {
     fileId: [],
     publisherId: [],
     resourceTypes: [],
-    rules: []
+    rules: [],
+    data: [],
+    dataContentType: [],
+    dataDisplayName: []
   });
 
   constructor(
+    protected dataUtils: JhiDataUtils,
     protected jhiAlertService: JhiAlertService,
     protected resourceService: ResourceService,
     protected userService: UserService,
@@ -91,8 +95,46 @@ export class ResourceUpdateComponent implements OnInit {
       fileId: resource.fileId,
       publisherId: resource.publisherId,
       resourceTypes: resource.resourceTypes,
-      rules: resource.rules
+      rules: resource.rules,
+      data: resource.data,
+      dataContentType: resource.dataContentType,
+      dataDisplayName: resource.dataDisplayName
     });
+  }
+
+  byteSize(field) {
+    return this.dataUtils.byteSize(field);
+  }
+
+  openFile(contentType, field) {
+    return this.dataUtils.openFile(contentType, field);
+  }
+
+  setFileData(event, field: string, isImage) {
+    return new Promise((resolve, reject) => {
+      if (event && event.target && event.target.files && event.target.files[0]) {
+        const file: File = event.target.files[0];
+        if (isImage && !file.type.startsWith('image/')) {
+          reject(`File was expected to be an image but was found to be ${file.type}`);
+        } else {
+          const filedContentType: string = field + 'ContentType';
+          const filedDisplayName: string = field + 'DisplayName';
+          this.dataUtils.toBase64(file, base64Data => {
+            this.editForm.patchValue({
+              [field]: base64Data,
+              [filedContentType]: file.type,
+              [filedDisplayName]: file.name
+            });
+          });
+        }
+      } else {
+        reject(`Base64 data was not set as file could not be extracted from passed parameter: ${event}`);
+      }
+    }).then(
+      // eslint-disable-next-line no-console
+      () => console.log('blob added'), // success
+      this.onError
+    );
   }
 
   previousState() {
@@ -121,7 +163,10 @@ export class ResourceUpdateComponent implements OnInit {
       fileId: this.editForm.get(['fileId']).value,
       publisherId: this.editForm.get(['publisherId']).value,
       resourceTypes: this.editForm.get(['resourceTypes']).value,
-      rules: this.editForm.get(['rules']).value
+      rules: this.editForm.get(['rules']).value,
+      dataContentType: this.editForm.get(['dataContentType']).value,
+      data: this.editForm.get(['data']).value,
+      dataDisplayName: this.editForm.get(['dataDisplayName']).value
     };
   }
 

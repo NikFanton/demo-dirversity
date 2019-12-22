@@ -1,7 +1,10 @@
 package com.dirversity.web.rest;
 
+import com.dirversity.domain.User;
+import com.dirversity.security.SecurityUtils;
 import com.dirversity.service.CloudStorageService;
 import com.dirversity.service.ResourceService;
+import com.dirversity.service.UserService;
 import com.dirversity.service.dto.ResourceDTO;
 import com.dirversity.web.rest.errors.BadRequestAlertException;
 import io.github.jhipster.web.util.HeaderUtil;
@@ -14,11 +17,23 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,10 +52,12 @@ public class ResourceResource {
     private String applicationName;
 
     private final ResourceService resourceService;
+    private final UserService userService;
     private final CloudStorageService cloudStorageService;
 
-    public ResourceResource(ResourceService resourceService, CloudStorageService cloudStorageService) {
+    public ResourceResource(ResourceService resourceService, UserService userService, CloudStorageService cloudStorageService) {
         this.resourceService = resourceService;
+        this.userService = userService;
         this.cloudStorageService = cloudStorageService;
     }
 
@@ -57,11 +74,26 @@ public class ResourceResource {
         if (resourceDTO.getId() != null) {
             throw new BadRequestAlertException("A new resource cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
+        SecurityUtils.getCurrentUserLogin()
+            .map(login -> userService.findUserByLogin(login)
+                .map(User::getId)
+                .orElseThrow(() -> new UsernameNotFoundException(String.format("User with login %s is not found", login))))
+            .ifPresent(resourceDTO::setPublisherId);
+
+        resourceDTO.setCreateDate(getNow());
+
         uploadResourceToCloudStorage(resourceDTO);
+
         ResourceDTO result = resourceService.save(resourceDTO);
         return ResponseEntity.created(new URI("/api/resources/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
+    }
+
+    private Instant getNow() {
+        LocalDateTime dateTime = LocalDateTime.now();
+        return dateTime.atZone(ZoneId.systemDefault()).toInstant();
     }
 
     /**
@@ -90,7 +122,10 @@ public class ResourceResource {
         if (resourceDTO.getData() != null && resourceDTO.getDataContentType() != null) {
             cloudStorageService
                 .uploadFileData(resourceDTO.getDataContentType(), resourceDTO.getDataDisplayName(), resourceDTO.getData())
-                .ifPresent(file -> resourceDTO.setAccessUrl(file.getWebViewLink()));
+                .ifPresent(file -> {
+                    resourceDTO.setFileId(file.getId());
+                    resourceDTO.setAccessUrl(file.getWebViewLink());
+                });
         }
     }
 
