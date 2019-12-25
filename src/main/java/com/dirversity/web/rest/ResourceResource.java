@@ -118,7 +118,7 @@ public class ResourceResource {
             .body(result);
     }
 
-    private void uploadResourceToCloudStorage(@RequestBody ResourceDTO resourceDTO) {
+    private void uploadResourceToCloudStorage(ResourceDTO resourceDTO) {
         if (resourceDTO.getData() != null && resourceDTO.getDataContentType() != null) {
             cloudStorageService
                 .uploadFileData(resourceDTO.getDataContentType(), resourceDTO.getDataDisplayName(), resourceDTO.getData())
