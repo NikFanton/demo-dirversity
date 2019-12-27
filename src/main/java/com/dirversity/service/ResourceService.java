@@ -34,7 +34,14 @@ public interface ResourceService {
      * @return the list of entities.
      */
     Page<ResourceDTO> findAllWithEagerRelationships(Pageable pageable);
-    
+
+    /**
+     * Get all the resources with eager load of many-to-many relationships.
+     *
+     * @return the list of entities.
+     */
+    Page<ResourceDTO> findAllByPublisherIsCurrentUser(Pageable pageable);
+
     /**
      * Get the "id" resource.
      *

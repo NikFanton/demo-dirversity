@@ -1,6 +1,7 @@
 package com.dirversity.web.rest;
 
 import com.dirversity.domain.User;
+import com.dirversity.security.AuthoritiesConstants;
 import com.dirversity.security.SecurityUtils;
 import com.dirversity.service.CloudStorageService;
 import com.dirversity.service.ResourceService;
@@ -140,12 +141,19 @@ public class ResourceResource {
     @GetMapping("/resources")
     public ResponseEntity<List<ResourceDTO>> getAllResources(Pageable pageable, @RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get a page of Resources");
+
         Page<ResourceDTO> page;
-        if (eagerload) {
-            page = resourceService.findAllWithEagerRelationships(pageable);
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            if (eagerload) {
+                page = resourceService.findAllWithEagerRelationships(pageable);
+            } else {
+                page = resourceService.findAll(pageable);
+            }
         } else {
-            page = resourceService.findAll(pageable);
+                page = resourceService.findAllByPublisherIsCurrentUser(pageable);
         }
+
+
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

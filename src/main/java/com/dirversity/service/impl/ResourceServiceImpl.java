@@ -69,7 +69,14 @@ public class ResourceServiceImpl implements ResourceService {
     public Page<ResourceDTO> findAllWithEagerRelationships(Pageable pageable) {
         return resourceRepository.findAllWithEagerRelationships(pageable).map(resourceMapper::toDto);
     }
-    
+
+    @Override
+    public Page<ResourceDTO> findAllByPublisherIsCurrentUser(Pageable pageable) {
+        log.debug("Request to get all Resources for the user");
+        return resourceRepository.findByPublisherIsCurrentUser(pageable)
+            .map(resourceMapper::toDto);
+    }
+
 
     /**
      * Get one resource by id.
