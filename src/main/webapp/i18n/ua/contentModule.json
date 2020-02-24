@@ -1,0 +1,26 @@
+{
+  "dirversityApp": {
+    "contentModule": {
+      "home": {
+        "title": "Content Modules",
+        "createLabel": "Створити новий Content Module",
+        "createOrEditLabel": "Створити чи редагувати Content Module",
+        "notFound": "No Content Modules found"
+      },
+      "created": "Новий Content Module створений з ідентифікатором {{ param }}",
+      "updated": "Content Module оновлений з ідентифікатором {{ param }}",
+      "deleted": "Content Module видалений з ідентифікатором {{ param }}",
+      "delete": {
+        "question": "Ви впевнені, що хочете видалити Content Module {{ id }}?"
+      },
+      "detail": {
+        "title": "Content Module"
+      },
+      "name": "Name",
+      "order": "Order",
+      "description": "Description",
+      "topics": "Topics",
+      "curriculum": "Curriculum"
+    }
+  }
+}

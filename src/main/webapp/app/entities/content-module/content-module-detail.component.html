@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="contentModule">
+            <h2><span jhiTranslate="dirversityApp.contentModule.detail.title">Content Module</span> {{contentModule.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="dirversityApp.contentModule.name">Name</span></dt>
+                <dd>
+                    <span>{{contentModule.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.contentModule.order">Order</span></dt>
+                <dd>
+                    <span>{{contentModule.order}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.contentModule.description">Description</span></dt>
+                <dd>
+                    <span>{{contentModule.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.contentModule.curriculum">Curriculum</span></dt>
+                <dd>
+                    <div *ngIf="contentModule.curriculumId">
+                        <a [routerLink]="['/curriculum', contentModule.curriculumId, 'view']">{{contentModule.curriculumName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/content-module', contentModule.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

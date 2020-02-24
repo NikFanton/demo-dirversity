@@ -1,0 +1,48 @@
+{
+    "name": "ContentModule",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "order",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "topic",
+            "otherEntityRelationshipName": "contentModule",
+            "relationshipName": "topics"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "curriculum",
+            "otherEntityRelationshipName": "contentModules",
+            "relationshipName": "curriculum",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20200224055440",
+    "entityTableName": "content_module",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

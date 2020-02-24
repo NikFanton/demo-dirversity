@@ -7,7 +7,7 @@
         Added the constraints for entity Subject.
     -->
     <changeSet id="20191109121632-2" author="jhipster">
-
+        
         <addForeignKeyConstraint baseColumnNames="subject_id"
                                  baseTableName="subject_teachers"
                                  constraintName="fk_subject_teachers_subject_id"
@@ -19,6 +19,6 @@
                                  constraintName="fk_subject_teachers_teachers_id"
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
-
+        
     </changeSet>
 </databaseChangeLog>

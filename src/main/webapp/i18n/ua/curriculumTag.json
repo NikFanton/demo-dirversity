@@ -1,0 +1,23 @@
+{
+  "dirversityApp": {
+    "curriculumTag": {
+      "home": {
+        "title": "Curriculum Tags",
+        "createLabel": "Створити новий Curriculum Tag",
+        "createOrEditLabel": "Створити чи редагувати Curriculum Tag",
+        "notFound": "No Curriculum Tags found"
+      },
+      "created": "Новий Curriculum Tag створений з ідентифікатором {{ param }}",
+      "updated": "Curriculum Tag оновлений з ідентифікатором {{ param }}",
+      "deleted": "Curriculum Tag видалений з ідентифікатором {{ param }}",
+      "delete": {
+        "question": "Ви впевнені, що хочете видалити Curriculum Tag {{ id }}?"
+      },
+      "detail": {
+        "title": "Curriculum Tag"
+      },
+      "name": "Name",
+      "curriculum": "Curriculum"
+    }
+  }
+}

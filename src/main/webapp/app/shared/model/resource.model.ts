@@ -1,6 +1,7 @@
 import { Moment } from 'moment';
 import { IResourceType } from 'app/shared/model/resource-type.model';
 import { IRule } from 'app/shared/model/rule.model';
+import { ITopic } from 'app/shared/model/topic.model';
 
 export interface IResource {
   id?: number;
@@ -16,6 +17,7 @@ export interface IResource {
   dataContentType?: string;
   data?: any;
   dataDisplayName?: string;
+  topics?: ITopic[];
 }
 
 export class Resource implements IResource {
@@ -32,6 +34,7 @@ export class Resource implements IResource {
     public rules?: IRule[],
     public dataContentType?: string,
     public data?: any,
-    public dataDisplayName?: string
+    public dataDisplayName?: string,
+    public topics?: ITopic[]
   ) {}
 }

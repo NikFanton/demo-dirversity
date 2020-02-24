@@ -39,6 +39,8 @@ public class ResourceDTO implements Serializable {
 
     private String dataDisplayName;
 
+    private Set<TopicDTO> topics = new HashSet<>();
+
     public Long getId() {
         return id;
     }
@@ -141,6 +143,14 @@ public class ResourceDTO implements Serializable {
 
     public void setDataDisplayName(String dataDisplayName) {
         this.dataDisplayName = dataDisplayName;
+    }
+
+    public Set<TopicDTO> getTopics() {
+        return topics;
+    }
+
+    public void setTopics(Set<TopicDTO> topics) {
+        this.topics = topics;
     }
 
     @Override

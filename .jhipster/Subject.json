@@ -17,7 +17,7 @@
         {
             "relationshipType": "many-to-many",
             "otherEntityName": "user",
-            "otherEntityRelationshipName": "subjects",
+            "otherEntityRelationshipName": "subject",
             "relationshipName": "teachers",
             "otherEntityField": "lastName",
             "ownerSide": true

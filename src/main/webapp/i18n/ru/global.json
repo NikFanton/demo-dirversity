@@ -14,6 +14,12 @@
         "rule": "Правила",
         "subject": "Предметы",
         "position": "Должности",
+        "curriculum": "Curriculum",
+        "contentModule": "Content Module",
+        "topic": "Topic",
+        "curriculumTag": "Curriculum Tag",
+        "resource": "Resource",
+        "subject": "Subject",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

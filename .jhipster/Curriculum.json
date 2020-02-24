@@ -1,0 +1,62 @@
+{
+    "name": "Curriculum",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "explanatoryNote",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "resource",
+            "otherEntityRelationshipName": "curriculum",
+            "relationshipName": "originFile",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "contentModule",
+            "otherEntityRelationshipName": "curriculum",
+            "relationshipName": "contentModules"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "curriculumTag",
+            "otherEntityRelationshipName": "curriculum",
+            "relationshipName": "curriculumTags",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "curriculum",
+            "relationshipName": "teachers",
+            "otherEntityField": "lastName",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20200224055439",
+    "entityTableName": "curriculum",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

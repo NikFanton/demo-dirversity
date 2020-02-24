@@ -19,14 +19,14 @@ public interface ResourceRepository extends JpaRepository<Resource, Long> {
         countQuery = "select count(distinct resource) from Resource resource")
     Page<Resource> findByPublisherIsCurrentUser(Pageable pageable);
 
-    @Query(value = "select distinct resource from Resource resource left join fetch resource.resourceTypes left join fetch resource.rules",
+    @Query(value = "select distinct resource from Resource resource left join fetch resource.resourceTypes left join fetch resource.rules left join fetch resource.topics",
         countQuery = "select count(distinct resource) from Resource resource")
     Page<Resource> findAllWithEagerRelationships(Pageable pageable);
 
-    @Query("select distinct resource from Resource resource left join fetch resource.resourceTypes left join fetch resource.rules")
+    @Query("select distinct resource from Resource resource left join fetch resource.resourceTypes left join fetch resource.rules left join fetch resource.topics")
     List<Resource> findAllWithEagerRelationships();
 
-    @Query("select resource from Resource resource left join fetch resource.resourceTypes left join fetch resource.rules where resource.id =:id")
+    @Query("select resource from Resource resource left join fetch resource.resourceTypes left join fetch resource.rules left join fetch resource.topics where resource.id =:id")
     Optional<Resource> findOneWithEagerRelationships(@Param("id") Long id);
 
 }

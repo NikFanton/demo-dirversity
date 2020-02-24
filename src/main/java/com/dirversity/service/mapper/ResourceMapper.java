@@ -8,7 +8,7 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity {@link Resource} and its DTO {@link ResourceDTO}.
  */
-@Mapper(componentModel = "spring", uses = {UserMapper.class, ResourceTypeMapper.class, RuleMapper.class})
+@Mapper(componentModel = "spring", uses = {UserMapper.class, ResourceTypeMapper.class, RuleMapper.class, TopicMapper.class})
 public interface ResourceMapper extends EntityMapper<ResourceDTO, Resource> {
 
     @Mapping(source = "publisher.id", target = "publisherId")
@@ -18,6 +18,7 @@ public interface ResourceMapper extends EntityMapper<ResourceDTO, Resource> {
     @Mapping(source = "publisherId", target = "publisher")
     @Mapping(target = "removeResourceType", ignore = true)
     @Mapping(target = "removeRules", ignore = true)
+    @Mapping(target = "removeTopic", ignore = true)
     Resource toEntity(ResourceDTO resourceDTO);
 
     default Resource fromId(Long id) {

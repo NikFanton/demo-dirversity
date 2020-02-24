@@ -59,6 +59,17 @@ public class CacheConfiguration {
             createCache(cm, com.dirversity.domain.Subject.class.getName() + ".teachers");
             createCache(cm, com.dirversity.domain.Position.class.getName());
             createCache(cm, com.dirversity.domain.Position.class.getName() + ".employees");
+            createCache(cm, com.dirversity.domain.Curriculum.class.getName());
+            createCache(cm, com.dirversity.domain.Curriculum.class.getName() + ".contentModules");
+            createCache(cm, com.dirversity.domain.Curriculum.class.getName() + ".curriculumTags");
+            createCache(cm, com.dirversity.domain.Curriculum.class.getName() + ".teachers");
+            createCache(cm, com.dirversity.domain.ContentModule.class.getName());
+            createCache(cm, com.dirversity.domain.ContentModule.class.getName() + ".topics");
+            createCache(cm, com.dirversity.domain.Topic.class.getName());
+            createCache(cm, com.dirversity.domain.Topic.class.getName() + ".resources");
+            createCache(cm, com.dirversity.domain.CurriculumTag.class.getName());
+            createCache(cm, com.dirversity.domain.CurriculumTag.class.getName() + ".curricula");
+            createCache(cm, com.dirversity.domain.Resource.class.getName() + ".topics");
             // jhipster-needle-ehcache-add-entry
         };
     }

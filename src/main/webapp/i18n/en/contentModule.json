@@ -1,0 +1,26 @@
+{
+  "dirversityApp": {
+    "contentModule": {
+      "home": {
+        "title": "Content Modules",
+        "createLabel": "Create a new Content Module",
+        "createOrEditLabel": "Create or edit a Content Module",
+        "notFound": "No Content Modules found"
+      },
+      "created": "A new Content Module is created with identifier {{ param }}",
+      "updated": "A Content Module is updated with identifier {{ param }}",
+      "deleted": "A Content Module is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Content Module {{ id }}?"
+      },
+      "detail": {
+        "title": "Content Module"
+      },
+      "name": "Name",
+      "order": "Order",
+      "description": "Description",
+      "topics": "Topics",
+      "curriculum": "Curriculum"
+    }
+  }
+}

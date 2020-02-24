@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Curriculum.
+    -->
+    <changeSet id="20200224055439-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="origin_file_id"
+                                 baseTableName="curriculum"
+                                 constraintName="fk_curriculum_origin_file_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="resource"/>
+
+        <addForeignKeyConstraint baseColumnNames="curriculum_id"
+                                 baseTableName="curriculum_curriculum_tags"
+                                 constraintName="fk_curriculum_curriculum_tags_curriculum_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="curriculum"/>
+
+        <addForeignKeyConstraint baseColumnNames="curriculum_tags_id"
+                                 baseTableName="curriculum_curriculum_tags"
+                                 constraintName="fk_curriculum_curriculum_tags_curriculum_tags_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="curriculum_tag"/>
+        
+        <addForeignKeyConstraint baseColumnNames="curriculum_id"
+                                 baseTableName="curriculum_teachers"
+                                 constraintName="fk_curriculum_teachers_curriculum_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="curriculum"/>
+
+        <addForeignKeyConstraint baseColumnNames="teachers_id"
+                                 baseTableName="curriculum_teachers"
+                                 constraintName="fk_curriculum_teachers_teachers_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+        
+    </changeSet>
+</databaseChangeLog>

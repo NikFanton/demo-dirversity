@@ -1,0 +1,28 @@
+{
+  "dirversityApp": {
+    "curriculum": {
+      "home": {
+        "title": "Curricula",
+        "createLabel": "Створити новий Curriculum",
+        "createOrEditLabel": "Створити чи редагувати Curriculum",
+        "notFound": "No Curricula found"
+      },
+      "created": "Новий Curriculum створений з ідентифікатором {{ param }}",
+      "updated": "Curriculum оновлений з ідентифікатором {{ param }}",
+      "deleted": "Curriculum видалений з ідентифікатором {{ param }}",
+      "delete": {
+        "question": "Ви впевнені, що хочете видалити Curriculum {{ id }}?"
+      },
+      "detail": {
+        "title": "Curriculum"
+      },
+      "name": "Name",
+      "description": "Description",
+      "explanatoryNote": "Explanatory Note",
+      "originFile": "Origin File",
+      "contentModules": "Content Modules",
+      "curriculumTags": "Curriculum Tags",
+      "teachers": "Teachers"
+    }
+  }
+}

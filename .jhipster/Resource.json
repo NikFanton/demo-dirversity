@@ -45,6 +45,14 @@
             "relationshipName": "rules",
             "otherEntityField": "name",
             "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "topic",
+            "otherEntityRelationshipName": "resource",
+            "relationshipName": "topic",
+            "otherEntityField": "id",
+            "ownerSide": true
         }
     ],
     "changelogDate": "20191109121629",

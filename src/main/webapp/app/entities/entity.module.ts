@@ -31,6 +31,22 @@ import { RouterModule } from '@angular/router';
       {
         path: 'position',
         loadChildren: () => import('./position/position.module').then(m => m.DirversityPositionModule)
+      },
+      {
+        path: 'curriculum',
+        loadChildren: () => import('./curriculum/curriculum.module').then(m => m.DirversityCurriculumModule)
+      },
+      {
+        path: 'content-module',
+        loadChildren: () => import('./content-module/content-module.module').then(m => m.DirversityContentModuleModule)
+      },
+      {
+        path: 'topic',
+        loadChildren: () => import('./topic/topic.module').then(m => m.DirversityTopicModule)
+      },
+      {
+        path: 'curriculum-tag',
+        loadChildren: () => import('./curriculum-tag/curriculum-tag.module').then(m => m.DirversityCurriculumTagModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

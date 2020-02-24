@@ -1,0 +1,28 @@
+{
+  "dirversityApp": {
+    "curriculum": {
+      "home": {
+        "title": "Curricula",
+        "createLabel": "Create a new Curriculum",
+        "createOrEditLabel": "Create or edit a Curriculum",
+        "notFound": "No Curricula found"
+      },
+      "created": "A new Curriculum is created with identifier {{ param }}",
+      "updated": "A Curriculum is updated with identifier {{ param }}",
+      "deleted": "A Curriculum is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Curriculum {{ id }}?"
+      },
+      "detail": {
+        "title": "Curriculum"
+      },
+      "name": "Name",
+      "description": "Description",
+      "explanatoryNote": "Explanatory Note",
+      "originFile": "Origin File",
+      "contentModules": "Content Modules",
+      "curriculumTags": "Curriculum Tags",
+      "teachers": "Teachers"
+    }
+  }
+}

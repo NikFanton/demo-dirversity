@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="curriculum">
+            <h2><span jhiTranslate="dirversityApp.curriculum.detail.title">Curriculum</span> {{curriculum.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="dirversityApp.curriculum.name">Name</span></dt>
+                <dd>
+                    <span>{{curriculum.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.curriculum.description">Description</span></dt>
+                <dd>
+                    <span>{{curriculum.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.curriculum.explanatoryNote">Explanatory Note</span></dt>
+                <dd>
+                    <span>{{curriculum.explanatoryNote}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.curriculum.originFile">Origin File</span></dt>
+                <dd>
+                    <div *ngIf="curriculum.originFileId">
+                        <a [routerLink]="['/resource', curriculum.originFileId, 'view']">{{curriculum.originFileName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.curriculum.curriculumTags">Curriculum Tags</span></dt>
+                <dd>
+                    <span *ngFor="let curriculumTags of curriculum.curriculumTags; let last = last">
+                        <a [routerLink]="['/curriculum-tag', curriculumTags?.id, 'view' ]">{{curriculumTags.name}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.curriculum.teachers">Teachers</span></dt>
+                <dd>
+                    <span *ngFor="let teachers of curriculum.teachers; let last = last">
+                        {{teachers.lastName}}{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/curriculum', curriculum.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+{
+  "dirversityApp": {
+    "topic": {
+      "home": {
+        "title": "Topics",
+        "createLabel": "Створити новий Topic",
+        "createOrEditLabel": "Створити чи редагувати Topic",
+        "notFound": "No Topics found"
+      },
+      "created": "Новий Topic створений з ідентифікатором {{ param }}",
+      "updated": "Topic оновлений з ідентифікатором {{ param }}",
+      "deleted": "Topic видалений з ідентифікатором {{ param }}",
+      "delete": {
+        "question": "Ви впевнені, що хочете видалити Topic {{ id }}?"
+      },
+      "detail": {
+        "title": "Topic"
+      },
+      "name": "Name",
+      "order": "Order",
+      "description": "Description",
+      "contentModule": "Content Module",
+      "resource": "Resource"
+    }
+  }
+}

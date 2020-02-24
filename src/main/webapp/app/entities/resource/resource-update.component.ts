@@ -17,6 +17,8 @@ import { IResourceType } from 'app/shared/model/resource-type.model';
 import { ResourceTypeService } from 'app/entities/resource-type/resource-type.service';
 import { IRule } from 'app/shared/model/rule.model';
 import { RuleService } from 'app/entities/rule/rule.service';
+import { ITopic } from 'app/shared/model/topic.model';
+import { TopicService } from 'app/entities/topic/topic.service';
 
 @Component({
   selector: 'jhi-resource-update',
@@ -31,6 +33,8 @@ export class ResourceUpdateComponent implements OnInit {
 
   rules: IRule[];
 
+  topics: ITopic[];
+
   editForm = this.fb.group({
     id: [],
     name: [],
@@ -43,7 +47,8 @@ export class ResourceUpdateComponent implements OnInit {
     rules: [],
     data: [],
     dataContentType: [],
-    dataDisplayName: []
+    dataDisplayName: [],
+    topics: []
   });
 
   constructor(
@@ -53,6 +58,7 @@ export class ResourceUpdateComponent implements OnInit {
     protected userService: UserService,
     protected resourceTypeService: ResourceTypeService,
     protected ruleService: RuleService,
+    protected topicService: TopicService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -83,6 +89,13 @@ export class ResourceUpdateComponent implements OnInit {
         map((response: HttpResponse<IRule[]>) => response.body)
       )
       .subscribe((res: IRule[]) => (this.rules = res), (res: HttpErrorResponse) => this.onError(res.message));
+    this.topicService
+      .query()
+      .pipe(
+        filter((mayBeOk: HttpResponse<ITopic[]>) => mayBeOk.ok),
+        map((response: HttpResponse<ITopic[]>) => response.body)
+      )
+      .subscribe((res: ITopic[]) => (this.topics = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(resource: IResource) {
@@ -98,7 +111,8 @@ export class ResourceUpdateComponent implements OnInit {
       rules: resource.rules,
       data: resource.data,
       dataContentType: resource.dataContentType,
-      dataDisplayName: resource.dataDisplayName
+      dataDisplayName: resource.dataDisplayName,
+      topics: resource.topics
     });
   }
 
@@ -166,7 +180,8 @@ export class ResourceUpdateComponent implements OnInit {
       rules: this.editForm.get(['rules']).value,
       dataContentType: this.editForm.get(['dataContentType']).value,
       data: this.editForm.get(['data']).value,
-      dataDisplayName: this.editForm.get(['dataDisplayName']).value
+      dataDisplayName: this.editForm.get(['dataDisplayName']).value,
+      topics: this.editForm.get(['topics']).value
     };
   }
 
@@ -195,6 +210,10 @@ export class ResourceUpdateComponent implements OnInit {
   }
 
   trackRuleById(index: number, item: IRule) {
+    return item.id;
+  }
+
+  trackTopicById(index: number, item: ITopic) {
     return item.id;
   }
 

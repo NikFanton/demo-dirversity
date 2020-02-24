@@ -14,6 +14,10 @@
         "rule": "Rule",
         "subject": "Subject",
         "position": "Position",
+        "curriculum": "Curriculum",
+        "contentModule": "Content Module",
+        "topic": "Topic",
+        "curriculumTag": "Curriculum Tag",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

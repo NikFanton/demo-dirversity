@@ -57,6 +57,13 @@ public class Resource implements Serializable {
                inverseJoinColumns = @JoinColumn(name = "rules_id", referencedColumnName = "id"))
     private Set<Rule> rules = new HashSet<>();
 
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "resource_topic",
+               joinColumns = @JoinColumn(name = "resource_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "topic_id", referencedColumnName = "id"))
+    private Set<Topic> topics = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -192,6 +199,31 @@ public class Resource implements Serializable {
 
     public void setRules(Set<Rule> rules) {
         this.rules = rules;
+    }
+
+    public Set<Topic> getTopics() {
+        return topics;
+    }
+
+    public Resource topics(Set<Topic> topics) {
+        this.topics = topics;
+        return this;
+    }
+
+    public Resource addTopic(Topic topic) {
+        this.topics.add(topic);
+        topic.getResources().add(this);
+        return this;
+    }
+
+    public Resource removeTopic(Topic topic) {
+        this.topics.remove(topic);
+        topic.getResources().remove(this);
+        return this;
+    }
+
+    public void setTopics(Set<Topic> topics) {
+        this.topics = topics;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
