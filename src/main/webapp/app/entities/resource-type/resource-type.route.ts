@@ -37,7 +37,7 @@ export const resourceTypeRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER'],
       defaultSort: 'id,asc',
       pageTitle: 'dirversityApp.resourceType.home.title'
     },
@@ -50,7 +50,7 @@ export const resourceTypeRoute: Routes = [
       resourceType: ResourceTypeResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER'],
       pageTitle: 'dirversityApp.resourceType.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -62,7 +62,7 @@ export const resourceTypeRoute: Routes = [
       resourceType: ResourceTypeResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER'],
       pageTitle: 'dirversityApp.resourceType.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -74,7 +74,7 @@ export const resourceTypeRoute: Routes = [
       resourceType: ResourceTypeResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER'],
       pageTitle: 'dirversityApp.resourceType.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -89,7 +89,7 @@ export const resourceTypePopupRoute: Routes = [
       resourceType: ResourceTypeResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER'],
       pageTitle: 'dirversityApp.resourceType.home.title'
     },
     canActivate: [UserRouteAccessService],
