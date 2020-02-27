@@ -24,7 +24,8 @@
       "publisher": "Publisher",
       "resourceType": "Resource Type",
       "rules": "Rules",
-      "dataUpload": "Data Upload"
+      "dataUpload": "Data Upload",
+      "topic": "Topic"
     }
   }
 }

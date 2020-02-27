@@ -2,10 +2,10 @@
   "dirversityApp": {
     "curriculum": {
       "home": {
-        "title": "Curricula",
+        "title": "Curriculum",
         "createLabel": "Create a new Curriculum",
         "createOrEditLabel": "Create or edit a Curriculum",
-        "notFound": "No Curricula found"
+        "notFound": "No Curriculum found"
       },
       "created": "A new Curriculum is created with identifier {{ param }}",
       "updated": "A Curriculum is updated with identifier {{ param }}",

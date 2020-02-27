@@ -21,7 +21,6 @@
             <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="name"><span jhiTranslate="dirversityApp.curriculum.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="description"><span jhiTranslate="dirversityApp.curriculum.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="explanatoryNote"><span jhiTranslate="dirversityApp.curriculum.explanatoryNote">Explanatory Note</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="originFileName"><span jhiTranslate="dirversityApp.curriculum.originFile">Origin File</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
@@ -31,7 +30,6 @@
                 <td><a [routerLink]="['/curriculum', curriculum.id, 'view' ]">{{curriculum.id}}</a></td>
                 <td>{{curriculum.name}}</td>
                 <td>{{curriculum.description}}</td>
-                <td>{{curriculum.explanatoryNote}}</td>
                 <td>
                     <div *ngIf="curriculum.originFileId">
                         <a [routerLink]="['/resource', curriculum.originFileId , 'view' ]" >{{curriculum.originFileName}}</a>

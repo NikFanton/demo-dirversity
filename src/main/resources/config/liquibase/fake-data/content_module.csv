@@ -1,11 +1,9 @@
-id;name;jhi_order;description
-1;monitor 1080p Checking Account;92630;deposit Internal
-2;Investment Account archive Fantastic Plastic Chicken;32518;pixel withdrawal
-3;Mississippi embrace Developer;84891;hard drive Robust Networked
-4;Poland;42754;Grocery
-5;red;89576;Harbor Montana
-6;Corporate Phased relationships;75555;User-centric
-7;Money Market Account;69478;JSON
-8;virtual deposit;87146;digital maroon
-9;EXE projection Fresh;35629;Direct
-10;Profit-focused;42710;copying
+id;name;jhi_order;description;curriculum_id
+1;Змістовий модуль І. Основи лінійної та векторної алгебри;1;;1
+2;Змістовий модуль ІІ. Аналітична геометрія. Основи лінійної та векторної алгебри;2;;1
+3;Змістовий модуль ІІІ. Вступ до математичного аналізу;3;;1
+4;Змістовий модуль ІV. Диференціальне числення функції однієї змінної;4;;1
+5;Змістовий модуль V. Функції багатьох змінних;5;;1
+6;Змістовий модуль VI. Інтегральне числення;6;;1
+7;Змістовий модуль VII. Диференціальні рівняння;7;;1
+8;Змістовий модуль VIII. Ряди;8;;1
