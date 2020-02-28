@@ -30,6 +30,7 @@ export class ContentModuleComponent implements OnInit, OnDestroy {
   predicate: any;
   previousPage: any;
   reverse: any;
+  curriculumId: number;
 
   constructor(
     protected contentModuleService: ContentModuleService,
@@ -54,6 +55,17 @@ export class ContentModuleComponent implements OnInit, OnDestroy {
         page: this.page - 1,
         size: this.itemsPerPage,
         sort: this.sort()
+      })
+      .subscribe((res: HttpResponse<IContentModule[]>) => this.paginateContentModules(res.body, res.headers));
+  }
+
+  loadAllByCurriculumId() {
+    this.contentModuleService
+      .query({
+        page: this.page - 1,
+        size: this.itemsPerPage,
+        sort: this.sort(),
+        curriculumId: this.curriculumId
       })
       .subscribe((res: HttpResponse<IContentModule[]>) => this.paginateContentModules(res.body, res.headers));
   }

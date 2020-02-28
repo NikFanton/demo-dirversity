@@ -29,6 +29,8 @@ public interface ContentModuleService {
     Page<ContentModuleDTO> findAll(Pageable pageable);
 
 
+    Page<ContentModuleDTO> findAllForCurriculum(Pageable pageable, Long curriculumId);
+
     /**
      * Get the "id" contentModule.
      *

@@ -61,6 +61,12 @@ public class ContentModuleServiceImpl implements ContentModuleService {
             .map(contentModuleMapper::toDto);
     }
 
+    @Override
+    public Page<ContentModuleDTO> findAllForCurriculum(Pageable pageable, Long curriculumId) {
+        log.debug("Request to get all ContentModules for specific Curriculum");
+        return contentModuleRepository.findAllForCurriculum(pageable, curriculumId)
+            .map(contentModuleMapper::toDto);
+    }
 
     /**
      * Get one contentModule by id.

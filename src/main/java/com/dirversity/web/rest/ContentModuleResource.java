@@ -18,6 +18,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -94,9 +95,12 @@ public class ContentModuleResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of contentModules in body.
      */
     @GetMapping("/content-modules")
-    public ResponseEntity<List<ContentModuleDTO>> getAllContentModules(Pageable pageable) {
+    public ResponseEntity<List<ContentModuleDTO>> getAllContentModules(Pageable pageable,
+                                                                       @RequestParam(value = "curriculumId", required = false) Long curriculumId) {
         log.debug("REST request to get a page of ContentModules");
-        Page<ContentModuleDTO> page = contentModuleService.findAll(pageable);
+        Page<ContentModuleDTO> page = Optional.ofNullable(curriculumId)
+            .map(id -> contentModuleService.findAllForCurriculum(pageable, id))
+            .orElse(contentModuleService.findAll(pageable));
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
