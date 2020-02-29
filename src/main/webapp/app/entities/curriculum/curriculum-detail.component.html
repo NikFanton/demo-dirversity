@@ -35,7 +35,28 @@
                         {{teachers.lastName}}{{last ? '' : ', '}}
                     </span>
                 </dd>
+                <dt><span jhiTranslate="dirversityApp.curriculum.contentModules">Content Modules</span></dt>
+                <dd>
+                    <div class="alert alert-warning" *ngIf="curriculum.contentModules?.length === 0">
+                        <span jhiTranslate="dirversityApp.curriculum.home.notFound">No Content Modules found</span>
+                    </div>
+                    <div class="table-responsive" *ngIf="curriculum.contentModules?.length > 0">
+                        <table class="table table-striped" aria-describedby="page-heading">
+                            <tbody>
+                            <tr *ngFor="let contentModule of curriculum.contentModules">
+                                <td><a
+                                    [routerLink]="['/content-module', contentModule?.order, 'view']">{{contentModule.id}}</a>
+                                </td>
+                                <td><a
+                                    [routerLink]="['/content-module', contentModule?.id, 'view' ]">{{contentModule.name}}</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </dd>
             </dl>
+
 
             <button type="submit"
                     (click)="previousState()"

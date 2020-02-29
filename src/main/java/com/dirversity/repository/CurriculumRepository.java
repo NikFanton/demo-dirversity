@@ -15,14 +15,14 @@ import java.util.Optional;
 @Repository
 public interface CurriculumRepository extends JpaRepository<Curriculum, Long> {
 
-    @Query(value = "select distinct curriculum from Curriculum curriculum left join fetch curriculum.curriculumTags left join fetch curriculum.teachers",
+    @Query(value = "select distinct curriculum from Curriculum curriculum left join fetch curriculum.curriculumTags left join fetch curriculum.teachers left join fetch curriculum.contentModules",
         countQuery = "select count(distinct curriculum) from Curriculum curriculum")
     Page<Curriculum> findAllWithEagerRelationships(Pageable pageable);
 
-    @Query("select distinct curriculum from Curriculum curriculum left join fetch curriculum.curriculumTags left join fetch curriculum.teachers")
+    @Query("select distinct curriculum from Curriculum curriculum left join fetch curriculum.curriculumTags left join fetch curriculum.teachers left join fetch curriculum.contentModules")
     List<Curriculum> findAllWithEagerRelationships();
 
-    @Query("select curriculum from Curriculum curriculum left join fetch curriculum.curriculumTags left join fetch curriculum.teachers where curriculum.id =:id")
+    @Query("select curriculum from Curriculum curriculum left join fetch curriculum.curriculumTags left join fetch curriculum.teachers left join fetch curriculum.contentModules where curriculum.id =:id")
     Optional<Curriculum> findOneWithEagerRelationships(@Param("id") Long id);
 
 }
