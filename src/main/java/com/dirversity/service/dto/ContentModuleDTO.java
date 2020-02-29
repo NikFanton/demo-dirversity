@@ -1,7 +1,9 @@
 package com.dirversity.service.dto;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A DTO for the {@link com.dirversity.domain.ContentModule} entity.
@@ -22,6 +24,8 @@ public class ContentModuleDTO implements Serializable {
     private Long curriculumId;
 
     private String curriculumName;
+
+    private Set<TopicDTO> topics = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -69,6 +73,14 @@ public class ContentModuleDTO implements Serializable {
 
     public void setCurriculumName(String curriculumName) {
         this.curriculumName = curriculumName;
+    }
+
+    public Set<TopicDTO> getTopics() {
+        return topics;
+    }
+
+    public void setTopics(Set<TopicDTO> topics) {
+        this.topics = topics;
     }
 
     @Override

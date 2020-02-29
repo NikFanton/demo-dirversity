@@ -15,7 +15,6 @@ public interface ContentModuleMapper extends EntityMapper<ContentModuleDTO, Cont
     @Mapping(source = "curriculum.name", target = "curriculumName")
     ContentModuleDTO toDto(ContentModule contentModule);
 
-    @Mapping(target = "topics", ignore = true)
     @Mapping(target = "removeTopics", ignore = true)
     @Mapping(source = "curriculumId", target = "curriculum")
     ContentModule toEntity(ContentModuleDTO contentModuleDTO);

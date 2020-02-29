@@ -45,7 +45,7 @@
                             <tbody>
                             <tr *ngFor="let contentModule of curriculum.contentModules">
                                 <td><a
-                                    [routerLink]="['/content-module', contentModule?.order, 'view']">{{contentModule.id}}</a>
+                                    [routerLink]="['/content-module', contentModule?.order, 'view']">{{contentModule.order}}</a>
                                 </td>
                                 <td><a
                                     [routerLink]="['/content-module', contentModule?.id, 'view' ]">{{contentModule.name}}</a>

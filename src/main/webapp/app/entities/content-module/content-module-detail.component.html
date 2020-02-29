@@ -23,6 +23,26 @@
                         <a [routerLink]="['/curriculum', contentModule.curriculumId, 'view']">{{contentModule.curriculumName}}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="dirversityApp.contentModule.topics">Topics</span></dt>
+                <dd>
+                    <div class="alert alert-warning" *ngIf="contentModule.topics?.length === 0">
+                        <span jhiTranslate="dirversityApp.curriculum.home.notFound">No Topics found</span>
+                    </div>
+                    <div class="table-responsive" *ngIf="contentModule.topics?.length > 0">
+                        <table class="table table-striped" aria-describedby="page-heading">
+                            <tbody>
+                            <tr *ngFor="let topic of contentModule.topics">
+                                <td><a
+                                    [routerLink]="['/topic', topic?.order, 'view']">{{topic.order}}</a>
+                                </td>
+                                <td><a
+                                    [routerLink]="['/topic', topic?.id, 'view' ]">{{topic.name}}</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

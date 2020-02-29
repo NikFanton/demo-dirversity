@@ -1,10 +1,9 @@
 package com.dirversity.config;
 
-import com.dirversity.security.*;
-import com.dirversity.security.jwt.*;
+import com.dirversity.security.AuthoritiesConstants;
+import com.dirversity.security.jwt.JWTConfigurer;
+import com.dirversity.security.jwt.TokenProvider;
 
-import org.springframework.beans.factory.BeanInitializationException;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpMethod;
