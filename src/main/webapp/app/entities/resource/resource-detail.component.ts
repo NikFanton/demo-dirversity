@@ -21,4 +21,8 @@ export class ResourceDetailComponent implements OnInit {
   previousState() {
     window.history.back();
   }
+
+  openInNewWindow(url: string) {
+    window.open(url, '_blank');
+  }
 }

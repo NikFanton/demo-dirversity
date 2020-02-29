@@ -24,7 +24,9 @@
       "publisher": "Опубликовал",
       "resourceType": "Тип ресурса",
       "rules": "Правила",
-      "dataUpload": "Загрузка данных"
+      "dataUpload": "Загрузка данных",
+      "topic": "Тема",
+      "goToResource": "Перейти к ресурсу"
     }
   }
 }

@@ -15,6 +15,14 @@
                 </dd>
                 <dt><span jhiTranslate="dirversityApp.resource.accessUrl">Access Url</span></dt>
                 <dd>
+                    <div *ngIf="resource.accessUrl">
+                        <button type="button"
+                                (click)="openInNewWindow(resource.accessUrl)"
+                                class="btn btn-primary">
+                            <fa-icon [icon]="'file-alt'"></fa-icon>&nbsp;<span
+                            jhiTranslate="dirversityApp.resource.goToResource">Go To Resource</span>
+                        </button>
+                    </div>
                     <span>{{resource.accessUrl}}</span>
                 </dd>
                 <dt><span jhiTranslate="dirversityApp.resource.createDate">Create Date</span></dt>
