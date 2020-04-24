@@ -6,7 +6,7 @@
       "home": "Головна",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
-        "main": "Сутності",
+        "main": "Перейти до",
         "userGroup": "Групи Користувачів",
         "userGroupType": "Типи Груп Користувачів",
         "resource": "Ресурси",
@@ -14,12 +14,12 @@
         "rule": "Правила",
         "subject": "Предмети",
         "position": "Посади",
-        "curriculum": "Curriculum",
+        "curriculum": "Робочі навчальні програми",
         "contentModule": "Content Module",
         "topic": "Topic",
         "curriculumTag": "Curriculum Tag",
-        "resource": "Resource",
-        "subject": "Subject",
+        "resource": "Ресурси",
+        "subject": "Навчальні дисципліни",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
