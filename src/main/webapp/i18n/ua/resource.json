@@ -5,7 +5,7 @@
         "title": "Ресурси",
         "createLabel": "Створити новий ресурс",
         "createOrEditLabel": "Створити чи редагувати ресурс",
-        "notFound": "No Resources found"
+        "notFound": "Ресурс не знайдений"
       },
       "created": "Новий Resource створений з ідентифікатором {{ param }}",
       "updated": "Ресурс оновлений з ідентифікатором {{ param }}",
@@ -16,14 +16,14 @@
       "detail": {
         "title": "Ресурс"
       },
-      "name": "Name",
-      "author": "Author",
-      "accessUrl": "Access Url",
-      "createDate": "Create Date",
-      "fileId": "File Id",
+      "name": "Назва",
+      "author": "Автор ресурсу",
+      "accessUrl": "Url адреса ресурсного файлу",
+      "createDate": "Дата створення",
+      "fileId": "Ідентифікатор ресурсного файлу",
       "publisher": "Publisher",
-      "resourceType": "Resource Type",
-      "rules": "Rules",
+      "resourceType": "Тип ресурсного файлу",
+      "rules": "Надано доступ для",
       "dataUpload": "Завантаження даних",
       "topic": "Тема",
       "goToResource": "Перейти до Ресурсу"
