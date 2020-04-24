@@ -4,63 +4,52 @@
     </div>
     <div class="col-md-9">
         <h1 class="display-4" jhiTranslate="home.title">Welcome!</h1>
-        <p class="lead" jhiTranslate="home.subtitle">This is the homepage of Dirversity. Please login or register for a
-            new account</p>
+
 
         <div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
                 <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"
-                      [translateValues]="{username: account.login}"> You are logged in as user "{{account.login}}
-                    ". </span>
+                      [translateValues]="{username: account.login}"> You are logged in as user "{{account.login}}".
+                </span>
             </div>
 
-            <div class="alert alert-warning" *ngSwitchCase="false">
-                <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
-                <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign
-                    in</a><span jhiTranslate="global.messages.info.authenticated.suffix">, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>
+            <div *ngSwitchCase="false">
+                <p class="lead" jhiTranslate="home.subtitle">This is the homepage of Dirversity. Please login or
+                    register for a new account</p>
+
+                <div class="alert alert-warning">
+                    <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
+                    <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign
+                        in</a><span jhiTranslate="global.messages.info.authenticated.suffix">, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>
+                </div>
+                <div class="alert alert-warning">
+                    <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>&nbsp;
+                    <a class="alert-link" routerLink="account/register"
+                       jhiTranslate="global.messages.info.register.link">Register
+                        a new account</a>
+                </div>
+
             </div>
-            <div class="alert alert-warning" *ngSwitchCase="false">
-                <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>&nbsp;
-                <a class="alert-link" routerLink="account/register" jhiTranslate="global.messages.info.register.link">Register
-                    a new account</a>
+
+
+            <div *jhiHasAnyAuthority="'ROLE_ADMIN'">
+                <h5>
+                    <span jhiTranslate="home.fastNavigation">Fast navigation:</span>
+                </h5>
+                <ul>
+                    <li><a routerLink="resource"><span jhiTranslate="global.menu.entities.resource">Resource</span></a>
+                    </li>
+                    <li><a routerLink="resource/new"><span jhiTranslate="dirversityApp.resource.home.createLabel">Create a new Resource</span></a>
+                    </li>
+                    <li><a routerLink="admin/user-management"><span jhiTranslate="global.menu.admin.userManagement">User management</span></a>
+                    </li>
+                    <li><a routerLink="admin/user-management/new"><span jhiTranslate="userManagement.home.createLabel">Create a new User</span></a>
+                    </li>
+                    <li><a routerLink="/curriculum/new"><span jhiTranslate="dirversityApp.curriculum.home.createLabel">Create a new Curriculum</span></a>
+                    </li>
+                </ul>
             </div>
         </div>
-
-        <span jhiTranslate="home.fastNavigation">
-            Fast navigation:
-        </span>
-        <ul>
-            <li>
-                <a routerLink="resource">
-<!--                    <fa-icon icon="file-alt" fixedWidth="true"></fa-icon>-->
-                    <span jhiTranslate="global.menu.entities.resource">Resource</span>
-                </a>
-            </li>
-            <li>
-                <a routerLink="resource/new">
-<!--                    <fa-icon [icon]="'plus'"></fa-icon>-->
-                    <span  jhiTranslate="dirversityApp.resource.home.createLabel">Create a new Resource</span>
-                </a>
-            </li>
-            <li>
-                <a routerLink="admin/user-management">
-<!--                    <fa-icon icon="user" fixedWidth="true"></fa-icon>-->
-                    <span jhiTranslate="global.menu.admin.userManagement">User management</span>
-                </a>
-            </li>
-            <li>
-                <a routerLink="admin/user-management/new">
-<!--                    <fa-icon [icon]="'plus'"></fa-icon>-->
-                    <span jhiTranslate="userManagement.home.createLabel">Create a new User</span>
-                </a>
-            </li>
-            <li>
-                <a routerLink="/curriculum/new">
-<!--                    <fa-icon [icon]="'plus'"></fa-icon>-->
-                    <span  jhiTranslate="dirversityApp.curriculum.home.createLabel">Create a new Curriculum</span>
-                </a>
-            </li>
-        </ul>
 
     </div>
 </div>
