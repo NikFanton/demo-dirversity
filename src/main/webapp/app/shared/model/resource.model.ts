@@ -10,6 +10,10 @@ export interface IResource {
   accessUrl?: string;
   createDate?: Moment;
   fileId?: string;
+  createdBy?: string;
+  createdDate?: Moment;
+  lastModifiedBy?: string;
+  lastModifiedDate?: Moment;
   publisherLastName?: string;
   publisherId?: number;
   resourceTypes?: IResourceType[];
@@ -26,8 +30,11 @@ export class Resource implements IResource {
     public name?: string,
     public author?: string,
     public accessUrl?: string,
-    public createDate?: Moment,
     public fileId?: string,
+    public createdBy?: string,
+    public createdDate?: Moment,
+    public lastModifiedBy?: string,
+    public lastModifiedDate?: Moment,
     public publisherLastName?: string,
     public publisherId?: number,
     public resourceTypes?: IResourceType[],

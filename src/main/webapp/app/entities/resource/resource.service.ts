@@ -52,14 +52,16 @@ export class ResourceService {
 
   protected convertDateFromClient(resource: IResource): IResource {
     const copy: IResource = Object.assign({}, resource, {
-      createDate: resource.createDate != null && resource.createDate.isValid() ? resource.createDate.toJSON() : null
+      createdDate: resource.createdDate != null && resource.createdDate.isValid() ? resource.createdDate.toJSON() : null,
+      lastModifiedDate: resource.lastModifiedDate != null && resource.lastModifiedDate.isValid() ? resource.lastModifiedDate.toJSON() : null
     });
     return copy;
   }
 
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
-      res.body.createDate = res.body.createDate != null ? moment(res.body.createDate) : null;
+      res.body.createdDate = res.body.createdDate != null ? moment(res.body.createdDate) : null;
+      res.body.lastModifiedDate = res.body.lastModifiedDate != null ? moment(res.body.lastModifiedDate) : null;
     }
     return res;
   }
@@ -67,7 +69,8 @@ export class ResourceService {
   protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
       res.body.forEach((resource: IResource) => {
-        resource.createDate = resource.createDate != null ? moment(resource.createDate) : null;
+        resource.createdDate = resource.createdDate != null ? moment(resource.createdDate) : null;
+        resource.lastModifiedDate = resource.lastModifiedDate != null ? moment(resource.lastModifiedDate) : null;
       });
     }
     return res;

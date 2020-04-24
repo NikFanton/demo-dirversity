@@ -26,7 +26,11 @@
       "rules": "Правила",
       "dataUpload": "Загрузка данных",
       "topic": "Тема",
-      "goToResource": "Перейти к ресурсу"
+      "goToResource": "Перейти к ресурсу",
+      "createdBy": "Created by",
+      "createdDate": "Created date",
+      "lastModifiedBy": "Modified by",
+      "lastModifiedDate": "Modified date"
     }
   }
 }

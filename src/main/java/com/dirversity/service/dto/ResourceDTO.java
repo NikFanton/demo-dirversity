@@ -1,10 +1,13 @@
 package com.dirversity.service.dto;
+
 import javax.persistence.Lob;
-import java.time.Instant;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A DTO for the {@link com.dirversity.domain.Resource} entity.
@@ -22,6 +25,17 @@ public class ResourceDTO implements Serializable {
     private Instant createDate;
 
     private String fileId;
+
+    @NotNull
+    @Size(max = 50)
+    private String createdBy;
+
+    private Instant createdDate;
+
+    @Size(max = 50)
+    private String lastModifiedBy;
+
+    private Instant lastModifiedDate;
 
 
     private Long publisherId;
@@ -87,6 +101,38 @@ public class ResourceDTO implements Serializable {
 
     public void setFileId(String fileId) {
         this.fileId = fileId;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Instant getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Instant createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getLastModifiedBy() {
+        return lastModifiedBy;
+    }
+
+    public void setLastModifiedBy(String lastModifiedBy) {
+        this.lastModifiedBy = lastModifiedBy;
+    }
+
+    public Instant getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(Instant lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public Long getPublisherId() {
@@ -183,6 +229,10 @@ public class ResourceDTO implements Serializable {
             ", accessUrl='" + getAccessUrl() + "'" +
             ", createDate='" + getCreateDate() + "'" +
             ", fileId='" + getFileId() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", lastModifiedBy='" + getLastModifiedBy() + "'" +
+            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             ", publisher=" + getPublisherId() +
             ", publisher='" + getPublisherLastName() + "'" +
             "}";

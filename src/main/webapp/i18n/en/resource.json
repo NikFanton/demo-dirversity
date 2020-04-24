@@ -19,14 +19,17 @@
       "name": "Name",
       "author": "Author",
       "accessUrl": "Access Url",
-      "createDate": "Create Date",
       "fileId": "File Id",
       "publisher": "Publisher",
       "resourceType": "Resource Type",
       "rules": "Rules",
       "dataUpload": "Data Upload",
       "topic": "Topic",
-      "goToResource": "Go to Resource"
+      "goToResource": "Go to Resource",
+      "createdBy": "Created by",
+      "createdDate": "Created date",
+      "lastModifiedBy": "Modified by",
+      "lastModifiedDate": "Modified date"
     }
   }
 }

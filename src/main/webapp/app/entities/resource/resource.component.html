@@ -21,8 +21,13 @@
             <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="name"><span jhiTranslate="dirversityApp.resource.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="author"><span jhiTranslate="dirversityApp.resource.author">Author</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-<!--            <th scope="col"  jhiSortBy="accessUrl"><span jhiTranslate="dirversityApp.resource.accessUrl">Access Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>-->
+            <th scope="col"  jhiSortBy="accessUrl"><span jhiTranslate="dirversityApp.resource.accessUrl">Access Url</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="createDate"><span jhiTranslate="dirversityApp.resource.createDate">Create Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="fileId"><span jhiTranslate="dirversityApp.resource.fileId">File Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="createdBy"><span jhiTranslate="dirversityApp.resource.createdBy">Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="createdDate"><span jhiTranslate="dirversityApp.resource.createdDate">Created Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="lastModifiedBy"><span jhiTranslate="dirversityApp.resource.lastModifiedBy">Last Modified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="lastModifiedDate"><span jhiTranslate="dirversityApp.resource.lastModifiedDate">Last Modified Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="publisherLastName"><span jhiTranslate="dirversityApp.resource.publisher">Publisher</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
@@ -32,8 +37,13 @@
                 <td><a [routerLink]="['/resource', resource.id, 'view' ]">{{resource.id}}</a></td>
                 <td>{{resource.name}}</td>
                 <td>{{resource.author}}</td>
-<!--                <td>{{resource.accessUrl}}</td>-->
+                <td>{{resource.accessUrl}}</td>
                 <td>{{resource.createDate | date:'medium'}}</td>
+                <td>{{resource.fileId}}</td>
+                <td>{{resource.createdBy}}</td>
+                <td>{{resource.createdDate | date:'medium'}}</td>
+                <td>{{resource.lastModifiedBy}}</td>
+                <td>{{resource.lastModifiedDate | date:'medium'}}</td>
                 <td>
                     {{resource.publisherLastName}}
                 </td>

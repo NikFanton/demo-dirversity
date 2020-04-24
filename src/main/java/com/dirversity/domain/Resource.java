@@ -1,12 +1,20 @@
 package com.dirversity.domain;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.*;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +24,7 @@ import java.util.Set;
 @Entity
 @Table(name = "resource")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Resource implements Serializable {
+public class Resource extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,9 +40,6 @@ public class Resource implements Serializable {
 
     @Column(name = "access_url")
     private String accessUrl;
-
-    @Column(name = "create_date")
-    private Instant createDate;
 
     @Column(name = "file_id")
     private String fileId;
@@ -110,19 +115,6 @@ public class Resource implements Serializable {
 
     public void setAccessUrl(String accessUrl) {
         this.accessUrl = accessUrl;
-    }
-
-    public Instant getCreateDate() {
-        return createDate;
-    }
-
-    public Resource createDate(Instant createDate) {
-        this.createDate = createDate;
-        return this;
-    }
-
-    public void setCreateDate(Instant createDate) {
-        this.createDate = createDate;
     }
 
     public String getFileId() {
@@ -250,8 +242,11 @@ public class Resource implements Serializable {
             ", name='" + getName() + "'" +
             ", author='" + getAuthor() + "'" +
             ", accessUrl='" + getAccessUrl() + "'" +
-            ", createDate='" + getCreateDate() + "'" +
             ", fileId='" + getFileId() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", lastModifiedBy='" + getLastModifiedBy() + "'" +
+            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             "}";
     }
 }

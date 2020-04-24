@@ -26,7 +26,11 @@
       "rules": "Надано доступ для",
       "dataUpload": "Завантаження даних",
       "topic": "Тема",
-      "goToResource": "Перейти до Ресурсу"
+      "goToResource": "Перейти до Ресурсу",
+      "createdBy": "Created by",
+      "createdDate": "Created date",
+      "lastModifiedBy": "Modified by",
+      "lastModifiedDate": "Modified date"
     }
   }
 }

@@ -40,8 +40,11 @@ export class ResourceUpdateComponent implements OnInit {
     name: [],
     author: [],
     accessUrl: [],
-    createDate: [],
     fileId: [],
+    createdBy: [null, [Validators.maxLength(50)]],
+    createdDate: [],
+    lastModifiedBy: [null, [Validators.maxLength(50)]],
+    lastModifiedDate: [],
     publisherId: [],
     resourceTypes: [],
     rules: [],
@@ -104,8 +107,11 @@ export class ResourceUpdateComponent implements OnInit {
       name: resource.name,
       author: resource.author,
       accessUrl: resource.accessUrl,
-      createDate: resource.createDate != null ? resource.createDate.format(DATE_TIME_FORMAT) : null,
       fileId: resource.fileId,
+      createdBy: resource.createdBy,
+      createdDate: resource.createdDate != null ? resource.createdDate.format(DATE_TIME_FORMAT) : null,
+      lastModifiedBy: resource.lastModifiedBy,
+      lastModifiedDate: resource.lastModifiedDate != null ? resource.lastModifiedDate.format(DATE_TIME_FORMAT) : null,
       publisherId: resource.publisherId,
       resourceTypes: resource.resourceTypes,
       rules: resource.rules,
@@ -172,9 +178,15 @@ export class ResourceUpdateComponent implements OnInit {
       name: this.editForm.get(['name']).value,
       author: this.editForm.get(['author']).value,
       accessUrl: this.editForm.get(['accessUrl']).value,
-      createDate:
-        this.editForm.get(['createDate']).value != null ? moment(this.editForm.get(['createDate']).value, DATE_TIME_FORMAT) : undefined,
       fileId: this.editForm.get(['fileId']).value,
+      createdBy: this.editForm.get(['createdBy']).value,
+      createdDate:
+        this.editForm.get(['createdDate']).value != null ? moment(this.editForm.get(['createdDate']).value, DATE_TIME_FORMAT) : undefined,
+      lastModifiedBy: this.editForm.get(['lastModifiedBy']).value,
+      lastModifiedDate:
+        this.editForm.get(['lastModifiedDate']).value != null
+          ? moment(this.editForm.get(['lastModifiedDate']).value, DATE_TIME_FORMAT)
+          : undefined,
       publisherId: this.editForm.get(['publisherId']).value,
       resourceTypes: this.editForm.get(['resourceTypes']).value,
       rules: this.editForm.get(['rules']).value,

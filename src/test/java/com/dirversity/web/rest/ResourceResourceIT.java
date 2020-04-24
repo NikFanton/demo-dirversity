@@ -122,7 +122,6 @@ public class ResourceResourceIT {
             .name(DEFAULT_NAME)
             .author(DEFAULT_AUTHOR)
             .accessUrl(DEFAULT_ACCESS_URL)
-            .createDate(DEFAULT_CREATE_DATE)
             .fileId(DEFAULT_FILE_ID);
         return resource;
     }
@@ -137,7 +136,6 @@ public class ResourceResourceIT {
             .name(UPDATED_NAME)
             .author(UPDATED_AUTHOR)
             .accessUrl(UPDATED_ACCESS_URL)
-            .createDate(UPDATED_CREATE_DATE)
             .fileId(UPDATED_FILE_ID);
         return resource;
     }
@@ -166,7 +164,6 @@ public class ResourceResourceIT {
         assertThat(testResource.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testResource.getAuthor()).isEqualTo(DEFAULT_AUTHOR);
         assertThat(testResource.getAccessUrl()).isEqualTo(DEFAULT_ACCESS_URL);
-        assertThat(testResource.getCreateDate()).isEqualTo(DEFAULT_CREATE_DATE);
         assertThat(testResource.getFileId()).isEqualTo(DEFAULT_FILE_ID);
     }
 
@@ -284,7 +281,6 @@ public class ResourceResourceIT {
             .name(UPDATED_NAME)
             .author(UPDATED_AUTHOR)
             .accessUrl(UPDATED_ACCESS_URL)
-            .createDate(UPDATED_CREATE_DATE)
             .fileId(UPDATED_FILE_ID);
         ResourceDTO resourceDTO = resourceMapper.toDto(updatedResource);
 
@@ -300,7 +296,6 @@ public class ResourceResourceIT {
         assertThat(testResource.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testResource.getAuthor()).isEqualTo(UPDATED_AUTHOR);
         assertThat(testResource.getAccessUrl()).isEqualTo(UPDATED_ACCESS_URL);
-        assertThat(testResource.getCreateDate()).isEqualTo(UPDATED_CREATE_DATE);
         assertThat(testResource.getFileId()).isEqualTo(UPDATED_FILE_ID);
     }
 

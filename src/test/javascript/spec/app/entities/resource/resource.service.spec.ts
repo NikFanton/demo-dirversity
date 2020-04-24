@@ -24,14 +24,15 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Resource(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, 'AAAAAAA');
+      elemDefault = new Resource(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, 'AAAAAAA', currentDate);
     });
 
     describe('Service methods', () => {
       it('should find an element', () => {
         const returnedFromService = Object.assign(
           {
-            createDate: currentDate.format(DATE_TIME_FORMAT)
+            createdDate: currentDate.format(DATE_TIME_FORMAT),
+            lastModifiedDate: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
@@ -49,13 +50,15 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
-            createDate: currentDate.format(DATE_TIME_FORMAT)
+            createdDate: currentDate.format(DATE_TIME_FORMAT),
+            lastModifiedDate: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
         const expected = Object.assign(
           {
-            createDate: currentDate
+            createdDate: currentDate,
+            lastModifiedDate: currentDate
           },
           returnedFromService
         );
@@ -74,15 +77,19 @@ describe('Service Tests', () => {
             name: 'BBBBBB',
             author: 'BBBBBB',
             accessUrl: 'BBBBBB',
-            createDate: currentDate.format(DATE_TIME_FORMAT),
-            fileId: 'BBBBBB'
+            fileId: 'BBBBBB',
+            createdBy: 'BBBBBB',
+            createdDate: currentDate.format(DATE_TIME_FORMAT),
+            lastModifiedBy: 'BBBBBB',
+            lastModifiedDate: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
 
         const expected = Object.assign(
           {
-            createDate: currentDate
+            createdDate: currentDate,
+            lastModifiedDate: currentDate
           },
           returnedFromService
         );
@@ -101,14 +108,18 @@ describe('Service Tests', () => {
             name: 'BBBBBB',
             author: 'BBBBBB',
             accessUrl: 'BBBBBB',
-            createDate: currentDate.format(DATE_TIME_FORMAT),
-            fileId: 'BBBBBB'
+            fileId: 'BBBBBB',
+            createdBy: 'BBBBBB',
+            createdDate: currentDate.format(DATE_TIME_FORMAT),
+            lastModifiedBy: 'BBBBBB',
+            lastModifiedDate: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
         const expected = Object.assign(
           {
-            createDate: currentDate
+            createdDate: currentDate,
+            lastModifiedDate: currentDate
           },
           returnedFromService
         );
