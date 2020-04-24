@@ -2,27 +2,27 @@
   "dirversityApp": {
     "curriculum": {
       "home": {
-        "title": "Curriculum",
-        "createLabel": "Створити новий Curriculum",
-        "createOrEditLabel": "Створити чи редагувати Curriculum",
-        "notFound": "No Curriculum found"
+        "title": "Робоча навчальна програма",
+        "createLabel": "Створити нову робочу навчальну програму",
+        "createOrEditLabel": "Створити чи редагувати робочу навчальну програму",
+        "notFound": "Такої робочої навчальної програми не знайдено"
       },
-      "created": "Новий Curriculum створений з ідентифікатором {{ param }}",
-      "updated": "Curriculum оновлений з ідентифікатором {{ param }}",
-      "deleted": "Curriculum видалений з ідентифікатором {{ param }}",
+      "created": "Нова робоча навчальна програма створений з ідентифікатором {{ param }}",
+      "updated": "Робоча навчальна програма оновлений з ідентифікатором {{ param }}",
+      "deleted": "Робоча навчальна програма видалений з ідентифікатором {{ param }}",
       "delete": {
-        "question": "Ви впевнені, що хочете видалити Curriculum {{ id }}?"
+        "question": "Ви впевнені, що хочете видалити робочу навчальну програму {{ id }}?"
       },
       "detail": {
-        "title": "Curriculum"
+        "title": "Робоча навчальна програма"
       },
-      "name": "Name",
-      "description": "Description",
-      "explanatoryNote": "Explanatory Note",
-      "originFile": "Origin File",
-      "contentModules": "Змістові Модулі",
-      "curriculumTags": "Curriculum Tags",
-      "teachers": "Teachers"
+      "name": "Назва",
+      "description": "Опис",
+      "explanatoryNote": "Пояснювальна записка",
+      "originFile": "Оригінальний файл",
+      "contentModules": "Розділи",
+      "curriculumTags": "Теги",
+      "teachers": "Викладачі"
     }
   }
 }

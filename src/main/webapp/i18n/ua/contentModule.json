@@ -2,25 +2,25 @@
   "dirversityApp": {
     "contentModule": {
       "home": {
-        "title": "Content Modules",
-        "createLabel": "Створити новий Content Module",
-        "createOrEditLabel": "Створити чи редагувати Content Module",
+        "title": "Розділи",
+        "createLabel": "Створити новий розділ",
+        "createOrEditLabel": "Створити чи редагувати розділ",
         "notFound": "No Content Modules found"
       },
-      "created": "Новий Content Module створений з ідентифікатором {{ param }}",
-      "updated": "Content Module оновлений з ідентифікатором {{ param }}",
-      "deleted": "Content Module видалений з ідентифікатором {{ param }}",
+      "created": "Новий розділ створений з ідентифікатором {{ param }}",
+      "updated": "Розділ оновлений з ідентифікатором {{ param }}",
+      "deleted": "Розділ видалений з ідентифікатором {{ param }}",
       "delete": {
-        "question": "Ви впевнені, що хочете видалити Content Module {{ id }}?"
+        "question": "Ви впевнені, що хочете видалити розділ {{ id }}?"
       },
       "detail": {
-        "title": "Content Module"
+        "title": "Розділ"
       },
-      "name": "Name",
-      "order": "Order",
-      "description": "Description",
-      "topics": "Topics",
-      "curriculum": "Curriculum"
+      "name": "Назва",
+      "order": "Номер за порядком у рообочій навчальній програмі",
+      "description": "Опис",
+      "topics": "Теми",
+      "curriculum": "Робоча навчальна програма"
     }
   }
 }

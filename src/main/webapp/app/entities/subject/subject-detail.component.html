@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="subject">
-            <h2><span jhiTranslate="dirversityApp.subject.detail.title">Subject</span> {{subject.id}}</h2>
+            <h2>{{subject.fullName}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
