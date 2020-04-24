@@ -22,8 +22,6 @@ public class ResourceDTO implements Serializable {
 
     private String accessUrl;
 
-    private Instant createDate;
-
     private String fileId;
 
     @NotNull
@@ -85,14 +83,6 @@ public class ResourceDTO implements Serializable {
 
     public void setAccessUrl(String accessUrl) {
         this.accessUrl = accessUrl;
-    }
-
-    public Instant getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Instant createDate) {
-        this.createDate = createDate;
     }
 
     public String getFileId() {
@@ -227,7 +217,6 @@ public class ResourceDTO implements Serializable {
             ", name='" + getName() + "'" +
             ", author='" + getAuthor() + "'" +
             ", accessUrl='" + getAccessUrl() + "'" +
-            ", createDate='" + getCreateDate() + "'" +
             ", fileId='" + getFileId() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +

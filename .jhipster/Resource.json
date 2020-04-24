@@ -14,10 +14,6 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "createDate",
-            "fieldType": "Instant"
-        },
-        {
             "fieldName": "fileId",
             "fieldType": "String"
         }

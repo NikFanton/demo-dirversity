@@ -53,9 +53,6 @@ public class ResourceResourceIT {
     private static final String DEFAULT_ACCESS_URL = "AAAAAAAAAA";
     private static final String UPDATED_ACCESS_URL = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_CREATE_DATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_CREATE_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-
     private static final String DEFAULT_FILE_ID = "AAAAAAAAAA";
     private static final String UPDATED_FILE_ID = "BBBBBBBBBB";
 
@@ -202,7 +199,6 @@ public class ResourceResourceIT {
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].author").value(hasItem(DEFAULT_AUTHOR)))
             .andExpect(jsonPath("$.[*].accessUrl").value(hasItem(DEFAULT_ACCESS_URL)))
-            .andExpect(jsonPath("$.[*].createDate").value(hasItem(DEFAULT_CREATE_DATE.toString())))
             .andExpect(jsonPath("$.[*].fileId").value(hasItem(DEFAULT_FILE_ID)));
     }
 
@@ -253,7 +249,6 @@ public class ResourceResourceIT {
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.author").value(DEFAULT_AUTHOR))
             .andExpect(jsonPath("$.accessUrl").value(DEFAULT_ACCESS_URL))
-            .andExpect(jsonPath("$.createDate").value(DEFAULT_CREATE_DATE.toString()))
             .andExpect(jsonPath("$.fileId").value(DEFAULT_FILE_ID));
     }
 

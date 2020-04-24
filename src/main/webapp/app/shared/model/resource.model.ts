@@ -8,7 +8,6 @@ export interface IResource {
   name?: string;
   author?: string;
   accessUrl?: string;
-  createDate?: Moment;
   fileId?: string;
   createdBy?: string;
   createdDate?: Moment;

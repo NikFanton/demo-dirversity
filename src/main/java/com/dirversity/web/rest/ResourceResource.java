@@ -82,7 +82,6 @@ public class ResourceResource {
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("User with login %s is not found", login))))
             .ifPresent(resourceDTO::setPublisherId);
 
-        resourceDTO.setCreateDate(getNow());
 
         uploadResourceToCloudStorage(resourceDTO);
 
