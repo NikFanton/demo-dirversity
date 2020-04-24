@@ -41,12 +41,14 @@
                         <a [routerLink]="['/rule', rules?.id, 'view' ]">{{rules.name}}</a>{{last ? '' : ', '}}
                     </span>
                 </dd>
-                <dt><span jhiTranslate="dirversityApp.resource.topic">Topic</span></dt>
-                <dd>
+                <div *ngIf="resource.topics.length != 0">
+                    <dt><span *ngIf="resource.topics" jhiTranslate="dirversityApp.resource.topic">Topic</span></dt>
+                    <dd>
                     <span *ngFor="let topic of resource.topics; let last = last">
                         <a [routerLink]="['/topic', topic?.id, 'view' ]">{{topic.id}}</a>{{last ? '' : ', '}}
                     </span>
-                </dd>
+                    </dd>
+                </div>
             </dl>
 
             <button type="submit"
