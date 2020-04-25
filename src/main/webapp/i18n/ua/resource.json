@@ -26,10 +26,10 @@
       "dataUpload": "Завантаження даних",
       "topic": "Тема",
       "goToResource": "Перейти до Ресурсу",
-      "createdBy": "Created by",
+      "createdBy": "Створив",
       "createdDate": "Дата створення",
-      "lastModifiedBy": "Modified by",
-      "lastModifiedDate": "Modified date"
+      "lastModifiedBy": "Змінено",
+      "lastModifiedDate": "Дата зміни"
     }
   }
 }

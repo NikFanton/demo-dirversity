@@ -40,9 +40,6 @@
             <column name="last_modified_date" type="timestamp">
                 <constraints nullable="true" />
             </column>
-            <column name="publisher_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="resource" columnName="created_date" columnDataType="timestamp"/>

@@ -71,7 +71,7 @@ public class ResourceServiceImpl implements ResourceService {
     }
 
     @Override
-    public Page<ResourceDTO> findAllByPublisherIsCurrentUser(Pageable pageable) {
+    public Page<ResourceDTO> findAllResourcesCreatedByCurrentUser(Pageable pageable) {
         log.debug("Request to get all Resources for the user");
         return resourceRepository.findByPublisherIsCurrentUser(pageable)
             .map(resourceMapper::toDto);

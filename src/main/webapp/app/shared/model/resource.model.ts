@@ -13,8 +13,6 @@ export interface IResource {
   createdDate?: Moment;
   lastModifiedBy?: string;
   lastModifiedDate?: Moment;
-  publisherLastName?: string;
-  publisherId?: number;
   resourceTypes?: IResourceType[];
   rules?: IRule[];
   dataContentType?: string;
@@ -34,8 +32,6 @@ export class Resource implements IResource {
     public createdDate?: Moment,
     public lastModifiedBy?: string,
     public lastModifiedDate?: Moment,
-    public publisherLastName?: string,
-    public publisherId?: number,
     public resourceTypes?: IResourceType[],
     public rules?: IRule[],
     public dataContentType?: string,

@@ -1,6 +1,5 @@
 package com.dirversity.web.rest;
 
-import com.dirversity.domain.User;
 import com.dirversity.security.AuthoritiesConstants;
 import com.dirversity.security.SecurityUtils;
 import com.dirversity.service.CloudStorageService;
@@ -18,7 +17,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -76,13 +74,7 @@ public class ResourceResource {
             throw new BadRequestAlertException("A new resource cannot already have an ID", ENTITY_NAME, "idexists");
         }
 
-        SecurityUtils.getCurrentUserLogin()
-            .map(login -> userService.findUserByLogin(login)
-                .map(User::getId)
-                .orElseThrow(() -> new UsernameNotFoundException(String.format("User with login %s is not found", login))))
-            .ifPresent(resourceDTO::setPublisherId);
-
-
+//        ToDo Refactor this to make it less coupled
         uploadResourceToCloudStorage(resourceDTO);
 
         ResourceDTO result = resourceService.save(resourceDTO);
@@ -149,7 +141,7 @@ public class ResourceResource {
                 page = resourceService.findAll(pageable);
             }
         } else {
-                page = resourceService.findAllByPublisherIsCurrentUser(pageable);
+            page = resourceService.findAllResourcesCreatedByCurrentUser(pageable);
         }
 
 

@@ -23,7 +23,6 @@
             "relationshipType": "many-to-one",
             "otherEntityName": "user",
             "otherEntityRelationshipName": "resource",
-            "relationshipName": "publisher",
             "otherEntityField": "lastName"
         },
         {

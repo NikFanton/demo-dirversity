@@ -45,7 +45,6 @@ export class ResourceUpdateComponent implements OnInit {
     createdDate: [],
     lastModifiedBy: [null, [Validators.maxLength(50)]],
     lastModifiedDate: [],
-    publisherId: [],
     resourceTypes: [],
     rules: [],
     data: [],
@@ -112,7 +111,6 @@ export class ResourceUpdateComponent implements OnInit {
       createdDate: resource.createdDate != null ? resource.createdDate.format(DATE_TIME_FORMAT) : null,
       lastModifiedBy: resource.lastModifiedBy,
       lastModifiedDate: resource.lastModifiedDate != null ? resource.lastModifiedDate.format(DATE_TIME_FORMAT) : null,
-      publisherId: resource.publisherId,
       resourceTypes: resource.resourceTypes,
       rules: resource.rules,
       data: resource.data,
@@ -187,7 +185,6 @@ export class ResourceUpdateComponent implements OnInit {
         this.editForm.get(['lastModifiedDate']).value != null
           ? moment(this.editForm.get(['lastModifiedDate']).value, DATE_TIME_FORMAT)
           : undefined,
-      publisherId: this.editForm.get(['publisherId']).value,
       resourceTypes: this.editForm.get(['resourceTypes']).value,
       rules: this.editForm.get(['rules']).value,
       dataContentType: this.editForm.get(['dataContentType']).value,

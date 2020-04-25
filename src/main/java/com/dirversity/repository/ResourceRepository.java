@@ -15,7 +15,7 @@ import java.util.Optional;
 @Repository
 public interface ResourceRepository extends JpaRepository<Resource, Long> {
 
-    @Query(value = "select resource from Resource resource where resource.publisher.login = ?#{principal.username}",
+    @Query(value = "select resource from Resource resource where resource.createdBy = ?#{principal.username}",
         countQuery = "select count(distinct resource) from Resource resource")
     Page<Resource> findByPublisherIsCurrentUser(Pageable pageable);
 

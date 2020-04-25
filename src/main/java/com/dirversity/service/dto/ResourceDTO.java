@@ -35,11 +35,6 @@ public class ResourceDTO implements Serializable {
 
     private Instant lastModifiedDate;
 
-
-    private Long publisherId;
-
-    private String publisherLastName;
-
     private Set<ResourceTypeDTO> resourceTypes = new HashSet<>();
 
     private Set<RuleDTO> rules = new HashSet<>();
@@ -125,22 +120,6 @@ public class ResourceDTO implements Serializable {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    public Long getPublisherId() {
-        return publisherId;
-    }
-
-    public void setPublisherId(Long userId) {
-        this.publisherId = userId;
-    }
-
-    public String getPublisherLastName() {
-        return publisherLastName;
-    }
-
-    public void setPublisherLastName(String userLastName) {
-        this.publisherLastName = userLastName;
-    }
-
     public Set<ResourceTypeDTO> getResourceTypes() {
         return resourceTypes;
     }
@@ -222,8 +201,6 @@ public class ResourceDTO implements Serializable {
             ", createdDate='" + getCreatedDate() + "'" +
             ", lastModifiedBy='" + getLastModifiedBy() + "'" +
             ", lastModifiedDate='" + getLastModifiedDate() + "'" +
-            ", publisher=" + getPublisherId() +
-            ", publisher='" + getPublisherLastName() + "'" +
             "}";
     }
 }

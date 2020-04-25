@@ -40,7 +40,7 @@ public interface ResourceService {
      *
      * @return the list of entities.
      */
-    Page<ResourceDTO> findAllByPublisherIsCurrentUser(Pageable pageable);
+    Page<ResourceDTO> findAllResourcesCreatedByCurrentUser(Pageable pageable);
 
     /**
      * Get the "id" resource.

@@ -11,11 +11,8 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {UserMapper.class, ResourceTypeMapper.class, RuleMapper.class, TopicMapper.class})
 public interface ResourceMapper extends EntityMapper<ResourceDTO, Resource> {
 
-    @Mapping(source = "publisher.id", target = "publisherId")
-    @Mapping(source = "publisher.lastName", target = "publisherLastName")
     ResourceDTO toDto(Resource resource);
 
-    @Mapping(source = "publisherId", target = "publisher")
     @Mapping(target = "removeResourceType", ignore = true)
     @Mapping(target = "removeRules", ignore = true)
     @Mapping(target = "removeTopic", ignore = true)

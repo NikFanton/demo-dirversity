@@ -44,10 +44,6 @@ public class Resource extends AbstractAuditingEntity implements Serializable {
     @Column(name = "file_id")
     private String fileId;
 
-    @ManyToOne
-    @JsonIgnoreProperties("resources")
-    private User publisher;
-
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "resource_resource_type",
@@ -128,19 +124,6 @@ public class Resource extends AbstractAuditingEntity implements Serializable {
 
     public void setFileId(String fileId) {
         this.fileId = fileId;
-    }
-
-    public User getPublisher() {
-        return publisher;
-    }
-
-    public Resource publisher(User user) {
-        this.publisher = user;
-        return this;
-    }
-
-    public void setPublisher(User user) {
-        this.publisher = user;
     }
 
     public Set<ResourceType> getResourceTypes() {
