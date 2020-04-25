@@ -43,4 +43,6 @@ public interface TopicService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    Page<TopicDTO> findAllForContentModule(Pageable pageable, Long contentModuleId);
 }

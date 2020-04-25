@@ -37,7 +37,7 @@ export const curriculumRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER'],
       defaultSort: 'id,asc',
       pageTitle: 'dirversityApp.curriculum.home.title'
     },
@@ -50,7 +50,7 @@ export const curriculumRoute: Routes = [
       curriculum: CurriculumResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER'],
       pageTitle: 'dirversityApp.curriculum.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -62,7 +62,7 @@ export const curriculumRoute: Routes = [
       curriculum: CurriculumResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER'],
       pageTitle: 'dirversityApp.curriculum.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -74,7 +74,7 @@ export const curriculumRoute: Routes = [
       curriculum: CurriculumResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER'],
       pageTitle: 'dirversityApp.curriculum.home.title'
     },
     canActivate: [UserRouteAccessService]

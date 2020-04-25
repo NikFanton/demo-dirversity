@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -19,6 +19,10 @@ import { IRule } from 'app/shared/model/rule.model';
 import { RuleService } from 'app/entities/rule/rule.service';
 import { ITopic } from 'app/shared/model/topic.model';
 import { TopicService } from 'app/entities/topic/topic.service';
+import { ICurriculum } from 'app/shared/model/curriculum.model';
+import { CurriculumService } from 'app/entities/curriculum/curriculum.service';
+import { ContentModuleService } from 'app/entities/content-module/content-module.service';
+import { IContentModule } from 'app/shared/model/content-module.model';
 
 @Component({
   selector: 'jhi-resource-update',
@@ -35,6 +39,10 @@ export class ResourceUpdateComponent implements OnInit {
 
   topics: ITopic[];
 
+  curriculums: ICurriculum[];
+
+  contentModules: IContentModule[];
+
   editForm = this.fb.group({
     id: [],
     name: [],
@@ -50,7 +58,9 @@ export class ResourceUpdateComponent implements OnInit {
     data: [],
     dataContentType: [],
     dataDisplayName: [],
-    topics: []
+    topics: [],
+    curriculums: [],
+    contentModules: []
   });
 
   constructor(
@@ -61,6 +71,8 @@ export class ResourceUpdateComponent implements OnInit {
     protected resourceTypeService: ResourceTypeService,
     protected ruleService: RuleService,
     protected topicService: TopicService,
+    protected curriculumService: CurriculumService,
+    protected contentModuleService: ContentModuleService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -91,13 +103,13 @@ export class ResourceUpdateComponent implements OnInit {
         map((response: HttpResponse<IRule[]>) => response.body)
       )
       .subscribe((res: IRule[]) => (this.rules = res), (res: HttpErrorResponse) => this.onError(res.message));
-    this.topicService
+    this.curriculumService
       .query()
       .pipe(
-        filter((mayBeOk: HttpResponse<ITopic[]>) => mayBeOk.ok),
-        map((response: HttpResponse<ITopic[]>) => response.body)
+        filter((mayBeOk: HttpResponse<ICurriculum[]>) => mayBeOk.ok),
+        map((response: HttpResponse<ICurriculum[]>) => response.body)
       )
-      .subscribe((res: ITopic[]) => (this.topics = res), (res: HttpErrorResponse) => this.onError(res.message));
+      .subscribe((res: ICurriculum[]) => (this.curriculums = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(resource: IResource) {
@@ -126,6 +138,40 @@ export class ResourceUpdateComponent implements OnInit {
 
   openFile(contentType, field) {
     return this.dataUtils.openFile(contentType, field);
+  }
+
+  selectCurriculumOption() {
+    const curriculumId = this.editForm.get(['curriculums']).value;
+    if (curriculumId) {
+      this.findAllContentModulesForCurriculum(curriculumId);
+    }
+  }
+
+  findAllContentModulesForCurriculum(id: number) {
+    this.contentModuleService
+      .query({ curriculumId: id })
+      .pipe(
+        filter((mayBeOk: HttpResponse<IContentModule[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IContentModule[]>) => response.body)
+      )
+      .subscribe((res: IContentModule[]) => (this.contentModules = res), (res: HttpErrorResponse) => this.onError(res.message));
+  }
+
+  selectContentModuleOption() {
+    const contentModulesId = this.editForm.get(['contentModules']).value;
+    if (contentModulesId) {
+      this.findAllTopicsForContentModule(contentModulesId);
+    }
+  }
+
+  findAllTopicsForContentModule(id: number) {
+    this.topicService
+      .query({ contentModuleId: id })
+      .pipe(
+        filter((mayBeOk: HttpResponse<ITopic[]>) => mayBeOk.ok),
+        map((response: HttpResponse<ITopic[]>) => response.body)
+      )
+      .subscribe((res: ITopic[]) => (this.topics = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   setFileData(event, field: string, isImage) {
@@ -206,6 +252,7 @@ export class ResourceUpdateComponent implements OnInit {
   protected onSaveError() {
     this.isSaving = false;
   }
+
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
   }
@@ -223,6 +270,10 @@ export class ResourceUpdateComponent implements OnInit {
   }
 
   trackTopicById(index: number, item: ITopic) {
+    return item.id;
+  }
+
+  trackCurriculumById(index: number, item: ITopic) {
     return item.id;
   }
 

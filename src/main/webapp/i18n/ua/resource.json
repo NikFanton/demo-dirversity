@@ -13,6 +13,7 @@
       "delete": {
         "question": "Ви впевнені, що хочете видалити ресурс {{ id }}?"
       },
+      "bindToTopic": "Bind resource to topic",
       "detail": {
         "title": "Ресурс"
       },
@@ -24,8 +25,10 @@
       "resourceType": "Тип ресурсного файлу",
       "rules": "Надано доступ для",
       "dataUpload": "Завантаження даних",
-      "topic": "Тема",
-      "goToResource": "Перейти до Ресурсу",
+      "curriculum": "До якої навчальної програми відноситься ресурс",
+      "contentModule": "До якого розділу відноситься ресурс",
+      "topics": "Теми пов'язані з ресурсом",
+      "goToResource": "Перейти до ресурсу",
       "createdBy": "Створив",
       "createdDate": "Дата створення",
       "lastModifiedBy": "Змінено",

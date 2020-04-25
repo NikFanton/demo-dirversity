@@ -3,6 +3,7 @@ package com.dirversity.service.impl;
 import com.dirversity.service.TopicService;
 import com.dirversity.domain.Topic;
 import com.dirversity.repository.TopicRepository;
+import com.dirversity.service.dto.ContentModuleDTO;
 import com.dirversity.service.dto.TopicDTO;
 import com.dirversity.service.mapper.TopicMapper;
 import org.slf4j.Logger;
@@ -85,5 +86,12 @@ public class TopicServiceImpl implements TopicService {
     public void delete(Long id) {
         log.debug("Request to delete Topic : {}", id);
         topicRepository.deleteById(id);
+    }
+
+    @Override
+    public Page<TopicDTO> findAllForContentModule(Pageable pageable, Long contentModuleId) {
+        log.debug("Request to get all Topics for specific Content Module");
+        return topicRepository.findAllForContentModule(pageable, contentModuleId)
+            .map(topicMapper::toDto);
     }
 }

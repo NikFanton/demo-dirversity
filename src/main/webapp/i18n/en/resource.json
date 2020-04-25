@@ -13,6 +13,7 @@
       "delete": {
         "question": "Are you sure you want to delete Resource {{ id }}?"
       },
+      "bindToTopic": "Bind resource to topic",
       "detail": {
         "title": "Resource"
       },
@@ -24,7 +25,9 @@
       "resourceType": "Resource Type",
       "rules": "Rules",
       "dataUpload": "Data Upload",
-      "topic": "Topic",
+      "curriculum": "Related curriculum",
+      "contentModule": "Related content module",
+      "topics": "Related topics",
       "goToResource": "Go to Resource",
       "createdBy": "Created by",
       "createdDate": "Created date",

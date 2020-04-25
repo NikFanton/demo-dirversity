@@ -1,16 +1,18 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-resource-heading" jhiTranslate="dirversityApp.resource.home.createOrEditLabel">Create or edit a Resource</h2>
+            <h2 id="jhi-resource-heading" jhiTranslate="dirversityApp.resource.home.createOrEditLabel">Create or edit a
+                Resource</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!editForm.get('id').value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id"
-                        readonly />
+                           readonly/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="dirversityApp.resource.name" for="field_name">Name</label>
+                    <label class="form-control-label" jhiTranslate="dirversityApp.resource.name"
+                           for="field_name">Name</label>
                     <input type="text" class="form-control" name="name" id="field_name"
                            formControlName="name"/>
                 </div>
@@ -20,48 +22,88 @@
                            formControlName="author"/>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="dirversityApp.resource.accessUrl" for="field_accessUrl">Access Url</label>
+                    <label class="form-control-label" jhiTranslate="dirversityApp.resource.accessUrl"
+                           for="field_accessUrl">Access Url</label>
                     <input type="text" class="form-control" name="accessUrl" id="field_accessUrl"
                            formControlName="accessUrl"/>
                 </div>
                 <div class="form-group">
-                    <label jhiTranslate="dirversityApp.resource.resourceType" for="field_resourceTypes">Resource Type</label>
-                    <select class="form-control" id="field_resourceTypes" multiple name="resourceTypes" formControlName="resourceTypes">
-                        <option [ngValue]="getSelected(editForm.get('resourceTypes').value, resourceTypeOption)" *ngFor="let resourceTypeOption of resourcetypes; trackBy: trackResourceTypeById">{{resourceTypeOption.name}}</option>
+                    <label jhiTranslate="dirversityApp.resource.resourceType" for="field_resourceTypes">Resource
+                        Type</label>
+                    <select class="form-control" id="field_resourceTypes" multiple name="resourceTypes"
+                            formControlName="resourceTypes">
+                        <option [ngValue]="getSelected(editForm.get('resourceTypes').value, resourceTypeOption)"
+                                *ngFor="let resourceTypeOption of resourcetypes; trackBy: trackResourceTypeById">{{resourceTypeOption.name}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label jhiTranslate="dirversityApp.resource.rules" for="field_rules">Rules</label>
                     <select class="form-control" id="field_rules" multiple name="rules" formControlName="rules">
-                        <option [ngValue]="getSelected(editForm.get('rules').value, ruleOption)" *ngFor="let ruleOption of rules; trackBy: trackRuleById">{{ruleOption.name}}</option>
+                        <option [ngValue]="getSelected(editForm.get('rules').value, ruleOption)"
+                                *ngFor="let ruleOption of rules; trackBy: trackRuleById">{{ruleOption.name}}</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dirversityApp.resource.curriculum"
+                           for="field_curriculum">Curriculum</label>
+                    <select class="form-control" id="field_curriculum" name="curriculum" formControlName="curriculums"
+                            (change)="selectCurriculumOption()">
+                        <option [ngValue]="null"></option>
+                        <option [value]="curriculumOption.id" [ngValue]="curriculumOption.id"
+                                *ngFor="let curriculumOption of curriculums; trackBy: trackCurriculumById">{{curriculumOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group" [hidden]="this.editForm.get(['curriculums']).value == null">
+                    <label class="form-control-label" jhiTranslate="dirversityApp.resource.contentModule"
+                           for="field_contentModule">Content Module</label>
+                    <select class="form-control" id="field_contentModule" name="contentModule"
+                            formControlName="contentModules"
+                             (change)="selectContentModuleOption()">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="contentModuleOption.id"
+                                *ngFor="let contentModuleOption of contentModules; trackBy: trackCurriculumById">{{contentModuleOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group" [hidden]="this.editForm.get(['contentModules']).value == null || this.editForm.get(['curriculums']).value == null">
+                    <label jhiTranslate="dirversityApp.resource.topics" for="field_rules">Topics</label>
+                    <select class="form-control" id="field_topic" multiple name="topics" formControlName="topics">
+                        <option [ngValue]="getSelected(editForm.get('topics').value, topicOption)"
+                                *ngFor="let topicOption of topics; trackBy: trackRuleById">{{topicOption.name}}</option>
+                    </select>
+                </div>
+
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="dirversityApp.resource.dataUpload" for="field_data">Data</label>
                     <div>
                         <div *ngIf="editForm.get('data').value" class="form-text text-danger clearfix">
-                            <a class="pull-left" (click)="openFile(editForm.get('dataContentType').value, editForm.get('data').value)" jhiTranslate="entity.action.open">open</a><br>
-                            <span class="pull-left">{{editForm.get('dataContentType').value}}, {{byteSize(editForm.get('data').value)}}</span>
-                            <button type="button" (click)="editForm.patchValue({data: null});editForm.patchValue({dataContentType: null});"
+                            <a class="pull-left"
+                               (click)="openFile(editForm.get('dataContentType').value, editForm.get('data').value)"
+                               jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{editForm.get('dataContentType').value}}
+                                , {{byteSize(editForm.get('data').value)}}</span>
+                            <button type="button"
+                                    (click)="editForm.patchValue({data: null});editForm.patchValue({dataContentType: null});"
                                     class="btn btn-secondary btn-xs pull-right">
                                 <fa-icon [icon]="'times'"></fa-icon>
                             </button>
                         </div>
-                        <input type="file" id="file_data" (change)="setFileData($event, 'data', false)" jhiTranslate="entity.action.addblob"/>
+                        <input type="file" id="file_data" (change)="setFileData($event, 'data', false)"
+                               jhiTranslate="entity.action.addblob"/>
                     </div>
                     <input type="hidden" class="form-control" name="data" id="field_data"
                            formControlName="data"/>
                     <input type="hidden" class="form-control" name="dataContentType" id="field_dataContentType"
-                           formControlName="dataContentType" />
+                           formControlName="dataContentType"/>
                     <input type="hidden" class="form-control" name="dataDisplayName" id="field_dataDisplayName"
-                           formControlName="dataDisplayName" />
+                           formControlName="dataDisplayName"/>
                 </div>
             </div>
             <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
                     <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
+                        class="btn btn-primary">
                     <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>
