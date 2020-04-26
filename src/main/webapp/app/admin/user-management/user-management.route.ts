@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot, Routes } from '@angular/router';
 import { JhiResolvePagingParams } from 'ng-jhipster';
 
 import { User } from 'app/core/user/user.model';
@@ -29,9 +29,11 @@ export const userManagementRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
+      // authorities: ['ROLE_SYSTEM_ADMIN'],
       pageTitle: 'userManagement.home.title',
       defaultSort: 'id,asc'
     }
+    // canActivate: [UserRouteAccessService]
   },
   {
     path: ':login/view',
@@ -40,8 +42,10 @@ export const userManagementRoute: Routes = [
       user: UserManagementResolve
     },
     data: {
+      // authorities: ['ROLE_SYSTEM_ADMIN'],
       pageTitle: 'userManagement.home.title'
     }
+    // canActivate: [UserRouteAccessService]
   },
   {
     path: 'new',
