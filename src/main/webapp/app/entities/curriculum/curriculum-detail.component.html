@@ -69,6 +69,19 @@
                     class="btn btn-primary">
                 <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
             </button>
+
+            <button id="jh-create-entity-content-module"
+                    class="btn btn-primary"
+                    [routerLink]="['/content-module/new']">
+                <fa-icon [icon]="'plus'"></fa-icon>
+                <span jhiTranslate="dirversityApp.contentModule.home.createLabel">Create a new Content Module</span>
+            </button>
+
+            <button id="jh-create-entity-topic" class="btn btn-primary"
+                    [routerLink]="['/topic/new']">
+                <fa-icon [icon]="'plus'"></fa-icon>
+                <span jhiTranslate="dirversityApp.topic.home.createLabel">Create a new Topic</span>
+            </button>
         </div>
     </div>
 </div>
