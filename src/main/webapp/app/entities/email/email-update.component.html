@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-email-heading" jhiTranslate="dirversityApp.email.home.createOrEditLabel">Create or edit a Email</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dirversityApp.email.body" for="field_body">Body</label>
+                    <input type="text" class="form-control" name="body" id="field_body"
+                           formControlName="body"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dirversityApp.email.title" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                           formControlName="title"/>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="dirversityApp.email.toUsers" for="field_toUsers">To Users</label>
+                    <select class="form-control" id="field_toUsers" multiple name="toUsers" formControlName="toUsers">
+                        <option [ngValue]="getSelected(editForm.get('toUsers').value, userOption)" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="dirversityApp.email.ccUsers" for="field_ccUsers">Cc Users</label>
+                    <select class="form-control" id="field_ccUsers" multiple name="ccUsers" formControlName="ccUsers">
+                        <option [ngValue]="getSelected(editForm.get('ccUsers').value, userOption)" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="dirversityApp.email.toUsersGroups" for="field_toUsersGroups">To Users Groups</label>
+                    <select class="form-control" id="field_toUsersGroups" multiple name="toUsersGroups" formControlName="toUsersGroups">
+                        <option [ngValue]="getSelected(editForm.get('toUsersGroups').value, userGroupOption)" *ngFor="let userGroupOption of usergroups; trackBy: trackUserGroupById">{{userGroupOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="dirversityApp.email.ccUserGroups" for="field_ccUserGroups">Cc User Groups</label>
+                    <select class="form-control" id="field_ccUserGroups" multiple name="ccUserGroups" formControlName="ccUserGroups">
+                        <option [ngValue]="getSelected(editForm.get('ccUserGroups').value, userGroupOption)" *ngFor="let userGroupOption of usergroups; trackBy: trackUserGroupById">{{userGroupOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="dirversityApp.email.resources" for="field_resources">Resources</label>
+                    <select class="form-control" id="field_resources" multiple name="resources" formControlName="resources">
+                        <option [ngValue]="getSelected(editForm.get('resources').value, resourceOption)" *ngFor="let resourceOption of resources; trackBy: trackResourceById">{{resourceOption.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

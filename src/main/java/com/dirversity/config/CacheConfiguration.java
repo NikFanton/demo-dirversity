@@ -70,6 +70,12 @@ public class CacheConfiguration {
             createCache(cm, com.dirversity.domain.CurriculumTag.class.getName());
             createCache(cm, com.dirversity.domain.CurriculumTag.class.getName() + ".curricula");
             createCache(cm, com.dirversity.domain.Resource.class.getName() + ".topics");
+            createCache(cm, com.dirversity.domain.Email.class.getName());
+            createCache(cm, com.dirversity.domain.Email.class.getName() + ".toUsers");
+            createCache(cm, com.dirversity.domain.Email.class.getName() + ".ccUsers");
+            createCache(cm, com.dirversity.domain.Email.class.getName() + ".toUsersGroups");
+            createCache(cm, com.dirversity.domain.Email.class.getName() + ".ccUserGroups");
+            createCache(cm, com.dirversity.domain.Email.class.getName() + ".resources");
             // jhipster-needle-ehcache-add-entry
         };
     }

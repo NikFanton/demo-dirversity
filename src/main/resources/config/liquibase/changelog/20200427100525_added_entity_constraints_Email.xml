@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Email.
+    -->
+    <changeSet id="20200427100525-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="email_id"
+                                 baseTableName="email_to_users"
+                                 constraintName="fk_email_to_users_email_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="email"/>
+
+        <addForeignKeyConstraint baseColumnNames="to_users_id"
+                                 baseTableName="email_to_users"
+                                 constraintName="fk_email_to_users_to_users_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+        
+        <addForeignKeyConstraint baseColumnNames="email_id"
+                                 baseTableName="email_cc_users"
+                                 constraintName="fk_email_cc_users_email_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="email"/>
+
+        <addForeignKeyConstraint baseColumnNames="cc_users_id"
+                                 baseTableName="email_cc_users"
+                                 constraintName="fk_email_cc_users_cc_users_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+        
+        <addForeignKeyConstraint baseColumnNames="email_id"
+                                 baseTableName="email_to_users_groups"
+                                 constraintName="fk_email_to_users_groups_email_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="email"/>
+
+        <addForeignKeyConstraint baseColumnNames="to_users_groups_id"
+                                 baseTableName="email_to_users_groups"
+                                 constraintName="fk_email_to_users_groups_to_users_groups_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_group"/>
+        
+        <addForeignKeyConstraint baseColumnNames="email_id"
+                                 baseTableName="email_cc_user_groups"
+                                 constraintName="fk_email_cc_user_groups_email_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="email"/>
+
+        <addForeignKeyConstraint baseColumnNames="cc_user_groups_id"
+                                 baseTableName="email_cc_user_groups"
+                                 constraintName="fk_email_cc_user_groups_cc_user_groups_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_group"/>
+        
+        <addForeignKeyConstraint baseColumnNames="email_id"
+                                 baseTableName="email_resources"
+                                 constraintName="fk_email_resources_email_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="email"/>
+
+        <addForeignKeyConstraint baseColumnNames="resources_id"
+                                 baseTableName="email_resources"
+                                 constraintName="fk_email_resources_resources_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="resource"/>
+        
+    </changeSet>
+</databaseChangeLog>

@@ -47,6 +47,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'curriculum-tag',
         loadChildren: () => import('./curriculum-tag/curriculum-tag.module').then(m => m.DirversityCurriculumTagModule)
+      },
+      {
+        path: 'email',
+        loadChildren: () => import('./email/email.module').then(m => m.DirversityEmailModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

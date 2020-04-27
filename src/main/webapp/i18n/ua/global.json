@@ -20,6 +20,7 @@
         "curriculumTag": "Curriculum Tag",
         "resource": "Ресурси",
         "subject": "Навчальні дисципліни",
+        "email": "Email",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

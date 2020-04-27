@@ -37,7 +37,7 @@ public class UserGroup implements Serializable {
     @JsonIgnoreProperties("userGroups")
     private UserGroupType userGroupType;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "user_group_users",
                joinColumns = @JoinColumn(name = "user_group_id", referencedColumnName = "id"),

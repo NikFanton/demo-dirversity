@@ -7,15 +7,18 @@ import com.dirversity.security.SecurityUtils;
 import com.dirversity.service.MailService;
 import com.dirversity.service.UserService;
 import com.dirversity.service.dto.PasswordChangeDTO;
+import com.dirversity.service.dto.ResourceDTO;
 import com.dirversity.service.dto.UserDTO;
 import com.dirversity.web.rest.errors.*;
 import com.dirversity.web.rest.vm.KeyAndPasswordVM;
 import com.dirversity.web.rest.vm.ManagedUserVM;
 
+import io.github.jhipster.web.util.ResponseUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;

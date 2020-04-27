@@ -1,0 +1,28 @@
+{
+  "dirversityApp": {
+    "email": {
+      "home": {
+        "title": "Emails",
+        "createLabel": "Створити новий Email",
+        "createOrEditLabel": "Створити чи редагувати Email",
+        "notFound": "No Emails found"
+      },
+      "created": "Новий Email створений з ідентифікатором {{ param }}",
+      "updated": "Email оновлений з ідентифікатором {{ param }}",
+      "deleted": "Email видалений з ідентифікатором {{ param }}",
+      "delete": {
+        "question": "Ви впевнені, що хочете видалити Email {{ id }}?"
+      },
+      "detail": {
+        "title": "Email"
+      },
+      "body": "Body",
+      "title": "Title",
+      "toUsers": "To Users",
+      "ccUsers": "Cc Users",
+      "toUsersGroups": "To Users Groups",
+      "ccUserGroups": "Cc User Groups",
+      "resources": "Resources"
+    }
+  }
+}
