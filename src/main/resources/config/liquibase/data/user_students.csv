@@ -1,0 +1,13 @@
+id;login;password_hash;first_name;last_name;email;image_url;activated;lang_key;created_by;last_modified_by
+1008;nikita;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Микита;Гученко;guchenko.n@gmail.com;;true;en;kramarchuk;kramarchuk
+1009;egnatuk;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Валерій;Васильєв;amirosnicenko@batiro.gq;;true;en;kramarchuk;kramarchuk
+1010;boleslav23;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Юлія;Сергієнко;gnatuk.inna@pracnila.ga;;true;en;kramarchuk;kramarchuk
+1011;antonenkogrigor;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Леонід;Середа;dmitrenko.olena@derssataff.tk;;true;en;kramarchuk;kramarchuk
+1012;miroslav05;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Леонід;Захарчук;valerij.sergien@saubandvor.tk;;true;en;kramarchuk;kramarchuk
+1013;vasilenkomihajl;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Ярослав;Боднаренко;lev.antonenko@tafilfa.gq;;true;en;kramarchuk;kramarchuk
+1014;polina73;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Поліна;Мельниченко;josip03@itdeinter.cf;;true;en;kramarchuk;kramarchuk
+1015;yvasilcuk;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Дмитро;Пономаренко;andrij17@lmypasla.gq;;true;en;kramarchuk;kramarchuk
+1016;boleslav48;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Алла;Дмитренко;bodnarenko.kost@sixfgasgdo.tk;;true;en;kramarchuk;kramarchuk
+1017;dianavasilev;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Ігор;Лисенко;gennadij.tarasu@temptacon.ml;;true;en;kramarchuk;kramarchuk
+1018;inna13;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Владислав;Броваренко;esevcenko@chiehalan.ga;;true;en;kramarchuk;kramarchuk
+1019;tdmitrenko;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Лев;Васильєв;tdmitrenko@chiehalan.ga;;true;en;kramarchuk;kramarchuk

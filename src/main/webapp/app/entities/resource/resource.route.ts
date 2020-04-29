@@ -36,7 +36,7 @@ export const resourceRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN', 'ROLE_STUDENT'],
       defaultSort: 'createdDate,desc',
       pageTitle: 'dirversityApp.resource.home.title'
     },
@@ -49,7 +49,7 @@ export const resourceRoute: Routes = [
       resource: ResourceResolve
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN', 'ROLE_STUDENT'],
       pageTitle: 'dirversityApp.resource.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -61,7 +61,7 @@ export const resourceRoute: Routes = [
       resource: ResourceResolve
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN', 'ROLE_STUDENT'],
       pageTitle: 'dirversityApp.resource.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -73,7 +73,7 @@ export const resourceRoute: Routes = [
       resource: ResourceResolve
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN', 'ROLE_STUDENT'],
       pageTitle: 'dirversityApp.resource.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -88,7 +88,7 @@ export const resourcePopupRoute: Routes = [
       resource: ResourceResolve
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN', 'ROLE_STUDENT'],
       pageTitle: 'dirversityApp.resource.home.title'
     },
     canActivate: [UserRouteAccessService],

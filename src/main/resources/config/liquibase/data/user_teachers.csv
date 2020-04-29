@@ -1,0 +1,17 @@
+id;login;password_hash;first_name;last_name;email;image_url;activated;lang_key;created_by;last_modified_by
+2006;gaidar;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Володимир;Гайдраржи;gaidar@localhost;;true;en;system;system
+2007;xromancenko;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Євгенія;Середа;adam.sereda@izicmil.ml;;true;en;system;system
+2008;mdmitrenko;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Роман;Таращук;mdmitrenko@verdoto.ml;;true;en;system;system
+2009;саoleksandr;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Катерина;Шевченко;саoleksandr.miros@flowathes.gq;;true;en;system;system
+2010;stasvasilchuk;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Станіслав;Васильчук;stasvasilchuk@kriunoper.tk;;true;en;system;system
+2011;lutsenko;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Тетяна;Луценко;lutsenko@thampvinig.gq;;true;en;system;system
+2012;olesov;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Олексій;Олесов;olesov@jackrosi.ml;;true;en;system;system
+2013;vetal;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Віталій;Шовкун;vetal@tingnewsre.cf;;true;en;system;system
+2014;ресаqvasilenko;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Олена;Броварчук;ресаqvasilenko@singlexx.site;;true;en;system;system
+2015;hpavluk;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Лев;Броварчук;hpavluk@filmprenser.ml;;true;en;system;system
+2016;kramarenko;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Кіра;Крамаренко;dara.kramarenko@drovharsubs.cf;;true;en;system;system
+2017;lubov84;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Кравченко;Михайло;lubov84@ymail44.com;;true;en;system;system
+2018;саartur;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Роман;Шинкаренко;саartur.sevcuk@diaraizi.tk;;true;en;system;system
+2019;саlubov;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Михайло;Кравченко;саlubov.mikituk@jackrosi.ml;;true;en;system;system
+2020;okramarenko;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Світлана;Панасюк;okramarenko@kriunoper.tk;;true;en;system;system
+2021;tarasuk;$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K;Анатолій;Мельниченко;tarasuk.oleksan@tingnewsre.cf;;true;en;system;system

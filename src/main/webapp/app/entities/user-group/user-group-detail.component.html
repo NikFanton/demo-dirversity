@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="userGroup">
-            <h2><span jhiTranslate="dirversityApp.userGroup.detail.title">User Group</span> {{userGroup.id}}</h2>
+            <h2><span jhiTranslate="dirversityApp.userGroup.detail.title">User Group</span> {{userGroup.name}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
@@ -22,8 +22,36 @@
                 <dt><span jhiTranslate="dirversityApp.userGroup.users">Users</span></dt>
                 <dd>
                     <span *ngFor="let users of userGroup.users; let last = last">
-                        {{users.login}}{{last ? '' : ', '}}
+                        {{users.firstName}} {{users.lastName}}{{last ? '' : ', '}}
                     </span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.userGroup.users">Users</span></dt>
+                <dd>
+                    <div class="alert alert-warning" *ngIf="userGroup.users?.length === 0">
+                        <span jhiTranslate="userManagement.home.notFound">No Users found</span>
+                    </div>
+                    <div class="table-responsive" *ngIf="userGroup.users?.length > 0">
+                        <table class="table table-striped" aria-describedby="page-heading">
+                            <thead>
+                            <tr>
+                                <th scope="col"><span jhiTranslate="userManagement.login">Login</span></th>
+                                <th scope="col"><span jhiTranslate="userManagement.name">Name</span></th>
+                                <th scope="col"><span jhiTranslate="userManagement.email">Email</span></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let user of userGroup.users">
+                                <td>
+                                    <a [routerLink]="['/admin/user-management/', user?.login, 'view']">
+                                        {{user.login}}
+                                    </a>
+                                </td>
+                                <td><span>{{user.firstName}} {{user.lastName}}</span></td>
+                                <td><span>{{user.email}}</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </dd>
             </dl>
 

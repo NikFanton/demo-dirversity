@@ -3,7 +3,8 @@
     "home": {
       "title": "Users",
       "createLabel": "Create a new user",
-      "createOrEditLabel": "Create or edit a user"
+      "createOrEditLabel": "Create or edit a user",
+      "notFound": "No Users found"
     },
     "created": "A new user is created with identifier {{ param }}",
     "updated": "A user is updated with identifier {{ param }}",
@@ -17,6 +18,7 @@
     "login": "Login",
     "firstName": "First name",
     "lastName": "Last name",
+    "name": "Name",
     "email": "Email",
     "activated": "Activated",
     "deactivated": "Deactivated",

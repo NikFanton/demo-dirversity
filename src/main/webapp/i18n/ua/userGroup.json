@@ -14,7 +14,7 @@
         "question": "Ви впевнені, що хочете видалити User Group {{ id }}?"
       },
       "detail": {
-        "title": "User Group"
+        "title": "Група користувачів"
       },
       "name": "Name",
       "creationDate": "Creation Date",
