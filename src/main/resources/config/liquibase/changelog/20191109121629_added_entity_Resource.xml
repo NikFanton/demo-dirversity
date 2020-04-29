@@ -110,4 +110,14 @@
         </loadData>
     </changeSet>
 
+    <changeSet id="20191109121629-2-data" author="nikita" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/resource_topic.csv"
+                  separator=";"
+                  tableName="resource_topic">
+            <column name="topic_id" type="numeric"/>
+            <column name="resource_id" type="numeric"/>
+        </loadData>
+    </changeSet>
+
 </databaseChangeLog>

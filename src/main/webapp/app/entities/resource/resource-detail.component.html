@@ -50,7 +50,7 @@
                     </span>
                 </dd>
                 <div *ngIf="resource.topics.length != 0">
-                    <dt><span *ngIf="resource.topics" jhiTranslate="dirversityApp.resource.topic">Topic</span></dt>
+                    <dt><span *ngIf="resource.topics" jhiTranslate="dirversityApp.resource.topics">Topic</span></dt>
                     <dd>
                     <span *ngFor="let topic of resource.topics; let last = last">
                         <a [routerLink]="['/topic', topic?.id, 'view' ]">{{topic.id}}</a>{{last ? '' : ', '}}

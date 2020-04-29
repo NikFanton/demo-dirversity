@@ -1,6 +1,7 @@
 package com.dirversity.service;
 
 import com.dirversity.domain.Email;
+import com.dirversity.domain.Resource;
 import com.dirversity.domain.User;
 import io.github.jhipster.config.JHipsterProperties;
 import org.slf4j.Logger;
@@ -19,6 +20,7 @@ import javax.mail.internet.MimeMessage;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 

@@ -4,6 +4,16 @@
     <title th:text="#{email.resource.title}">JHipster activation</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}"/>
+    <style>
+        * {
+            color: black;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
 <body>
 <p th:text="#{email.resource.text1}">
@@ -12,12 +22,31 @@
 <p>
     <span th:text="${body}"></span>
 </p>
-<p>
-    <tr th:each="resource: ${resources}">
-        <td th:text="${resource.name}"/>
-        <td th:text="${resource.accessUrl}"/>
-    </tr>
-</p>
+
+<div th:each="resource,iter: ${resources}">
+    <h2><span th:text="#{email.resource.resource}">Resource</span> <span th:text="${iter.index + 1}"></span></h2>
+    <b th:text="#{email.resource.resourceName}">Resource name:</b> <span th:text="${resource.name}"/>
+    <br/>
+    <b th:text="#{email.resource.accessUrl}">Access url:</b> <span th:text="${resource.accessUrl}"/>
+    <br/>
+
+    <div th:if="${#lists.size(resource.topics) > 0}">
+        <b th:text="#{email.resource.topics}">Related topics</b>
+        <table style="width:100%">
+            <tr>
+                <th>Topic</th>
+                <th>Content module</th>
+                <th>Curriculum</th>
+            </tr>
+            <tr th:each="topic: ${resource.topics}">
+                <td th:text="${topic.name}"/>
+                <td th:text="${topic.contentModule?.name}"/>
+                <td th:text="${topic.contentModule?.curriculum?.name}"/>
+            </tr>
+        </table>
+    </div>
+</div>
+
 <p>
     <span th:text="#{email.resource.text2}">Regards, </span>
     <br/>

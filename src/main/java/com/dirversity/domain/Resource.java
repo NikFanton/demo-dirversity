@@ -6,6 +6,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -58,7 +59,7 @@ public class Resource extends AbstractAuditingEntity implements Serializable {
                inverseJoinColumns = @JoinColumn(name = "rules_id", referencedColumnName = "id"))
     private Set<Rule> rules = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "resource_topic",
                joinColumns = @JoinColumn(name = "resource_id", referencedColumnName = "id"),
