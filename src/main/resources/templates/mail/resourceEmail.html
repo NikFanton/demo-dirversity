@@ -20,10 +20,15 @@
     This resources were shared with you.
 </p>
 <p>
+    <span th:text="#{email.resource.sendBy}">Send by</span> <span th:text="${sender.firstName + ' ' + sender.lastName + ' [' + sender.email + ']'}">
+</span>
+</p>
+<p>
     <span th:text="${body}"></span>
 </p>
 
 <div th:each="resource,iter: ${resources}">
+    <hr>
     <h2><span th:text="#{email.resource.resource}">Resource</span> <span th:text="${iter.index + 1}"></span></h2>
     <b th:text="#{email.resource.resourceName}">Resource name:</b> <span th:text="${resource.name}"/>
     <br/>

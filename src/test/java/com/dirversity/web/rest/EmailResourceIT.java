@@ -5,6 +5,7 @@ import com.dirversity.domain.Email;
 import com.dirversity.repository.EmailRepository;
 import com.dirversity.service.EmailService;
 import com.dirversity.service.MailService;
+import com.dirversity.service.UserService;
 import com.dirversity.service.dto.EmailDTO;
 import com.dirversity.service.mapper.EmailMapper;
 import com.dirversity.web.rest.errors.ExceptionTranslator;
@@ -65,6 +66,9 @@ public class EmailResourceIT {
     @Mock
     private MailService mailService;
 
+    @Mock
+    private UserService userService;
+
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
@@ -87,7 +91,7 @@ public class EmailResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final EmailResource emailResource = new EmailResource(emailService, mailService);
+        final EmailResource emailResource = new EmailResource(emailService, mailService, userService);
         this.restEmailMockMvc = MockMvcBuilders.standaloneSetup(emailResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -184,7 +188,7 @@ public class EmailResourceIT {
 
     @SuppressWarnings({"unchecked"})
     public void getAllEmailsWithEagerRelationshipsIsEnabled() throws Exception {
-        EmailResource emailResource = new EmailResource(emailServiceMock, mailService);
+        EmailResource emailResource = new EmailResource(emailServiceMock, mailService, userService);
         when(emailServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
 
         MockMvc restEmailMockMvc = MockMvcBuilders.standaloneSetup(emailResource)
@@ -201,7 +205,7 @@ public class EmailResourceIT {
 
     @SuppressWarnings({"unchecked"})
     public void getAllEmailsWithEagerRelationshipsIsNotEnabled() throws Exception {
-        EmailResource emailResource = new EmailResource(emailServiceMock, mailService);
+        EmailResource emailResource = new EmailResource(emailServiceMock, mailService, userService);
             when(emailServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));
             MockMvc restEmailMockMvc = MockMvcBuilders.standaloneSetup(emailResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)

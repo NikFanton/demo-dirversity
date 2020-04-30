@@ -1,7 +1,9 @@
 package com.dirversity.web.rest;
 
+import com.dirversity.security.SecurityUtils;
 import com.dirversity.service.EmailService;
 import com.dirversity.service.MailService;
+import com.dirversity.service.UserService;
 import com.dirversity.service.dto.EmailDTO;
 import com.dirversity.web.rest.errors.BadRequestAlertException;
 import io.github.jhipster.web.util.HeaderUtil;
@@ -28,6 +30,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 /**
@@ -48,9 +51,12 @@ public class EmailResource {
 
     private final MailService mailService;
 
-    public EmailResource(EmailService emailService, MailService mailService) {
+    private final UserService userService;
+
+    public EmailResource(EmailService emailService, MailService mailService, UserService userService) {
         this.emailService = emailService;
         this.mailService = mailService;
+        this.userService = userService;
     }
 
     /**
@@ -117,9 +123,14 @@ public class EmailResource {
 
     @PostMapping("/emails/{id}/send")
     public void sendResourceEmail(@PathVariable Long id) {
+        Locale locale = Locale.ENGLISH;
         log.debug("REST request to get Email : {}", id);
-        emailService.findOneEmail(id)
-            .ifPresent(mailService::sendResourceEmailToEachUser);
+        SecurityUtils.getCurrentUserLogin()
+            .map(userService::findUserByLogin)
+            .map(Optional::get)
+            .ifPresent(user -> emailService.findOneEmail(id)
+                .ifPresent(email -> mailService.sendResourceEmailToEachUser(email, user, locale))
+            );
     }
 
     /**

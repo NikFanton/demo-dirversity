@@ -108,8 +108,7 @@ public class MailService {
     }
 
     @Async
-    public void sendResourceEmailToEachUser(Email email) {
-        Locale locale = Locale.ENGLISH;
+    public void sendResourceEmailToEachUser(Email email, User sender, Locale locale) {
         String[] toEmails = extractToEmails(email);
         String[] ccEmails = extractCCEmails(email);
 
@@ -117,6 +116,7 @@ public class MailService {
         context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());
         context.setVariable(BODY, email.getBody());
         context.setVariable("resources", email.getResources());
+        context.setVariable("sender", sender);
         String content = templateEngine.process("mail/resourceEmail", context);
         String subject = messageSource.getMessage("email.resource.title", null, locale);
         sendEmail(toEmails, ccEmails, subject, content, false, true);
