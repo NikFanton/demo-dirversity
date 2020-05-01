@@ -1,8 +1,10 @@
 package com.dirversity.service.dto;
+
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * A DTO for the {@link com.dirversity.domain.Email} entity.
@@ -14,6 +16,9 @@ public class EmailDTO implements Serializable {
     private String body;
 
     private String title;
+
+    @Size(min = 2, max = 10)
+    private String langKey;
 
 
     private Set<UserDTO> toUsers = new HashSet<>();
@@ -48,6 +53,14 @@ public class EmailDTO implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getLangKey() {
+        return langKey;
+    }
+
+    public void setLangKey(String langKey) {
+        this.langKey = langKey;
     }
 
     public Set<UserDTO> getToUsers() {
@@ -117,6 +130,7 @@ public class EmailDTO implements Serializable {
             "id=" + getId() +
             ", body='" + getBody() + "'" +
             ", title='" + getTitle() + "'" +
+            ", langKey='" + getLangKey() + "'" +
             "}";
     }
 }

@@ -108,9 +108,10 @@ public class MailService {
     }
 
     @Async
-    public void sendResourceEmailToEachUser(Email email, User sender, Locale locale) {
+    public void sendResourceEmailToEachUser(Email email, User sender) {
         String[] toEmails = extractToEmails(email);
         String[] ccEmails = extractCCEmails(email);
+        Locale locale = Locale.forLanguageTag(email.getLangKey());
 
         Context context = new Context(locale);
         context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());

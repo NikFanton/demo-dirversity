@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -67,7 +68,7 @@ public class EmailResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/emails")
-    public ResponseEntity<EmailDTO> createEmail(@RequestBody EmailDTO emailDTO) throws URISyntaxException {
+    public ResponseEntity<EmailDTO> createEmail(@Valid @RequestBody EmailDTO emailDTO) throws URISyntaxException {
         log.debug("REST request to save Email : {}", emailDTO);
         if (emailDTO.getId() != null) {
             throw new BadRequestAlertException("A new email cannot already have an ID", ENTITY_NAME, "idexists");
@@ -88,7 +89,7 @@ public class EmailResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/emails")
-    public ResponseEntity<EmailDTO> updateEmail(@RequestBody EmailDTO emailDTO) throws URISyntaxException {
+    public ResponseEntity<EmailDTO> updateEmail(@Valid @RequestBody EmailDTO emailDTO) throws URISyntaxException {
         log.debug("REST request to update Email : {}", emailDTO);
         if (emailDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
@@ -123,13 +124,12 @@ public class EmailResource {
 
     @PostMapping("/emails/{id}/send")
     public void sendResourceEmail(@PathVariable Long id) {
-        Locale locale = Locale.ENGLISH;
         log.debug("REST request to get Email : {}", id);
         SecurityUtils.getCurrentUserLogin()
             .map(userService::findUserByLogin)
             .map(Optional::get)
             .ifPresent(user -> emailService.findOneEmail(id)
-                .ifPresent(email -> mailService.sendResourceEmailToEachUser(email, user, locale))
+                .ifPresent(email -> mailService.sendResourceEmailToEachUser(email, user))
             );
     }
 

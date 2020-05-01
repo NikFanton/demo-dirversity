@@ -1,9 +1,18 @@
 package com.dirversity.domain;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.*;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,6 +36,10 @@ public class Email implements Serializable {
 
     @Column(name = "title")
     private String title;
+
+    @Size(min = 2, max = 10)
+    @Column(name = "lang_key", length = 10)
+    private String langKey;
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -96,6 +109,19 @@ public class Email implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getLangKey() {
+        return langKey;
+    }
+
+    public Email langKey(String langKey) {
+        this.langKey = langKey;
+        return this;
+    }
+
+    public void setLangKey(String langKey) {
+        this.langKey = langKey;
     }
 
     public Set<User> getToUsers() {
@@ -206,6 +232,7 @@ public class Email implements Serializable {
             "id=" + getId() +
             ", body='" + getBody() + "'" +
             ", title='" + getTitle() + "'" +
+            ", langKey='" + getLangKey() + "'" +
             "}";
     }
 }

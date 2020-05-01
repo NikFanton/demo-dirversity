@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { JhiAlertService } from 'ng-jhipster';
-import { IEmail, Email } from 'app/shared/model/email.model';
+import { Email, IEmail } from 'app/shared/model/email.model';
 import { EmailService } from './email.service';
 import { IUser } from 'app/core/user/user.model';
 import { UserService } from 'app/core/user/user.service';
@@ -15,6 +15,7 @@ import { IUserGroup } from 'app/shared/model/user-group.model';
 import { UserGroupService } from 'app/entities/user-group/user-group.service';
 import { IResource } from 'app/shared/model/resource.model';
 import { ResourceService } from 'app/entities/resource/resource.service';
+import { JhiLanguageHelper } from 'app/core/language/language.helper';
 
 @Component({
   selector: 'jhi-email-update',
@@ -29,10 +30,13 @@ export class EmailUpdateComponent implements OnInit {
 
   resources: IResource[];
 
+  languages: any[];
+
   editForm = this.fb.group({
     id: [],
     body: [],
     title: [],
+    langKey: [],
     toUsers: [],
     ccUsers: [],
     toUsersGroups: [],
@@ -47,6 +51,7 @@ export class EmailUpdateComponent implements OnInit {
     protected userGroupService: UserGroupService,
     protected resourceService: ResourceService,
     protected activatedRoute: ActivatedRoute,
+    protected languageHelper: JhiLanguageHelper,
     private fb: FormBuilder
   ) {}
 
@@ -76,6 +81,7 @@ export class EmailUpdateComponent implements OnInit {
         map((response: HttpResponse<IResource[]>) => response.body)
       )
       .subscribe((res: IResource[]) => (this.resources = res), (res: HttpErrorResponse) => this.onError(res.message));
+    this.languages = this.languageHelper.getAll();
   }
 
   updateForm(email: IEmail) {
@@ -83,6 +89,7 @@ export class EmailUpdateComponent implements OnInit {
       id: email.id,
       body: email.body,
       title: email.title,
+      langKey: email.langKey,
       toUsers: email.toUsers,
       ccUsers: email.ccUsers,
       toUsersGroups: email.toUsersGroups,
@@ -111,6 +118,7 @@ export class EmailUpdateComponent implements OnInit {
       id: this.editForm.get(['id']).value,
       body: this.editForm.get(['body']).value,
       title: this.editForm.get(['title']).value,
+      langKey: this.editForm.get(['langKey']).value,
       toUsers: this.editForm.get(['toUsers']).value,
       ccUsers: this.editForm.get(['ccUsers']).value,
       toUsersGroups: this.editForm.get(['toUsersGroups']).value,

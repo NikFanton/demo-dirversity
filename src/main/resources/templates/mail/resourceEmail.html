@@ -39,9 +39,9 @@
         <b th:text="#{email.resource.topics}">Related topics</b>
         <table style="width:100%">
             <tr>
-                <th>Topic</th>
-                <th>Content module</th>
-                <th>Curriculum</th>
+                <th th:text="#{email.resource.topic}">Topic</th>
+                <th th:text="#{email.resource.contentModule}">Content module</th>
+                <th th:text="#{email.resource.curriculum}">Curriculum</th>
             </tr>
             <tr th:each="topic: ${resource.topics}">
                 <td th:text="${topic.name}"/>

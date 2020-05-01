@@ -9,7 +9,6 @@ import com.dirversity.service.UserService;
 import com.dirversity.service.dto.EmailDTO;
 import com.dirversity.service.mapper.EmailMapper;
 import com.dirversity.web.rest.errors.ExceptionTranslator;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -32,9 +31,17 @@ import java.util.List;
 import static com.dirversity.web.rest.TestUtil.createFormattingConversionService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * Integration tests for the {@link EmailResource} REST controller.
@@ -47,6 +54,9 @@ public class EmailResourceIT {
 
     private static final String DEFAULT_TITLE = "AAAAAAAAAA";
     private static final String UPDATED_TITLE = "BBBBBBBBBB";
+
+    private static final String DEFAULT_LANG_KEY = "AAAAAAAAAA";
+    private static final String UPDATED_LANG_KEY = "BBBBBBBBBB";
 
     @Autowired
     private EmailRepository emailRepository;
@@ -109,7 +119,8 @@ public class EmailResourceIT {
     public static Email createEntity(EntityManager em) {
         Email email = new Email()
             .body(DEFAULT_BODY)
-            .title(DEFAULT_TITLE);
+            .title(DEFAULT_TITLE)
+            .langKey(DEFAULT_LANG_KEY);
         return email;
     }
     /**
@@ -121,7 +132,8 @@ public class EmailResourceIT {
     public static Email createUpdatedEntity(EntityManager em) {
         Email email = new Email()
             .body(UPDATED_BODY)
-            .title(UPDATED_TITLE);
+            .title(UPDATED_TITLE)
+            .langKey(UPDATED_LANG_KEY);
         return email;
     }
 
@@ -148,6 +160,7 @@ public class EmailResourceIT {
         Email testEmail = emailList.get(emailList.size() - 1);
         assertThat(testEmail.getBody()).isEqualTo(DEFAULT_BODY);
         assertThat(testEmail.getTitle()).isEqualTo(DEFAULT_TITLE);
+        assertThat(testEmail.getLangKey()).isEqualTo(DEFAULT_LANG_KEY);
     }
 
     @Test
@@ -183,7 +196,8 @@ public class EmailResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(email.getId().intValue())))
             .andExpect(jsonPath("$.[*].body").value(hasItem(DEFAULT_BODY)))
-            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)));
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
+            .andExpect(jsonPath("$.[*].langKey").value(hasItem(DEFAULT_LANG_KEY)));
     }
 
     @SuppressWarnings({"unchecked"})
@@ -231,7 +245,8 @@ public class EmailResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(email.getId().intValue()))
             .andExpect(jsonPath("$.body").value(DEFAULT_BODY))
-            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE));
+            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
+            .andExpect(jsonPath("$.langKey").value(DEFAULT_LANG_KEY));
     }
 
     @Test
@@ -256,7 +271,8 @@ public class EmailResourceIT {
         em.detach(updatedEmail);
         updatedEmail
             .body(UPDATED_BODY)
-            .title(UPDATED_TITLE);
+            .title(UPDATED_TITLE)
+            .langKey(UPDATED_LANG_KEY);
         EmailDTO emailDTO = emailMapper.toDto(updatedEmail);
 
         restEmailMockMvc.perform(put("/api/emails")
@@ -270,6 +286,7 @@ public class EmailResourceIT {
         Email testEmail = emailList.get(emailList.size() - 1);
         assertThat(testEmail.getBody()).isEqualTo(UPDATED_BODY);
         assertThat(testEmail.getTitle()).isEqualTo(UPDATED_TITLE);
+        assertThat(testEmail.getLangKey()).isEqualTo(UPDATED_LANG_KEY);
     }
 
     @Test

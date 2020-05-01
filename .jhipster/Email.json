@@ -51,6 +51,16 @@
         {
             "fieldName": "title",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "langKey",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "2",
+            "fieldValidateRulesMaxlength": "10"
         }
     ],
     "changelogDate": "20200427100525",

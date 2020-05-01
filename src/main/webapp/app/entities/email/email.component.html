@@ -21,6 +21,7 @@
             <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="body"><span jhiTranslate="dirversityApp.email.body">Body</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="title"><span jhiTranslate="dirversityApp.email.title">Title</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="langKey"><span jhiTranslate="dirversityApp.email.langKey">Lang Key</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -29,6 +30,7 @@
                 <td><a [routerLink]="['/email', email.id, 'view' ]">{{email.id}}</a></td>
                 <td>{{email.body}}</td>
                 <td>{{email.title}}</td>
+                <td>{{email.langKey}}</td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

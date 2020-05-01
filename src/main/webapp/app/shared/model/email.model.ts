@@ -6,6 +6,7 @@ export interface IEmail {
   id?: number;
   body?: string;
   title?: string;
+  langKey?: string;
   toUsers?: IUser[];
   ccUsers?: IUser[];
   toUsersGroups?: IUserGroup[];
@@ -18,6 +19,7 @@ export class Email implements IEmail {
     public id?: number,
     public body?: string,
     public title?: string,
+    public langKey?: string,
     public toUsers?: IUser[],
     public ccUsers?: IUser[],
     public toUsersGroups?: IUserGroup[],
