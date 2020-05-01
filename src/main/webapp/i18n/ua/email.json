@@ -23,7 +23,8 @@
       "ccUsers": "Cc Users",
       "toUsersGroups": "To Users Groups",
       "ccUserGroups": "Cc User Groups",
-      "resources": "Resources"
+      "resources": "Resources",
+      "sendEmail": "Send email"
     }
   }
 }

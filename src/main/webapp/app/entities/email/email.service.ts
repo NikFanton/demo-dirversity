@@ -19,6 +19,10 @@ export class EmailService {
     return this.http.post<IEmail>(this.resourceUrl, email, { observe: 'response' });
   }
 
+  sendEmail(id: number): Observable<EntityResponseType> {
+    return this.http.post<IEmail>(`${this.resourceUrl}/${id}/send`, null, { observe: 'response' });
+  }
+
   update(email: IEmail): Observable<EntityResponseType> {
     return this.http.put<IEmail>(this.resourceUrl, email, { observe: 'response' });
   }

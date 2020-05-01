@@ -31,7 +31,6 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
 /**
@@ -103,8 +102,7 @@ public class EmailResource {
     /**
      * {@code GET  /emails} : get all the emails.
      *
-
-     * @param pageable the pagination information.
+     * @param pageable  the pagination information.
      * @param eagerload flag to eager load entities from relationships (This is applicable for many-to-many).
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of emails in body.
      */
@@ -123,7 +121,7 @@ public class EmailResource {
 
 
     @PostMapping("/emails/{id}/send")
-    public void sendResourceEmail(@PathVariable Long id) {
+    public ResponseEntity<Object> sendResourceEmail(@PathVariable Long id) {
         log.debug("REST request to get Email : {}", id);
         SecurityUtils.getCurrentUserLogin()
             .map(userService::findUserByLogin)
@@ -131,6 +129,9 @@ public class EmailResource {
             .ifPresent(user -> emailService.findOneEmail(id)
                 .ifPresent(email -> mailService.sendResourceEmailToEachUser(email, user))
             );
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createAlert(applicationName, "dirversityApp.email.sent", id.toString()))
+            .build();
     }
 
     /**

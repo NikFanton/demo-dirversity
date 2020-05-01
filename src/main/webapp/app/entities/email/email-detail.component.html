@@ -4,6 +4,7 @@
             <h2><span jhiTranslate="dirversityApp.email.detail.title">Email</span> {{email.id}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
+            <jhi-alert></jhi-alert>
             <dl class="row-md jh-entity-details">
                 <dt><span jhiTranslate="dirversityApp.email.body">Body</span></dt>
                 <dd>
@@ -59,6 +60,12 @@
                     [routerLink]="['/email', email.id, 'edit']"
                     class="btn btn-primary">
                 <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+
+            <button type="button"
+                    (click)="sendEmail(email.id)"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'envelope'"></fa-icon>&nbsp;<span jhiTranslate="dirversityApp.email.sendEmail">Send Email</span>
             </button>
         </div>
     </div>

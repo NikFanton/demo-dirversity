@@ -8,6 +8,7 @@
         "notFound": "No Emails found"
       },
       "created": "A new Email is created with identifier {{ param }}",
+      "sent": "Email {{ param }} was sent",
       "updated": "A Email is updated with identifier {{ param }}",
       "deleted": "A Email is deleted with identifier {{ param }}",
       "delete": {
@@ -23,7 +24,8 @@
       "ccUsers": "Cc Users",
       "toUsersGroups": "To Users Groups",
       "ccUserGroups": "Cc User Groups",
-      "resources": "Resources"
+      "resources": "Resources",
+      "sendEmail": "Send email"
     }
   }
 }
