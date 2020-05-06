@@ -18,7 +18,7 @@
         "contentModule": "Content Module",
         "topic": "Topic",
         "curriculumTag": "Curriculum Tag",
-        "email": "Email",
+        "email": "Emails",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
