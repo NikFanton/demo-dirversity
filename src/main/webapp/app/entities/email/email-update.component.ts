@@ -40,6 +40,10 @@ export class EmailUpdateComponent implements OnInit {
     title: [],
     langKey: [null, [Validators.minLength(2), Validators.maxLength(10)]],
     shareDateTime: [],
+    createdBy: [null, [Validators.required, Validators.maxLength(50)]],
+    createdDate: [],
+    lastModifiedBy: [null, [Validators.maxLength(50)]],
+    lastModifiedDate: [],
     toUsers: [],
     ccUsers: [],
     toUsersGroups: [],
@@ -94,6 +98,10 @@ export class EmailUpdateComponent implements OnInit {
       title: email.title,
       langKey: email.langKey,
       shareDateTime: email.shareDateTime != null ? email.shareDateTime.format(DATE_TIME_FORMAT) : null,
+      createdBy: email.createdBy,
+      createdDate: email.createdDate != null ? email.createdDate.format(DATE_TIME_FORMAT) : null,
+      lastModifiedBy: email.lastModifiedBy,
+      lastModifiedDate: email.lastModifiedDate != null ? email.lastModifiedDate.format(DATE_TIME_FORMAT) : null,
       toUsers: email.toUsers,
       ccUsers: email.ccUsers,
       toUsersGroups: email.toUsersGroups,
@@ -126,6 +134,14 @@ export class EmailUpdateComponent implements OnInit {
       shareDateTime:
         this.editForm.get(['shareDateTime']).value != null
           ? moment(this.editForm.get(['shareDateTime']).value, DATE_TIME_FORMAT)
+          : undefined,
+      createdBy: this.editForm.get(['createdBy']).value,
+      createdDate:
+        this.editForm.get(['createdDate']).value != null ? moment(this.editForm.get(['createdDate']).value, DATE_TIME_FORMAT) : undefined,
+      lastModifiedBy: this.editForm.get(['lastModifiedBy']).value,
+      lastModifiedDate:
+        this.editForm.get(['lastModifiedDate']).value != null
+          ? moment(this.editForm.get(['lastModifiedDate']).value, DATE_TIME_FORMAT)
           : undefined,
       toUsers: this.editForm.get(['toUsers']).value,
       ccUsers: this.editForm.get(['ccUsers']).value,

@@ -132,7 +132,7 @@ public class MailService {
     @Scheduled(fixedRate = 5000)
     public void sendReadyToSendMails() {
         List<Email> emailReadyToBeSentNow = emailService.findEmailReadyToBeSentNow(5000);
-        emailReadyToBeSentNow.forEach(email -> userService.findUserByLogin("nikita")
+        emailReadyToBeSentNow.forEach(email -> userService.findUserByLogin(email.getCreatedBy())
                 .ifPresent(user -> sendResourceEmailToEachUser(email, user)));
     }
 

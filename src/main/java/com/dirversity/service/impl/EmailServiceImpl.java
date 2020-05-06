@@ -1,13 +1,12 @@
 package com.dirversity.service.impl;
 
-import com.dirversity.service.EmailService;
 import com.dirversity.domain.Email;
 import com.dirversity.repository.EmailRepository;
+import com.dirversity.service.EmailService;
 import com.dirversity.service.dto.EmailDTO;
 import com.dirversity.service.mapper.EmailMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -17,10 +16,6 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalField;
-import java.time.temporal.TemporalUnit;
 import java.util.List;
 import java.util.Optional;
 
@@ -79,7 +74,6 @@ public class EmailServiceImpl implements EmailService {
         return emailRepository.findAllWithEagerRelationships(pageable).map(emailMapper::toDto);
     }
 
-
     /**
      * Get one email by id.
      *
@@ -94,6 +88,12 @@ public class EmailServiceImpl implements EmailService {
             .map(emailMapper::toDto);
     }
 
+    /**
+     * Get all the emails ready to be sent
+     *
+     * @param rangeInMillis the range in milliseconds.
+     * @return the list of entities.
+     */
     @Override
     public List<Email> findEmailReadyToBeSentNow(int rangeInMillis) {
         Instant now = LocalDateTime.now(ZoneId.of("UTC")).toInstant(ZoneOffset.UTC);

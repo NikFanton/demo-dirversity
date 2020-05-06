@@ -23,6 +23,8 @@
             <th scope="col"  jhiSortBy="title"><span jhiTranslate="dirversityApp.email.title">Title</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="langKey"><span jhiTranslate="dirversityApp.email.langKey">Lang Key</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="shareDateTime"><span jhiTranslate="dirversityApp.email.shareDateTime">Share Date Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="createdBy"><span jhiTranslate="dirversityApp.email.createdBy">Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="createdDate"><span jhiTranslate="dirversityApp.email.createdDate">Created Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
             </thead>
@@ -33,6 +35,8 @@
                 <td>{{email.title}}</td>
                 <td>{{email.langKey}}</td>
                 <td>{{email.shareDateTime | date:'medium'}}</td>
+                <td>{{email.createdBy}}</td>
+                <td>{{email.createdDate | date:'medium'}}</td>
                 <td class="text-right">
                     <div class="btn-group">
                         <button type="submit"

@@ -22,6 +22,22 @@
                 <dd>
                     <span>{{email.shareDateTime}}</span>
                 </dd>
+                <dt><span jhiTranslate="dirversityApp.email.createdBy">Created By</span></dt>
+                <dd>
+                    <span>{{email.createdBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.email.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{email.createdDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.email.lastModifiedBy">Last Modified By</span></dt>
+                <dd>
+                    <span>{{email.lastModifiedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.email.lastModifiedDate">Last Modified Date</span></dt>
+                <dd>
+                    <span>{{email.lastModifiedDate}}</span>
+                </dd>
                 <dt><span jhiTranslate="dirversityApp.email.toUsers">To Users</span></dt>
                 <dd>
                     <span *ngFor="let toUsers of email.toUsers; let last = last">

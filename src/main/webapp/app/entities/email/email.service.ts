@@ -55,7 +55,9 @@ export class EmailService {
 
   protected convertDateFromClient(email: IEmail): IEmail {
     const copy: IEmail = Object.assign({}, email, {
-      shareDateTime: email.shareDateTime != null && email.shareDateTime.isValid() ? email.shareDateTime.toJSON() : null
+      shareDateTime: email.shareDateTime != null && email.shareDateTime.isValid() ? email.shareDateTime.toJSON() : null,
+      createdDate: email.createdDate != null && email.createdDate.isValid() ? email.createdDate.toJSON() : null,
+      lastModifiedDate: email.lastModifiedDate != null && email.lastModifiedDate.isValid() ? email.lastModifiedDate.toJSON() : null
     });
     return copy;
   }
@@ -63,6 +65,8 @@ export class EmailService {
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
       res.body.shareDateTime = res.body.shareDateTime != null ? moment(res.body.shareDateTime) : null;
+      res.body.createdDate = res.body.createdDate != null ? moment(res.body.createdDate) : null;
+      res.body.lastModifiedDate = res.body.lastModifiedDate != null ? moment(res.body.lastModifiedDate) : null;
     }
     return res;
   }
@@ -71,6 +75,8 @@ export class EmailService {
     if (res.body) {
       res.body.forEach((email: IEmail) => {
         email.shareDateTime = email.shareDateTime != null ? moment(email.shareDateTime) : null;
+        email.createdDate = email.createdDate != null ? moment(email.createdDate) : null;
+        email.lastModifiedDate = email.lastModifiedDate != null ? moment(email.lastModifiedDate) : null;
       });
     }
     return res;

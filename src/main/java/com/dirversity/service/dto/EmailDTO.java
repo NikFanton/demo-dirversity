@@ -1,5 +1,6 @@
 package com.dirversity.service.dto;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.Instant;
@@ -22,6 +23,17 @@ public class EmailDTO implements Serializable {
     private String langKey;
 
     private Instant shareDateTime;
+
+    @NotNull
+    @Size(max = 50)
+    private String createdBy;
+
+    private Instant createdDate;
+
+    @Size(max = 50)
+    private String lastModifiedBy;
+
+    private Instant lastModifiedDate;
 
 
     private Set<UserDTO> toUsers = new HashSet<>();
@@ -72,6 +84,38 @@ public class EmailDTO implements Serializable {
 
     public void setShareDateTime(Instant shareDateTime) {
         this.shareDateTime = shareDateTime;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Instant getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Instant createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getLastModifiedBy() {
+        return lastModifiedBy;
+    }
+
+    public void setLastModifiedBy(String lastModifiedBy) {
+        this.lastModifiedBy = lastModifiedBy;
+    }
+
+    public Instant getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(Instant lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     public Set<UserDTO> getToUsers() {
@@ -143,6 +187,10 @@ public class EmailDTO implements Serializable {
             ", title='" + getTitle() + "'" +
             ", langKey='" + getLangKey() + "'" +
             ", shareDateTime='" + getShareDateTime() + "'" +
+            ", createdBy='" + getCreatedBy() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", lastModifiedBy='" + getLastModifiedBy() + "'" +
+            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             "}";
     }
 }

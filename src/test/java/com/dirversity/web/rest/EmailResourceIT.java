@@ -63,6 +63,18 @@ public class EmailResourceIT {
     private static final Instant DEFAULT_SHARE_DATE_TIME = Instant.ofEpochMilli(0L);
     private static final Instant UPDATED_SHARE_DATE_TIME = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
+    private static final String DEFAULT_CREATED_BY = "AAAAAAAAAA";
+    private static final String UPDATED_CREATED_BY = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_CREATED_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
+    private static final String DEFAULT_LAST_MODIFIED_BY = "AAAAAAAAAA";
+    private static final String UPDATED_LAST_MODIFIED_BY = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_LAST_MODIFIED_DATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_LAST_MODIFIED_DATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+
     @Autowired
     private EmailRepository emailRepository;
 
@@ -126,7 +138,11 @@ public class EmailResourceIT {
             .body(DEFAULT_BODY)
             .title(DEFAULT_TITLE)
             .langKey(DEFAULT_LANG_KEY)
-            .shareDateTime(DEFAULT_SHARE_DATE_TIME);
+            .shareDateTime(DEFAULT_SHARE_DATE_TIME)
+            .createdBy(DEFAULT_CREATED_BY)
+            .createdDate(DEFAULT_CREATED_DATE)
+            .lastModifiedBy(DEFAULT_LAST_MODIFIED_BY)
+            .lastModifiedDate(DEFAULT_LAST_MODIFIED_DATE);
         return email;
     }
     /**
@@ -140,7 +156,11 @@ public class EmailResourceIT {
             .body(UPDATED_BODY)
             .title(UPDATED_TITLE)
             .langKey(UPDATED_LANG_KEY)
-            .shareDateTime(UPDATED_SHARE_DATE_TIME);
+            .shareDateTime(UPDATED_SHARE_DATE_TIME)
+            .createdBy(UPDATED_CREATED_BY)
+            .createdDate(UPDATED_CREATED_DATE)
+            .lastModifiedBy(UPDATED_LAST_MODIFIED_BY)
+            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
         return email;
     }
 
@@ -169,6 +189,10 @@ public class EmailResourceIT {
         assertThat(testEmail.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testEmail.getLangKey()).isEqualTo(DEFAULT_LANG_KEY);
         assertThat(testEmail.getShareDateTime()).isEqualTo(DEFAULT_SHARE_DATE_TIME);
+        assertThat(testEmail.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
+        assertThat(testEmail.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
+        assertThat(testEmail.getLastModifiedBy()).isEqualTo(DEFAULT_LAST_MODIFIED_BY);
+        assertThat(testEmail.getLastModifiedDate()).isEqualTo(DEFAULT_LAST_MODIFIED_DATE);
     }
 
     @Test
@@ -194,6 +218,25 @@ public class EmailResourceIT {
 
     @Test
     @Transactional
+    public void checkCreatedByIsRequired() throws Exception {
+        int databaseSizeBeforeTest = emailRepository.findAll().size();
+        // set the field null
+        email.setCreatedBy(null);
+
+        // Create the Email, which fails.
+        EmailDTO emailDTO = emailMapper.toDto(email);
+
+        restEmailMockMvc.perform(post("/api/emails")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(emailDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Email> emailList = emailRepository.findAll();
+        assertThat(emailList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllEmails() throws Exception {
         // Initialize the database
         emailRepository.saveAndFlush(email);
@@ -206,7 +249,11 @@ public class EmailResourceIT {
             .andExpect(jsonPath("$.[*].body").value(hasItem(DEFAULT_BODY)))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].langKey").value(hasItem(DEFAULT_LANG_KEY)))
-            .andExpect(jsonPath("$.[*].shareDateTime").value(hasItem(DEFAULT_SHARE_DATE_TIME.toString())));
+            .andExpect(jsonPath("$.[*].shareDateTime").value(hasItem(DEFAULT_SHARE_DATE_TIME.toString())))
+            .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY)))
+            .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
+            .andExpect(jsonPath("$.[*].lastModifiedBy").value(hasItem(DEFAULT_LAST_MODIFIED_BY)))
+            .andExpect(jsonPath("$.[*].lastModifiedDate").value(hasItem(DEFAULT_LAST_MODIFIED_DATE.toString())));
     }
 
     @SuppressWarnings({"unchecked"})
@@ -256,7 +303,11 @@ public class EmailResourceIT {
             .andExpect(jsonPath("$.body").value(DEFAULT_BODY))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.langKey").value(DEFAULT_LANG_KEY))
-            .andExpect(jsonPath("$.shareDateTime").value(DEFAULT_SHARE_DATE_TIME.toString()));
+            .andExpect(jsonPath("$.shareDateTime").value(DEFAULT_SHARE_DATE_TIME.toString()))
+            .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY))
+            .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
+            .andExpect(jsonPath("$.lastModifiedBy").value(DEFAULT_LAST_MODIFIED_BY))
+            .andExpect(jsonPath("$.lastModifiedDate").value(DEFAULT_LAST_MODIFIED_DATE.toString()));
     }
 
     @Test
@@ -283,7 +334,11 @@ public class EmailResourceIT {
             .body(UPDATED_BODY)
             .title(UPDATED_TITLE)
             .langKey(UPDATED_LANG_KEY)
-            .shareDateTime(UPDATED_SHARE_DATE_TIME);
+            .shareDateTime(UPDATED_SHARE_DATE_TIME)
+            .createdBy(UPDATED_CREATED_BY)
+            .createdDate(UPDATED_CREATED_DATE)
+            .lastModifiedBy(UPDATED_LAST_MODIFIED_BY)
+            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
         EmailDTO emailDTO = emailMapper.toDto(updatedEmail);
 
         restEmailMockMvc.perform(put("/api/emails")
@@ -299,6 +354,10 @@ public class EmailResourceIT {
         assertThat(testEmail.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testEmail.getLangKey()).isEqualTo(UPDATED_LANG_KEY);
         assertThat(testEmail.getShareDateTime()).isEqualTo(UPDATED_SHARE_DATE_TIME);
+        assertThat(testEmail.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
+        assertThat(testEmail.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);
+        assertThat(testEmail.getLastModifiedBy()).isEqualTo(UPDATED_LAST_MODIFIED_BY);
+        assertThat(testEmail.getLastModifiedDate()).isEqualTo(UPDATED_LAST_MODIFIED_DATE);
     }
 
     @Test

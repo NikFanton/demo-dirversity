@@ -9,6 +9,10 @@ export interface IEmail {
   title?: string;
   langKey?: string;
   shareDateTime?: Moment;
+  createdBy?: string;
+  createdDate?: Moment;
+  lastModifiedBy?: string;
+  lastModifiedDate?: Moment;
   toUsers?: IUser[];
   ccUsers?: IUser[];
   toUsersGroups?: IUserGroup[];
@@ -23,6 +27,10 @@ export class Email implements IEmail {
     public title?: string,
     public langKey?: string,
     public shareDateTime?: Moment,
+    public createdBy?: string,
+    public createdDate?: Moment,
+    public lastModifiedBy?: string,
+    public lastModifiedDate?: Moment,
     public toUsers?: IUser[],
     public ccUsers?: IUser[],
     public toUsersGroups?: IUserGroup[],

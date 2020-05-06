@@ -24,14 +24,16 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new Email(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate);
+      elemDefault = new Email(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, 'AAAAAAA', currentDate, 'AAAAAAA', currentDate);
     });
 
     describe('Service methods', () => {
       it('should find an element', () => {
         const returnedFromService = Object.assign(
           {
-            shareDateTime: currentDate.format(DATE_TIME_FORMAT)
+            shareDateTime: currentDate.format(DATE_TIME_FORMAT),
+            createdDate: currentDate.format(DATE_TIME_FORMAT),
+            lastModifiedDate: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
@@ -49,13 +51,17 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             id: 0,
-            shareDateTime: currentDate.format(DATE_TIME_FORMAT)
+            shareDateTime: currentDate.format(DATE_TIME_FORMAT),
+            createdDate: currentDate.format(DATE_TIME_FORMAT),
+            lastModifiedDate: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
         const expected = Object.assign(
           {
-            shareDateTime: currentDate
+            shareDateTime: currentDate,
+            createdDate: currentDate,
+            lastModifiedDate: currentDate
           },
           returnedFromService
         );
@@ -74,14 +80,20 @@ describe('Service Tests', () => {
             body: 'BBBBBB',
             title: 'BBBBBB',
             langKey: 'BBBBBB',
-            shareDateTime: currentDate.format(DATE_TIME_FORMAT)
+            shareDateTime: currentDate.format(DATE_TIME_FORMAT),
+            createdBy: 'BBBBBB',
+            createdDate: currentDate.format(DATE_TIME_FORMAT),
+            lastModifiedBy: 'BBBBBB',
+            lastModifiedDate: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
 
         const expected = Object.assign(
           {
-            shareDateTime: currentDate
+            shareDateTime: currentDate,
+            createdDate: currentDate,
+            lastModifiedDate: currentDate
           },
           returnedFromService
         );
@@ -100,13 +112,19 @@ describe('Service Tests', () => {
             body: 'BBBBBB',
             title: 'BBBBBB',
             langKey: 'BBBBBB',
-            shareDateTime: currentDate.format(DATE_TIME_FORMAT)
+            shareDateTime: currentDate.format(DATE_TIME_FORMAT),
+            createdBy: 'BBBBBB',
+            createdDate: currentDate.format(DATE_TIME_FORMAT),
+            lastModifiedBy: 'BBBBBB',
+            lastModifiedDate: currentDate.format(DATE_TIME_FORMAT)
           },
           elemDefault
         );
         const expected = Object.assign(
           {
-            shareDateTime: currentDate
+            shareDateTime: currentDate,
+            createdDate: currentDate,
+            lastModifiedDate: currentDate
           },
           returnedFromService
         );
