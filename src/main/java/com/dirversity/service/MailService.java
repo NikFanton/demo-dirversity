@@ -1,8 +1,8 @@
 package com.dirversity.service;
 
 import com.dirversity.domain.Email;
-import com.dirversity.domain.Resource;
 import com.dirversity.domain.User;
+import com.dirversity.security.SecurityUtils;
 import io.github.jhipster.config.JHipsterProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +11,7 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring5.SpringTemplateEngine;
@@ -19,12 +20,9 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
-import java.util.Optional;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import static net.logstash.logback.encoder.org.apache.commons.lang3.ArrayUtils.toArray;
 
 /**
  * Service for sending emails.
@@ -49,13 +47,19 @@ public class MailService {
 
     private final SpringTemplateEngine templateEngine;
 
+    private final EmailService emailService;
+
+    private final UserService userService;
+
     public MailService(JHipsterProperties jHipsterProperties, JavaMailSender javaMailSender,
-                       MessageSource messageSource, SpringTemplateEngine templateEngine) {
+                       MessageSource messageSource, SpringTemplateEngine templateEngine, EmailService emailService, UserService userService) {
 
         this.jHipsterProperties = jHipsterProperties;
         this.javaMailSender = javaMailSender;
         this.messageSource = messageSource;
         this.templateEngine = templateEngine;
+        this.emailService = emailService;
+        this.userService = userService;
     }
 
     @Async
@@ -68,6 +72,7 @@ public class MailService {
         try {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage, isMultipart, StandardCharsets.UTF_8.name());
             message.setTo(to);
+            message.setCc(cc);
             message.setFrom(jHipsterProperties.getMail().getFrom());
             message.setSubject(subject);
             message.setText(content, isHtml);
@@ -121,6 +126,14 @@ public class MailService {
         String content = templateEngine.process("mail/resourceEmail", context);
         String subject = messageSource.getMessage("email.resource.title", null, locale);
         sendEmail(toEmails, ccEmails, subject, content, false, true);
+    }
+
+    @Async
+    @Scheduled(fixedRate = 5000)
+    public void sendReadyToSendMails() {
+        List<Email> emailReadyToBeSentNow = emailService.findEmailReadyToBeSentNow(5000);
+        emailReadyToBeSentNow.forEach(email -> userService.findUserByLogin("nikita")
+                .ifPresent(user -> sendResourceEmailToEachUser(email, user)));
     }
 
     private String[] extractToEmails(Email email) {

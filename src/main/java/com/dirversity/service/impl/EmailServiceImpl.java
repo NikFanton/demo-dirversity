@@ -13,6 +13,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
+import java.time.temporal.TemporalField;
+import java.time.temporal.TemporalUnit;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -83,6 +92,12 @@ public class EmailServiceImpl implements EmailService {
         log.debug("Request to get Email : {}", id);
         return emailRepository.findOneWithEagerRelationships(id)
             .map(emailMapper::toDto);
+    }
+
+    @Override
+    public List<Email> findEmailReadyToBeSentNow(int rangeInMillis) {
+        Instant now = LocalDateTime.now(ZoneId.of("UTC")).toInstant(ZoneOffset.UTC);
+        return emailRepository.findAllPagesReadyToBeSent(now.minusMillis(rangeInMillis), now.plusMillis(rangeInMillis));
     }
 
     /**

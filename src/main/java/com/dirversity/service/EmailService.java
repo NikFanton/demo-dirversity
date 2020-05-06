@@ -6,6 +6,8 @@ import com.dirversity.service.dto.EmailDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.time.Instant;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -43,6 +45,14 @@ public interface EmailService {
      * @return the entity.
      */
     Optional<EmailDTO> findOne(Long id);
+
+    /**
+     * Get all the emails ready to be sent based on {@link com.dirversity.domain.Email#shareDateTime}.
+     *
+     * @param rangeInMillis the range in milliseconds.
+     * @return the list of entities.
+     */
+    List<Email> findEmailReadyToBeSentNow(int rangeInMillis);
 
     /**
      * Get the "id" email.
