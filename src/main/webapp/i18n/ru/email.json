@@ -19,6 +19,7 @@
       "body": "Body",
       "title": "Title",
       "langKey": "Language",
+      "shareDateTime": "Share Date Time",
       "toUsers": "To Users",
       "ccUsers": "Cc Users",
       "toUsersGroups": "To Users Groups",

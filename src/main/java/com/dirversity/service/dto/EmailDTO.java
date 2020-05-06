@@ -2,6 +2,7 @@ package com.dirversity.service.dto;
 
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -19,6 +20,8 @@ public class EmailDTO implements Serializable {
 
     @Size(min = 2, max = 10)
     private String langKey;
+
+    private Instant shareDateTime;
 
 
     private Set<UserDTO> toUsers = new HashSet<>();
@@ -61,6 +64,14 @@ public class EmailDTO implements Serializable {
 
     public void setLangKey(String langKey) {
         this.langKey = langKey;
+    }
+
+    public Instant getShareDateTime() {
+        return shareDateTime;
+    }
+
+    public void setShareDateTime(Instant shareDateTime) {
+        this.shareDateTime = shareDateTime;
     }
 
     public Set<UserDTO> getToUsers() {
@@ -131,6 +142,7 @@ public class EmailDTO implements Serializable {
             ", body='" + getBody() + "'" +
             ", title='" + getTitle() + "'" +
             ", langKey='" + getLangKey() + "'" +
+            ", shareDateTime='" + getShareDateTime() + "'" +
             "}";
     }
 }

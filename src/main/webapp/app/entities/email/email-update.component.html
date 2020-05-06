@@ -19,27 +19,20 @@
                     <input type="text" class="form-control" name="title" id="field_title"
                            formControlName="title"/>
                 </div>
-<!--                <div class="form-group">-->
-<!--                    <label class="form-control-label" jhiTranslate="dirversityApp.email.langKey" for="field_langKey">Lang Key</label>-->
-<!--                    <input type="text" class="form-control" name="langKey" id="field_langKey"-->
-<!--                           formControlName="langKey"/>-->
-<!--                    <div *ngIf="editForm.get('langKey').invalid && (editForm.get('langKey').dirty || editForm.get('langKey').touched)">-->
-<!--                        <small class="form-text text-danger"-->
-<!--                               *ngIf="editForm.get('langKey').errors.minlength" jhiTranslate="entity.validation.minlength" [translateValues]="{ min: 2 }">-->
-<!--                        This field is required to be at least 2 characters.-->
-<!--                        </small>-->
-<!--                        <small class="form-text text-danger"-->
-<!--                               *ngIf="editForm.get('langKey').errors.maxlength" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: 10 }">-->
-<!--                        This field cannot be longer than 10 characters.-->
-<!--                        </small>-->
-<!--                    </div>-->
-<!--                </div>-->
-
                 <div class="form-group" *ngIf="languages && languages.length > 0">
                     <label jhiTranslate="userManagement.langKey">Lang Key</label>
                     <select class="form-control" id="langKey" name="langKey" formControlName="langKey">
-                        <option *ngFor="let language of languages" [value]="language">{{language | findLanguageFromKey}}</option>
+                        <option *ngFor="let language of languages"
+                                [value]="language">{{language | findLanguageFromKey}}</option>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dirversityApp.email.shareDateTime"
+                           for="field_shareDateTime">Share Date Time</label>
+                    <div class="d-flex">
+                        <input id="field_shareDateTime" type="datetime-local" class="form-control" name="shareDateTime"
+                               formControlName="shareDateTime" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
                 </div>
 
                 <div class="form-group">

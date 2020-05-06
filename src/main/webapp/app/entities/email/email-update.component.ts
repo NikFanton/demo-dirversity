@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+import * as moment from 'moment';
+import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { Email, IEmail } from 'app/shared/model/email.model';
 import { EmailService } from './email.service';
@@ -36,7 +38,8 @@ export class EmailUpdateComponent implements OnInit {
     id: [],
     body: [],
     title: [],
-    langKey: [],
+    langKey: [null, [Validators.minLength(2), Validators.maxLength(10)]],
+    shareDateTime: [],
     toUsers: [],
     ccUsers: [],
     toUsersGroups: [],
@@ -90,6 +93,7 @@ export class EmailUpdateComponent implements OnInit {
       body: email.body,
       title: email.title,
       langKey: email.langKey,
+      shareDateTime: email.shareDateTime != null ? email.shareDateTime.format(DATE_TIME_FORMAT) : null,
       toUsers: email.toUsers,
       ccUsers: email.ccUsers,
       toUsersGroups: email.toUsersGroups,
@@ -119,6 +123,10 @@ export class EmailUpdateComponent implements OnInit {
       body: this.editForm.get(['body']).value,
       title: this.editForm.get(['title']).value,
       langKey: this.editForm.get(['langKey']).value,
+      shareDateTime:
+        this.editForm.get(['shareDateTime']).value != null
+          ? moment(this.editForm.get(['shareDateTime']).value, DATE_TIME_FORMAT)
+          : undefined,
       toUsers: this.editForm.get(['toUsers']).value,
       ccUsers: this.editForm.get(['ccUsers']).value,
       toUsersGroups: this.editForm.get(['toUsersGroups']).value,

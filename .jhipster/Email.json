@@ -61,6 +61,10 @@
             ],
             "fieldValidateRulesMinlength": "2",
             "fieldValidateRulesMaxlength": "10"
+        },
+        {
+            "fieldName": "shareDateTime",
+            "fieldType": "Instant"
         }
     ],
     "changelogDate": "20200427100525",

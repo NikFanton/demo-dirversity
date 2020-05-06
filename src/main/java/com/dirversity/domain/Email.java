@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -40,6 +41,9 @@ public class Email implements Serializable {
     @Size(min = 2, max = 10)
     @Column(name = "lang_key", length = 10)
     private String langKey;
+
+    @Column(name = "share_date_time")
+    private Instant shareDateTime;
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -122,6 +126,19 @@ public class Email implements Serializable {
 
     public void setLangKey(String langKey) {
         this.langKey = langKey;
+    }
+
+    public Instant getShareDateTime() {
+        return shareDateTime;
+    }
+
+    public Email shareDateTime(Instant shareDateTime) {
+        this.shareDateTime = shareDateTime;
+        return this;
+    }
+
+    public void setShareDateTime(Instant shareDateTime) {
+        this.shareDateTime = shareDateTime;
     }
 
     public Set<User> getToUsers() {
@@ -233,6 +250,7 @@ public class Email implements Serializable {
             ", body='" + getBody() + "'" +
             ", title='" + getTitle() + "'" +
             ", langKey='" + getLangKey() + "'" +
+            ", shareDateTime='" + getShareDateTime() + "'" +
             "}";
     }
 }

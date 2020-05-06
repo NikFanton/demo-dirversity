@@ -18,6 +18,10 @@
                 <dd>
                     <span>{{email.langKey}}</span>
                 </dd>
+                <dt><span jhiTranslate="dirversityApp.email.shareDateTime">Share Date Time</span></dt>
+                <dd>
+                    <span>{{email.shareDateTime}}</span>
+                </dd>
                 <dt><span jhiTranslate="dirversityApp.email.toUsers">To Users</span></dt>
                 <dd>
                     <span *ngFor="let toUsers of email.toUsers; let last = last">

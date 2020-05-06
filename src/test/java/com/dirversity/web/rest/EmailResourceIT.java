@@ -25,6 +25,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
 import javax.persistence.EntityManager;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +59,9 @@ public class EmailResourceIT {
 
     private static final String DEFAULT_LANG_KEY = "AAAAAAAAAA";
     private static final String UPDATED_LANG_KEY = "BBBBBBBBBB";
+
+    private static final Instant DEFAULT_SHARE_DATE_TIME = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_SHARE_DATE_TIME = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     @Autowired
     private EmailRepository emailRepository;
@@ -120,7 +125,8 @@ public class EmailResourceIT {
         Email email = new Email()
             .body(DEFAULT_BODY)
             .title(DEFAULT_TITLE)
-            .langKey(DEFAULT_LANG_KEY);
+            .langKey(DEFAULT_LANG_KEY)
+            .shareDateTime(DEFAULT_SHARE_DATE_TIME);
         return email;
     }
     /**
@@ -133,7 +139,8 @@ public class EmailResourceIT {
         Email email = new Email()
             .body(UPDATED_BODY)
             .title(UPDATED_TITLE)
-            .langKey(UPDATED_LANG_KEY);
+            .langKey(UPDATED_LANG_KEY)
+            .shareDateTime(UPDATED_SHARE_DATE_TIME);
         return email;
     }
 
@@ -161,6 +168,7 @@ public class EmailResourceIT {
         assertThat(testEmail.getBody()).isEqualTo(DEFAULT_BODY);
         assertThat(testEmail.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testEmail.getLangKey()).isEqualTo(DEFAULT_LANG_KEY);
+        assertThat(testEmail.getShareDateTime()).isEqualTo(DEFAULT_SHARE_DATE_TIME);
     }
 
     @Test
@@ -197,7 +205,8 @@ public class EmailResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(email.getId().intValue())))
             .andExpect(jsonPath("$.[*].body").value(hasItem(DEFAULT_BODY)))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
-            .andExpect(jsonPath("$.[*].langKey").value(hasItem(DEFAULT_LANG_KEY)));
+            .andExpect(jsonPath("$.[*].langKey").value(hasItem(DEFAULT_LANG_KEY)))
+            .andExpect(jsonPath("$.[*].shareDateTime").value(hasItem(DEFAULT_SHARE_DATE_TIME.toString())));
     }
 
     @SuppressWarnings({"unchecked"})
@@ -246,7 +255,8 @@ public class EmailResourceIT {
             .andExpect(jsonPath("$.id").value(email.getId().intValue()))
             .andExpect(jsonPath("$.body").value(DEFAULT_BODY))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
-            .andExpect(jsonPath("$.langKey").value(DEFAULT_LANG_KEY));
+            .andExpect(jsonPath("$.langKey").value(DEFAULT_LANG_KEY))
+            .andExpect(jsonPath("$.shareDateTime").value(DEFAULT_SHARE_DATE_TIME.toString()));
     }
 
     @Test
@@ -272,7 +282,8 @@ public class EmailResourceIT {
         updatedEmail
             .body(UPDATED_BODY)
             .title(UPDATED_TITLE)
-            .langKey(UPDATED_LANG_KEY);
+            .langKey(UPDATED_LANG_KEY)
+            .shareDateTime(UPDATED_SHARE_DATE_TIME);
         EmailDTO emailDTO = emailMapper.toDto(updatedEmail);
 
         restEmailMockMvc.perform(put("/api/emails")
@@ -287,6 +298,7 @@ public class EmailResourceIT {
         assertThat(testEmail.getBody()).isEqualTo(UPDATED_BODY);
         assertThat(testEmail.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testEmail.getLangKey()).isEqualTo(UPDATED_LANG_KEY);
+        assertThat(testEmail.getShareDateTime()).isEqualTo(UPDATED_SHARE_DATE_TIME);
     }
 
     @Test
