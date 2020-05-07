@@ -37,13 +37,6 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label jhiTranslate="dirversityApp.resource.rules" for="field_rules">Rules</label>
-                    <select class="form-control" id="field_rules" multiple name="rules" formControlName="rules">
-                        <option [ngValue]="getSelected(editForm.get('rules').value, ruleOption)"
-                                *ngFor="let ruleOption of rules; trackBy: trackRuleById">{{ruleOption.name}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="dirversityApp.resource.curriculum"
                            for="field_curriculum">Curriculum</label>
                     <select class="form-control" id="field_curriculum" name="curriculum" formControlName="curriculums"
@@ -65,7 +58,7 @@
                     </select>
                 </div>
                 <div class="form-group" [hidden]="this.editForm.get(['contentModules']).value == null || this.editForm.get(['curriculums']).value == null">
-                    <label jhiTranslate="dirversityApp.resource.topics" for="field_rules">Topics</label>
+                    <label jhiTranslate="dirversityApp.resource.topics" for="field_topic">Topics</label>
                     <select class="form-control" id="field_topic" multiple name="topics" formControlName="topics">
                         <option [ngValue]="getSelected(editForm.get('topics').value, topicOption)"
                                 *ngFor="let topicOption of topics; trackBy: trackRuleById">{{topicOption.name}}</option>
