@@ -43,12 +43,6 @@
                         <a [routerLink]="['/resource-type', resourceType?.id, 'view' ]">{{resourceType.name}}</a>{{last ? '' : ', '}}
                     </span>
                 </dd>
-                <dt><span jhiTranslate="dirversityApp.resource.rules">Rules</span></dt>
-                <dd>
-                    <span *ngFor="let rules of resource.rules; let last = last">
-                        <a [routerLink]="['/rule', rules?.id, 'view' ]">{{rules.name}}</a>{{last ? '' : ', '}}
-                    </span>
-                </dd>
                 <div *ngIf="resource.topics.length != 0">
                     <dt><span *ngIf="resource.topics" jhiTranslate="dirversityApp.resource.topics">Topic</span></dt>
                     <dd>
