@@ -2,7 +2,6 @@ package com.dirversity.service.dto;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.Objects;
 
@@ -19,6 +18,12 @@ public class CurriculumDTO implements Serializable {
     private String description;
 
     private String explanatoryNote;
+
+    @Min(value = 0)
+    private Integer year;
+
+    @Min(value = 0)
+    private Integer totalHours;
 
 
     private Long originFileId;
@@ -61,6 +66,22 @@ public class CurriculumDTO implements Serializable {
 
     public void setExplanatoryNote(String explanatoryNote) {
         this.explanatoryNote = explanatoryNote;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Integer getTotalHours() {
+        return totalHours;
+    }
+
+    public void setTotalHours(Integer totalHours) {
+        this.totalHours = totalHours;
     }
 
     public Long getOriginFileId() {
@@ -131,6 +152,8 @@ public class CurriculumDTO implements Serializable {
             ", name='" + getName() + "'" +
             ", description='" + getDescription() + "'" +
             ", explanatoryNote='" + getExplanatoryNote() + "'" +
+            ", year=" + getYear() +
+            ", totalHours=" + getTotalHours() +
             ", originFile=" + getOriginFileId() +
             ", originFile='" + getOriginFileName() + "'" +
             "}";

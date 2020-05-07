@@ -16,6 +16,7 @@ public interface CurriculumMapper extends EntityMapper<CurriculumDTO, Curriculum
     CurriculumDTO toDto(Curriculum curriculum);
 
     @Mapping(source = "originFileId", target = "originFile")
+    @Mapping(target = "contentModules", ignore = true)
     @Mapping(target = "removeContentModules", ignore = true)
     @Mapping(target = "removeCurriculumTags", ignore = true)
     @Mapping(target = "removeTeachers", ignore = true)
