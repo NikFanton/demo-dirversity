@@ -1,9 +1,14 @@
 package com.dirversity.service.impl;
 
 import com.dirversity.service.CloudStorageService;
+import com.google.api.client.googleapis.batch.BatchRequest;
+import com.google.api.client.googleapis.batch.json.JsonBatchCallback;
+import com.google.api.client.googleapis.json.GoogleJsonError;
 import com.google.api.client.http.FileContent;
+import com.google.api.client.http.HttpHeaders;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.File;
+import com.google.api.services.drive.model.Permission;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -42,6 +47,8 @@ public class GoogleDriveServiceImpl implements CloudStorageService {
             File uploadedFile = drive.files().create(fileMetadata, mediaContent)
                 .setFields("id, name, mimeType, webViewLink")
                 .execute();
+            addReaderPermissionToAnyone(uploadedFile);
+
             log.info("Uploaded file with name = {}, mimeType = {}, id = {}", uploadedFile.getName(),
                 uploadedFile.getMimeType(),
                 uploadedFile.getId());
@@ -51,5 +58,26 @@ public class GoogleDriveServiceImpl implements CloudStorageService {
             e.printStackTrace();
         }
         return Optional.empty();
+    }
+
+    private void addReaderPermissionToAnyone(File uploadedFile) throws IOException {
+        BatchRequest batch = drive.batch();
+        Permission domainPermission = new Permission()
+            .setType("anyone")
+            .setRole("reader");
+        drive.permissions().create(uploadedFile.getId(), domainPermission)
+            .setFields("id")
+            .queue(batch, new JsonBatchCallback<Permission>() {
+                @Override
+                public void onSuccess(Permission permission, HttpHeaders httpHeaders) {
+                    log.debug("Added permission with id {}", permission.getId());
+                }
+
+                @Override
+                public void onFailure(GoogleJsonError googleJsonError, HttpHeaders httpHeaders) {
+                    log.debug(googleJsonError.getMessage());
+                }
+            });
+        batch.execute();
     }
 }
