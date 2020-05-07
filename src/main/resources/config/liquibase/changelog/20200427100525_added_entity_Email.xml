@@ -45,6 +45,12 @@
         <dropDefaultValue tableName="email" columnName="share_date_time" columnDataType="datetime"/>
         <dropDefaultValue tableName="email" columnName="created_date" columnDataType="datetime"/>
         <dropDefaultValue tableName="email" columnName="last_modified_date" columnDataType="datetime"/>
+
+        <createIndex indexName="idx_email_share_date"
+                     tableName="email"
+                     unique="false">
+            <column name="share_date_time" type="datetime"/>
+        </createIndex>
     </changeSet>
 
     <changeSet id="20200427100525-1-relations" author="jhipster">
