@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(CurriculumService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Curriculum(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
+      elemDefault = new Curriculum(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', 0, 0);
     });
 
     describe('Service methods', () => {
@@ -58,7 +58,9 @@ describe('Service Tests', () => {
           {
             name: 'BBBBBB',
             description: 'BBBBBB',
-            explanatoryNote: 'BBBBBB'
+            explanatoryNote: 'BBBBBB',
+            year: 2020,
+            credits: 60
           },
           elemDefault
         );
@@ -78,7 +80,9 @@ describe('Service Tests', () => {
           {
             name: 'BBBBBB',
             description: 'BBBBBB',
-            explanatoryNote: 'BBBBBB'
+            explanatoryNote: 'BBBBBB',
+            year: 2020,
+            credits: 60
           },
           elemDefault
         );

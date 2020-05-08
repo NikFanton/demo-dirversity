@@ -30,6 +30,36 @@
                     <input type="text" class="form-control" name="explanatoryNote" id="field_explanatoryNote"
                            formControlName="explanatoryNote"/>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dirversityApp.curriculum.year" for="field_year">Year</label>
+                    <input type="number" class="form-control" name="year" id="field_year"
+                           formControlName="year"/>
+                    <div *ngIf="editForm.get('year').invalid && (editForm.get('year').dirty || editForm.get('year').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('year').errors.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('year')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="dirversityApp.curriculum.credits" for="field_credits">Credits</label>
+                    <input type="number" class="form-control" name="credits" id="field_credits"
+                           formControlName="credits"/>
+                    <div *ngIf="editForm.get('credits').invalid && (editForm.get('credits').dirty || editForm.get('credits').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('credits').errors.min" jhiTranslate="entity.validation.min" [translateValues]="{ min: 0 }">
+                            This field should be at least 0.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('credits')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="dirversityApp.curriculum.originFile" for="field_originFile">Origin File</label>

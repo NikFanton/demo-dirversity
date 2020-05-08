@@ -20,6 +20,12 @@ public class CurriculumDTO implements Serializable {
 
     private String explanatoryNote;
 
+    @Min(value = 0)
+    private Integer year;
+
+    @Min(value = 0)
+    private Integer credits;
+
 
     private Long originFileId;
 
@@ -61,6 +67,22 @@ public class CurriculumDTO implements Serializable {
 
     public void setExplanatoryNote(String explanatoryNote) {
         this.explanatoryNote = explanatoryNote;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Integer getCredits() {
+        return credits;
+    }
+
+    public void setCredits(Integer credits) {
+        this.credits = credits;
     }
 
     public Long getOriginFileId() {
@@ -131,6 +153,8 @@ public class CurriculumDTO implements Serializable {
             ", name='" + getName() + "'" +
             ", description='" + getDescription() + "'" +
             ", explanatoryNote='" + getExplanatoryNote() + "'" +
+            ", year=" + getYear() +
+            ", credits=" + getCredits() +
             ", originFile=" + getOriginFileId() +
             ", originFile='" + getOriginFileName() + "'" +
             "}";

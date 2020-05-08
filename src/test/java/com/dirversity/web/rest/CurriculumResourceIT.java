@@ -50,6 +50,12 @@ public class CurriculumResourceIT {
     private static final String DEFAULT_EXPLANATORY_NOTE = "AAAAAAAAAA";
     private static final String UPDATED_EXPLANATORY_NOTE = "BBBBBBBBBB";
 
+    private static final Integer DEFAULT_YEAR = 0;
+    private static final Integer UPDATED_YEAR = 1;
+
+    private static final Integer DEFAULT_CREDITS = 0;
+    private static final Integer UPDATED_CREDITS = 1;
+
     @Autowired
     private CurriculumRepository curriculumRepository;
 
@@ -106,7 +112,9 @@ public class CurriculumResourceIT {
         Curriculum curriculum = new Curriculum()
             .name(DEFAULT_NAME)
             .description(DEFAULT_DESCRIPTION)
-            .explanatoryNote(DEFAULT_EXPLANATORY_NOTE);
+            .explanatoryNote(DEFAULT_EXPLANATORY_NOTE)
+            .year(DEFAULT_YEAR)
+            .credits(DEFAULT_CREDITS);
         return curriculum;
     }
     /**
@@ -119,7 +127,9 @@ public class CurriculumResourceIT {
         Curriculum curriculum = new Curriculum()
             .name(UPDATED_NAME)
             .description(UPDATED_DESCRIPTION)
-            .explanatoryNote(UPDATED_EXPLANATORY_NOTE);
+            .explanatoryNote(UPDATED_EXPLANATORY_NOTE)
+            .year(UPDATED_YEAR)
+            .credits(UPDATED_CREDITS);
         return curriculum;
     }
 
@@ -147,6 +157,8 @@ public class CurriculumResourceIT {
         assertThat(testCurriculum.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testCurriculum.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testCurriculum.getExplanatoryNote()).isEqualTo(DEFAULT_EXPLANATORY_NOTE);
+        assertThat(testCurriculum.getYear()).isEqualTo(DEFAULT_YEAR);
+        assertThat(testCurriculum.getCredits()).isEqualTo(DEFAULT_CREDITS);
     }
 
     @Test
@@ -202,7 +214,9 @@ public class CurriculumResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(curriculum.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
-            .andExpect(jsonPath("$.[*].explanatoryNote").value(hasItem(DEFAULT_EXPLANATORY_NOTE)));
+            .andExpect(jsonPath("$.[*].explanatoryNote").value(hasItem(DEFAULT_EXPLANATORY_NOTE)))
+            .andExpect(jsonPath("$.[*].year").value(hasItem(DEFAULT_YEAR)))
+            .andExpect(jsonPath("$.[*].credits").value(hasItem(DEFAULT_CREDITS)));
     }
     
     @SuppressWarnings({"unchecked"})
@@ -251,7 +265,9 @@ public class CurriculumResourceIT {
             .andExpect(jsonPath("$.id").value(curriculum.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
-            .andExpect(jsonPath("$.explanatoryNote").value(DEFAULT_EXPLANATORY_NOTE));
+            .andExpect(jsonPath("$.explanatoryNote").value(DEFAULT_EXPLANATORY_NOTE))
+            .andExpect(jsonPath("$.year").value(DEFAULT_YEAR))
+            .andExpect(jsonPath("$.credits").value(DEFAULT_CREDITS));
     }
 
     @Test
@@ -277,7 +293,9 @@ public class CurriculumResourceIT {
         updatedCurriculum
             .name(UPDATED_NAME)
             .description(UPDATED_DESCRIPTION)
-            .explanatoryNote(UPDATED_EXPLANATORY_NOTE);
+            .explanatoryNote(UPDATED_EXPLANATORY_NOTE)
+            .year(UPDATED_YEAR)
+            .credits(UPDATED_CREDITS);
         CurriculumDTO curriculumDTO = curriculumMapper.toDto(updatedCurriculum);
 
         restCurriculumMockMvc.perform(put("/api/curricula")
@@ -292,6 +310,8 @@ public class CurriculumResourceIT {
         assertThat(testCurriculum.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testCurriculum.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testCurriculum.getExplanatoryNote()).isEqualTo(UPDATED_EXPLANATORY_NOTE);
+        assertThat(testCurriculum.getYear()).isEqualTo(UPDATED_YEAR);
+        assertThat(testCurriculum.getCredits()).isEqualTo(UPDATED_CREDITS);
     }
 
     @Test

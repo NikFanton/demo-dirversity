@@ -19,6 +19,8 @@
       "name": "Name",
       "description": "Description",
       "explanatoryNote": "Explanatory Note",
+      "year": "Year",
+      "credits": "Credits",
       "originFile": "Origin File",
       "contentModules": "Содержательные Модули",
       "curriculumTags": "Curriculum Tags",

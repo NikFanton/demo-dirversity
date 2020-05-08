@@ -19,6 +19,8 @@
       "name": "Назва",
       "description": "Опис",
       "explanatoryNote": "Пояснювальна записка",
+      "year": "Рік",
+      "credits": "Кількість кредитів",
       "originFile": "Оригінальний файл",
       "contentModules": "Розділи",
       "curriculumTags": "Теги",
