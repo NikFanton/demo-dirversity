@@ -15,22 +15,6 @@
         {
             "fieldName": "explanatoryNote",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "year",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "min"
-            ],
-            "fieldValidateRulesMin": 0
-        },
-        {
-            "fieldName": "totalHours",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "min"
-            ],
-            "fieldValidateRulesMin": 0
         }
     ],
     "relationships": [
@@ -74,7 +58,5 @@
     "fluentMethods": true,
     "readOnly": false,
     "clientRootFolder": "",
-    "applications": "*",
-    "searchEngine": false,
-    "databaseType": "sql"
+    "applications": "*"
 }

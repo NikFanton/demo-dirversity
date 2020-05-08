@@ -34,8 +34,6 @@ export class CurriculumUpdateComponent implements OnInit {
     name: [null, [Validators.required]],
     description: [],
     explanatoryNote: [],
-    year: [null, [Validators.min(0)]],
-    totalHours: [null, [Validators.min(0)]],
     originFileId: [],
     curriculumTags: [],
     teachers: []
@@ -103,8 +101,6 @@ export class CurriculumUpdateComponent implements OnInit {
       name: curriculum.name,
       description: curriculum.description,
       explanatoryNote: curriculum.explanatoryNote,
-      year: curriculum.year,
-      totalHours: curriculum.totalHours,
       originFileId: curriculum.originFileId,
       curriculumTags: curriculum.curriculumTags,
       teachers: curriculum.teachers
@@ -132,8 +128,6 @@ export class CurriculumUpdateComponent implements OnInit {
       name: this.editForm.get(['name']).value,
       description: this.editForm.get(['description']).value,
       explanatoryNote: this.editForm.get(['explanatoryNote']).value,
-      year: this.editForm.get(['year']).value,
-      totalHours: this.editForm.get(['totalHours']).value,
       originFileId: this.editForm.get(['originFileId']).value,
       curriculumTags: this.editForm.get(['curriculumTags']).value,
       teachers: this.editForm.get(['teachers']).value

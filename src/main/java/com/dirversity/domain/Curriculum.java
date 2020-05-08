@@ -33,14 +33,6 @@ public class Curriculum implements Serializable {
     @Column(name = "explanatory_note")
     private String explanatoryNote;
 
-    @Min(value = 0)
-    @Column(name = "year")
-    private Integer year;
-
-    @Min(value = 0)
-    @Column(name = "total_hours")
-    private Integer totalHours;
-
     @OneToOne
     @JoinColumn(unique = true)
     private Resource originFile;
@@ -109,32 +101,6 @@ public class Curriculum implements Serializable {
 
     public void setExplanatoryNote(String explanatoryNote) {
         this.explanatoryNote = explanatoryNote;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public Curriculum year(Integer year) {
-        this.year = year;
-        return this;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
-    public Integer getTotalHours() {
-        return totalHours;
-    }
-
-    public Curriculum totalHours(Integer totalHours) {
-        this.totalHours = totalHours;
-        return this;
-    }
-
-    public void setTotalHours(Integer totalHours) {
-        this.totalHours = totalHours;
     }
 
     public Resource getOriginFile() {
@@ -247,8 +213,6 @@ public class Curriculum implements Serializable {
             ", name='" + getName() + "'" +
             ", description='" + getDescription() + "'" +
             ", explanatoryNote='" + getExplanatoryNote() + "'" +
-            ", year=" + getYear() +
-            ", totalHours=" + getTotalHours() +
             "}";
     }
 }

@@ -19,8 +19,6 @@
       "name": "Name",
       "description": "Description",
       "explanatoryNote": "Explanatory Note",
-      "year": "Year",
-      "totalHours": "Total Hours",
       "originFile": "Origin File",
       "contentModules": "Содержательные Модули",
       "curriculumTags": "Curriculum Tags",

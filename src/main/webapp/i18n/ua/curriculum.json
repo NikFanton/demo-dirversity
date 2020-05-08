@@ -19,8 +19,6 @@
       "name": "Назва",
       "description": "Опис",
       "explanatoryNote": "Пояснювальна записка",
-      "year": "Year",
-      "totalHours": "Total Hours",
       "originFile": "Оригінальний файл",
       "contentModules": "Розділи",
       "curriculumTags": "Теги",

@@ -7,8 +7,6 @@ export interface ICurriculum {
   name?: string;
   description?: string;
   explanatoryNote?: string;
-  year?: number;
-  totalHours?: number;
   originFileName?: string;
   originFileId?: number;
   contentModules?: IContentModule[];
@@ -22,8 +20,6 @@ export class Curriculum implements ICurriculum {
     public name?: string,
     public description?: string,
     public explanatoryNote?: string,
-    public year?: number,
-    public totalHours?: number,
     public originFileName?: string,
     public originFileId?: number,
     public contentModules?: IContentModule[],
