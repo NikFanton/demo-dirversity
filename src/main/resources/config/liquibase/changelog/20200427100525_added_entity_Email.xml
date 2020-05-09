@@ -31,13 +31,13 @@
             <column name="created_by" type="varchar(50)">
                 <constraints nullable="false" />
             </column>
-            <column name="created_date" type="datetime">
+            <column name="created_date" type="timestamp">
                 <constraints nullable="true" />
             </column>
             <column name="last_modified_by" type="varchar(50)">
                 <constraints nullable="true" />
             </column>
-            <column name="last_modified_date" type="datetime">
+            <column name="last_modified_date" type="timestamp">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->

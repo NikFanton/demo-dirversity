@@ -67,7 +67,7 @@ public class EmailResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/emails")
-    public ResponseEntity<EmailDTO> createEmail(@Valid @RequestBody EmailDTO emailDTO) throws URISyntaxException {
+    public ResponseEntity<EmailDTO> createEmail(@RequestBody EmailDTO emailDTO) throws URISyntaxException {
         log.debug("REST request to save Email : {}", emailDTO);
         if (emailDTO.getId() != null) {
             throw new BadRequestAlertException("A new email cannot already have an ID", ENTITY_NAME, "idexists");
@@ -88,7 +88,7 @@ public class EmailResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/emails")
-    public ResponseEntity<EmailDTO> updateEmail(@Valid @RequestBody EmailDTO emailDTO) throws URISyntaxException {
+    public ResponseEntity<EmailDTO> updateEmail(@RequestBody EmailDTO emailDTO) throws URISyntaxException {
         log.debug("REST request to update Email : {}", emailDTO);
         if (emailDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

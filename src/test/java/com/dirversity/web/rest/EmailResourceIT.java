@@ -138,11 +138,7 @@ public class EmailResourceIT {
             .body(DEFAULT_BODY)
             .title(DEFAULT_TITLE)
             .langKey(DEFAULT_LANG_KEY)
-            .shareDateTime(DEFAULT_SHARE_DATE_TIME)
-            .createdBy(DEFAULT_CREATED_BY)
-            .createdDate(DEFAULT_CREATED_DATE)
-            .lastModifiedBy(DEFAULT_LAST_MODIFIED_BY)
-            .lastModifiedDate(DEFAULT_LAST_MODIFIED_DATE);
+            .shareDateTime(DEFAULT_SHARE_DATE_TIME);
         return email;
     }
     /**
@@ -156,11 +152,7 @@ public class EmailResourceIT {
             .body(UPDATED_BODY)
             .title(UPDATED_TITLE)
             .langKey(UPDATED_LANG_KEY)
-            .shareDateTime(UPDATED_SHARE_DATE_TIME)
-            .createdBy(UPDATED_CREATED_BY)
-            .createdDate(UPDATED_CREATED_DATE)
-            .lastModifiedBy(UPDATED_LAST_MODIFIED_BY)
-            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
+            .shareDateTime(UPDATED_SHARE_DATE_TIME);
         return email;
     }
 
@@ -334,11 +326,7 @@ public class EmailResourceIT {
             .body(UPDATED_BODY)
             .title(UPDATED_TITLE)
             .langKey(UPDATED_LANG_KEY)
-            .shareDateTime(UPDATED_SHARE_DATE_TIME)
-            .createdBy(UPDATED_CREATED_BY)
-            .createdDate(UPDATED_CREATED_DATE)
-            .lastModifiedBy(UPDATED_LAST_MODIFIED_BY)
-            .lastModifiedDate(UPDATED_LAST_MODIFIED_DATE);
+            .shareDateTime(UPDATED_SHARE_DATE_TIME);
         EmailDTO emailDTO = emailMapper.toDto(updatedEmail);
 
         restEmailMockMvc.perform(put("/api/emails")

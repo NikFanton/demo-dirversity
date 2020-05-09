@@ -2,7 +2,6 @@ package com.dirversity.service;
 
 import com.dirversity.domain.Email;
 import com.dirversity.domain.User;
-import com.dirversity.security.SecurityUtils;
 import io.github.jhipster.config.JHipsterProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +21,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 /**
@@ -116,7 +116,7 @@ public class MailService {
     public void sendResourceEmailToEachUser(Email email, User sender) {
         String[] toEmails = extractToEmails(email);
         String[] ccEmails = extractCCEmails(email);
-        Locale locale = Locale.forLanguageTag(email.getLangKey());
+        Locale locale = getEmailLocale(email);
 
         Context context = new Context(locale);
         context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());
@@ -126,6 +126,12 @@ public class MailService {
         String content = templateEngine.process("mail/resourceEmail", context);
         String subject = messageSource.getMessage("email.resource.title", null, locale);
         sendEmail(toEmails, ccEmails, subject, content, false, true);
+    }
+
+    private Locale getEmailLocale(Email email) {
+        return Optional.ofNullable(email.getLangKey())
+            .map(Locale::forLanguageTag)
+            .orElse(Locale.getDefault());
     }
 
     @Async
