@@ -1,6 +1,7 @@
 package com.dirversity.service.dto;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -35,7 +36,7 @@ public class CurriculumDTO implements Serializable {
 
     private Set<UserDTO> teachers = new HashSet<>();
 
-    private Set<ContentModuleDTO> contentModules = new HashSet<>();
+    private List<ContentModuleDTO> contentModules = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -117,11 +118,11 @@ public class CurriculumDTO implements Serializable {
         this.teachers = users;
     }
 
-    public Set<ContentModuleDTO> getContentModules() {
+    public List<ContentModuleDTO> getContentModules() {
         return contentModules;
     }
 
-    public void setContentModules(Set<ContentModuleDTO> contentModules) {
+    public void setContentModules(List<ContentModuleDTO> contentModules) {
         this.contentModules = contentModules;
     }
 

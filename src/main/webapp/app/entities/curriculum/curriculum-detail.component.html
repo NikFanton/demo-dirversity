@@ -34,13 +34,13 @@
                 <dt><span jhiTranslate="dirversityApp.curriculum.curriculumTags">Curriculum Tags</span></dt>
                 <dd>
                     <span *ngFor="let curriculumTags of curriculum.curriculumTags; let last = last">
-                        <a [routerLink]="['/curriculum-tag', curriculumTags?.id, 'view' ]">{{curriculumTags.name}}</a>{{last ? '' : ', '}}
+                        <a class="badge badge-info" [routerLink]="['/curriculum-tag', curriculumTags?.id, 'view' ]">{{curriculumTags.name}}</a>
                     </span>
                 </dd>
                 <dt><span jhiTranslate="dirversityApp.curriculum.teachers">Teachers</span></dt>
                 <dd>
-                    <span *ngFor="let teachers of curriculum.teachers; let last = last">
-                        {{teachers.lastName}}{{last ? '' : ', '}}
+                    <span *ngFor="let teacher of curriculum.teachers; let last = last">
+                        {{teacher.firstName}} {{teacher.lastName}}{{last ? '' : ', '}}
                     </span>
                 </dd>
                 <dt><span jhiTranslate="dirversityApp.curriculum.contentModules">Content Modules</span></dt>
@@ -53,7 +53,7 @@
                             <tbody>
                             <tr *ngFor="let contentModule of curriculum.contentModules">
                                 <td><a
-                                    [routerLink]="['/content-module', contentModule?.order, 'view']">{{contentModule.order}}</a>
+                                    [routerLink]="['/content-module', contentModule?.id, 'view']">{{contentModule.order}}</a>
                                 </td>
                                 <td><a
                                     [routerLink]="['/content-module', contentModule?.id, 'view' ]">{{contentModule.name}}</a>

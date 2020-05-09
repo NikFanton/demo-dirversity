@@ -22,7 +22,7 @@ public interface CurriculumRepository extends JpaRepository<Curriculum, Long> {
     @Query("select distinct curriculum from Curriculum curriculum left join fetch curriculum.curriculumTags left join fetch curriculum.teachers left join fetch curriculum.contentModules")
     List<Curriculum> findAllWithEagerRelationships();
 
-    @Query("select curriculum from Curriculum curriculum left join fetch curriculum.curriculumTags left join fetch curriculum.teachers left join fetch curriculum.contentModules where curriculum.id =:id")
+    @Query("select curriculum from Curriculum curriculum left join fetch curriculum.teachers left join fetch curriculum.contentModules where curriculum.id =:id")
     Optional<Curriculum> findOneWithEagerRelationships(@Param("id") Long id);
 
 }

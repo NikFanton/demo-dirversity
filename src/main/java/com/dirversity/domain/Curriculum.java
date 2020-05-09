@@ -6,7 +6,9 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -46,8 +48,9 @@ public class Curriculum implements Serializable {
     private Resource originFile;
 
     @OneToMany(mappedBy = "curriculum")
+    @OrderBy("order")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<ContentModule> contentModules = new HashSet<>();
+    private List<ContentModule> contentModules = new ArrayList<>();
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -150,11 +153,11 @@ public class Curriculum implements Serializable {
         this.originFile = resource;
     }
 
-    public Set<ContentModule> getContentModules() {
+    public List<ContentModule> getContentModules() {
         return contentModules;
     }
 
-    public Curriculum contentModules(Set<ContentModule> contentModules) {
+    public Curriculum contentModules(List<ContentModule> contentModules) {
         this.contentModules = contentModules;
         return this;
     }
@@ -171,7 +174,7 @@ public class Curriculum implements Serializable {
         return this;
     }
 
-    public void setContentModules(Set<ContentModule> contentModules) {
+    public void setContentModules(List<ContentModule> contentModules) {
         this.contentModules = contentModules;
     }
 
