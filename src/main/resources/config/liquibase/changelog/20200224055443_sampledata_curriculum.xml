@@ -16,4 +16,14 @@
         </loadData>
     </changeSet>
 
+    <changeSet id="20200224055440-4-data" author="nikita" context="faker">
+        <loadData
+            file="config/liquibase/fake-data/curriculum_teachers.csv"
+            separator=";"
+            tableName="curriculum_teachers">
+            <column name="curriculum_id" type="numeric"/>
+            <column name="teachers_id" type="numeric"/>
+        </loadData>
+    </changeSet>
+
 </databaseChangeLog>

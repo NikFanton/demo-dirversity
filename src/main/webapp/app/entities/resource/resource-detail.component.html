@@ -47,7 +47,8 @@
                     <dt><span *ngIf="resource.topics" jhiTranslate="dirversityApp.resource.topics">Topic</span></dt>
                     <dd>
                     <span *ngFor="let topic of resource.topics; let last = last">
-                        <a [routerLink]="['/topic', topic?.id, 'view' ]">{{topic.id}}</a>{{last ? '' : ', '}}
+                        <a [routerLink]="['/topic', topic?.id, 'view' ]">{{topic.name}}</a>{{last ? '' : ', '}}
+                        <br>
                     </span>
                     </dd>
                 </div>

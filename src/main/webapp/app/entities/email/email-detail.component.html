@@ -66,6 +66,7 @@
                 <dd>
                     <span *ngFor="let resources of email.resources; let last = last">
                         <a [routerLink]="['/resource', resources?.id, 'view' ]">{{resources.name}}</a>{{last ? '' : ', '}}
+                        <br>
                     </span>
                 </dd>
             </dl>

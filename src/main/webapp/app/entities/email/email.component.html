@@ -19,7 +19,6 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="body"><span jhiTranslate="dirversityApp.email.body">Body</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="title"><span jhiTranslate="dirversityApp.email.title">Title</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="langKey"><span jhiTranslate="dirversityApp.email.langKey">Lang Key</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="shareDateTime"><span jhiTranslate="dirversityApp.email.shareDateTime">Share Date Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -31,7 +30,6 @@
             <tbody>
             <tr *ngFor="let email of emails ;trackBy: trackId">
                 <td><a [routerLink]="['/email', email.id, 'view' ]">{{email.id}}</a></td>
-                <td>{{email.body}}</td>
                 <td>{{email.title}}</td>
                 <td>{{email.langKey}}</td>
                 <td>{{email.shareDateTime | date:'medium'}}</td>
