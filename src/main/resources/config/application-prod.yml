@@ -15,9 +15,9 @@
 
 logging:
   level:
-    ROOT: INFO
+    ROOT: DEBUG
     io.github.jhipster: INFO
-    com.dirversity: INFO
+    com.dirversity: DEBUG
 
 management:
   metrics:
