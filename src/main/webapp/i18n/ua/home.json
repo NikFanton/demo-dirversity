@@ -1,7 +1,13 @@
 {
   "home": {
+    "authenticated": {
+      "subtitle": "Ласкаво просимо до Dirversity."
+    },
+    "unauthenticated": {
+      "subtitle": "Це головна сторінка Dirversity.",
+      "subtitle2": "Будь ласка, увійдіть або зареєструйте новий акаунт"
+    },
     "title": "Ласкаво просимо!",
-    "subtitle": "Це головна сторінка Dirversity. Будь ласка, увійдіть або зареєструйтесь для нового акаунта",
     "logged": {
       "message": "Ви ввійшли як користувач \"{{username}}\"."
     },
