@@ -2,22 +2,22 @@
   "dirversityApp": {
     "userGroupType": {
       "home": {
-        "title": "User Group Types",
-        "createLabel": "Створити новий User Group Type",
-        "createOrEditLabel": "Створити чи редагувати User Group Type",
-        "notFound": "No User Group Types found"
+        "title": "Тип групи користувачів",
+        "createLabel": "Створити новий тип групи користувачів",
+        "createOrEditLabel": "Створити чи редагувати тип групи користувачів",
+        "notFound": "Типи груп користувачів не знайдено"
       },
-      "created": "Новий User Group Type створений з ідентифікатором {{ param }}",
-      "updated": "User Group Type оновлений з ідентифікатором {{ param }}",
-      "deleted": "User Group Type видалений з ідентифікатором {{ param }}",
+      "created": "Новий тип групи користувачів створений з ідентифікатором {{ param }}",
+      "updated": "Тип групи користувачів з ідентифікатором {{ param }} оновлений",
+      "deleted": "Тип групи користувачів з ідентифікатором {{ param }} видалений",
       "delete": {
-        "question": "Ви впевнені, що хочете видалити User Group Type {{ id }}?"
+        "question": "Ви впевнені, що хочете видалити тип групи користувачів {{ id }}?"
       },
       "detail": {
-        "title": "User Group Type"
+        "title": "Тип групи користувачів"
       },
-      "name": "Name",
-      "description": "Description"
+      "name": "Назва",
+      "description": "Опис"
     }
   }
 }

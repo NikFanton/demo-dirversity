@@ -9,21 +9,11 @@
                 <dd>
                     <span>{{userGroup.name}}</span>
                 </dd>
-                <dt><span jhiTranslate="dirversityApp.userGroup.creationDate">Creation Date</span></dt>
-                <dd>
-                    <span>{{userGroup.creationDate}}</span>
-                </dd>
                 <dt><span jhiTranslate="dirversityApp.userGroup.userGroupType">User Group Type</span></dt>
                 <dd>
                     <div *ngIf="userGroup.userGroupTypeId">
                         <a [routerLink]="['/user-group-type', userGroup.userGroupTypeId, 'view']">{{userGroup.userGroupTypeName}}</a>
                     </div>
-                </dd>
-                <dt><span jhiTranslate="dirversityApp.userGroup.users">Users</span></dt>
-                <dd>
-                    <span *ngFor="let users of userGroup.users; let last = last">
-                        {{users.firstName}} {{users.lastName}}{{last ? '' : ', '}}
-                    </span>
                 </dd>
                 <dt><span jhiTranslate="dirversityApp.userGroup.users">Users</span></dt>
                 <dd>

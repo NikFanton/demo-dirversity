@@ -2,34 +2,35 @@
   "dirversityApp": {
     "email": {
       "home": {
-        "title": "Emails",
-        "createLabel": "Створити новий Email",
-        "createOrEditLabel": "Створити чи редагувати Email",
-        "notFound": "No Emails found"
+        "title": "Електронні листи",
+        "createLabel": "Створити новий Електронний лист",
+        "createOrEditLabel": "Створити чи редагувати Електронний лист",
+        "notFound": "Електроних листів не знайдено"
       },
-      "created": "Новий Email створений з ідентифікатором {{ param }}",
-      "updated": "Email оновлений з ідентифікатором {{ param }}",
-      "deleted": "Email видалений з ідентифікатором {{ param }}",
+      "created": "Новий Електронний лист створений з ідентифікатором {{ param }}",
+      "sent": "Електронний лист {{ param }} відправлено",
+      "updated": "Електронний лист з ідентифікатором {{ param }} оновлено",
+      "deleted": "Електронний лист з ідентифікатором {{ param }} видалено",
       "delete": {
-        "question": "Ви впевнені, що хочете видалити Email {{ id }}?"
+        "question": "Ви впевнені, що хочете видалити електронний лист {{ id }}?"
       },
       "detail": {
-        "title": "Email"
+        "title": "Електронний лист"
       },
-      "body": "Body",
-      "title": "Title",
+      "body": "Тіло листа",
+      "title": "Тема листа",
       "langKey": "Мова",
-      "shareDateTime": "Share Date Time",
-      "createdBy": "Created By",
-      "createdDate": "Created Date",
-      "lastModifiedBy": "Last Modified By",
-      "lastModifiedDate": "Last Modified Date",
-      "toUsers": "To Users",
-      "ccUsers": "Cc Users",
-      "toUsersGroups": "To Users Groups",
-      "ccUserGroups": "Cc User Groups",
-      "resources": "Resources",
-      "sendEmail": "Send email"
+      "shareDateTime": "Заплановані дата та час відправлення",
+      "createdBy": "Створив",
+      "createdDate": "Дата створення",
+      "lastModifiedBy": "Змінено",
+      "lastModifiedDate": "Дата зміни",
+      "toUsers": "Кому (To)",
+      "ccUsers": "Копія (Сс)",
+      "toUsersGroups": "Яким групам відправити",
+      "ccUserGroups": "Які групи додати до копії",
+      "resources": "Прикріплені ресурси",
+      "sendEmail": "Відправити"
     }
   }
 }

@@ -2,25 +2,25 @@
   "dirversityApp": {
     "userGroup": {
       "home": {
-        "title": "User Groups",
-        "createLabel": "Створити новий User Group",
-        "createOrEditLabel": "Створити чи редагувати User Group",
-        "notFound": "No User Groups found"
+        "title": "Групи користувачів",
+        "createLabel": "Створити нову групу користувачів",
+        "createOrEditLabel": "Створити чи редагувати групу користувачів",
+        "notFound": "Груп користувачів не знайдено"
       },
-      "created": "Новий User Group створений з ідентифікатором {{ param }}",
-      "updated": "User Group оновлений з ідентифікатором {{ param }}",
-      "deleted": "User Group видалений з ідентифікатором {{ param }}",
+      "created": "Нова група користувачів створена з ідентифікатором {{ param }}",
+      "updated": "Група користувачів з ідентифікатором {{ param }} оновлена",
+      "deleted": "Група користувачів з ідентифікатором {{ param }} видалена",
       "delete": {
-        "question": "Ви впевнені, що хочете видалити User Group {{ id }}?"
+        "question": "Ви впевнені, що хочете видалити групу користувачів {{ id }}?"
       },
       "detail": {
         "title": "Група користувачів"
       },
-      "name": "Name",
-      "creationDate": "Creation Date",
-      "userGroupType": "User Group Type",
-      "users": "Users",
-      "rules": "Rules"
+      "name": "Назва",
+      "creationDate": "Дата створення",
+      "userGroupType": "Тип групи користувачів",
+      "users": "Користувачі",
+      "rules": "Правила"
     }
   }
 }

@@ -20,7 +20,6 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="name"><span jhiTranslate="dirversityApp.userGroup.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th scope="col"  jhiSortBy="creationDate"><span jhiTranslate="dirversityApp.userGroup.creationDate">Creation Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"  jhiSortBy="userGroupTypeName"><span jhiTranslate="dirversityApp.userGroup.userGroupType">User Group Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th scope="col"></th>
             </tr>
@@ -29,7 +28,6 @@
             <tr *ngFor="let userGroup of userGroups ;trackBy: trackId">
                 <td><a [routerLink]="['/user-group', userGroup.id, 'view' ]">{{userGroup.id}}</a></td>
                 <td>{{userGroup.name}}</td>
-                <td>{{userGroup.creationDate | date:'medium'}}</td>
                 <td>
                     <div *ngIf="userGroup.userGroupTypeId">
                         <a [routerLink]="['/user-group-type', userGroup.userGroupTypeId , 'view' ]" >{{userGroup.userGroupTypeName}}</a>

@@ -6,13 +6,13 @@
             <jhi-alert-error></jhi-alert-error>
             <jhi-alert></jhi-alert>
             <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="dirversityApp.email.title">Subject</span></dt>
+                <dd>
+                    <span>{{email.title}}</span>
+                </dd>
                 <dt><span jhiTranslate="dirversityApp.email.body">Body</span></dt>
                 <dd>
                     <span>{{email.body}}</span>
-                </dd>
-                <dt><span jhiTranslate="dirversityApp.email.title">Title</span></dt>
-                <dd>
-                    <span>{{email.title}}</span>
                 </dd>
                 <dt><span jhiTranslate="dirversityApp.email.langKey">Language</span></dt>
                 <dd>
@@ -44,24 +44,28 @@
                         {{toUsers.login}}{{last ? '' : ', '}}
                     </span>
                 </dd>
-                <dt><span jhiTranslate="dirversityApp.email.ccUsers">Cc Users</span></dt>
-                <dd>
-                    <span *ngFor="let ccUsers of email.ccUsers; let last = last">
-                        {{ccUsers.login}}{{last ? '' : ', '}}
-                    </span>
-                </dd>
+                <div *ngIf="email.ccUsers.length != 0">
+                    <dt><span jhiTranslate="dirversityApp.email.ccUsers">Cc Users</span></dt>
+                    <dd>
+                        <span *ngFor="let ccUsers of email.ccUsers; let last = last">
+                            {{ccUsers.login}}{{last ? '' : ', '}}
+                        </span>
+                    </dd>
+                </div>
                 <dt><span jhiTranslate="dirversityApp.email.toUsersGroups">To Users Groups</span></dt>
                 <dd>
                     <span *ngFor="let toUsersGroups of email.toUsersGroups; let last = last">
                         <a [routerLink]="['/user-group', toUsersGroups?.id, 'view' ]">{{toUsersGroups.name}}</a>{{last ? '' : ', '}}
                     </span>
                 </dd>
-                <dt><span jhiTranslate="dirversityApp.email.ccUserGroups">Cc User Groups</span></dt>
-                <dd>
-                    <span *ngFor="let ccUserGroups of email.ccUserGroups; let last = last">
-                        <a [routerLink]="['/user-group', ccUserGroups?.id, 'view' ]">{{ccUserGroups.name}}</a>{{last ? '' : ', '}}
-                    </span>
-                </dd>
+                <div *ngIf="email.ccUserGroups.length != 0">
+                    <dt><span jhiTranslate="dirversityApp.email.ccUserGroups">Cc User Groups</span></dt>
+                    <dd>
+                        <span *ngFor="let ccUserGroups of email.ccUserGroups; let last = last">
+                            <a [routerLink]="['/user-group', ccUserGroups?.id, 'view' ]">{{ccUserGroups.name}}</a>{{last ? '' : ', '}}
+                        </span>
+                    </dd>
+                </div>
                 <dt><span jhiTranslate="dirversityApp.email.resources">Resources</span></dt>
                 <dd>
                     <span *ngFor="let resources of email.resources; let last = last">
