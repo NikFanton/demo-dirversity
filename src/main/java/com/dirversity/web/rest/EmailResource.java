@@ -1,5 +1,6 @@
 package com.dirversity.web.rest;
 
+import com.dirversity.security.AuthoritiesConstants;
 import com.dirversity.security.SecurityUtils;
 import com.dirversity.service.EmailService;
 import com.dirversity.service.MailService;
@@ -27,7 +28,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -111,11 +111,16 @@ public class EmailResource {
     public ResponseEntity<List<EmailDTO>> getAllEmails(Pageable pageable, @RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get a page of Emails");
         Page<EmailDTO> page;
-        if (eagerload) {
-            page = emailService.findAllWithEagerRelationships(pageable);
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            if (eagerload) {
+                page = emailService.findAllWithEagerRelationships(pageable);
+            } else {
+                page = emailService.findAll(pageable);
+            }
         } else {
-            page = emailService.findAll(pageable);
+            page = emailService.findAllEmailsCreatedByCurrentUser(pageable);
         }
+
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

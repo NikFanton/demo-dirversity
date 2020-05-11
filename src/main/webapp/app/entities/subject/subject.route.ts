@@ -37,7 +37,7 @@ export const subjectRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN', 'ROLE_STUDENT'],
       defaultSort: 'id,asc',
       pageTitle: 'dirversityApp.subject.home.title'
     },
@@ -50,7 +50,7 @@ export const subjectRoute: Routes = [
       subject: SubjectResolve
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN', 'ROLE_STUDENT'],
       pageTitle: 'dirversityApp.subject.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -62,7 +62,7 @@ export const subjectRoute: Routes = [
       subject: SubjectResolve
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER'],
+      authorities: ['ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       pageTitle: 'dirversityApp.subject.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -74,7 +74,7 @@ export const subjectRoute: Routes = [
       subject: SubjectResolve
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER'],
+      authorities: ['ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       pageTitle: 'dirversityApp.subject.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -89,7 +89,7 @@ export const subjectPopupRoute: Routes = [
       subject: SubjectResolve
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER'],
+      authorities: ['ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       pageTitle: 'dirversityApp.subject.home.title'
     },
     canActivate: [UserRouteAccessService],

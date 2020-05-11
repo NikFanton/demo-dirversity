@@ -37,7 +37,7 @@ export const curriculumTagRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       defaultSort: 'id,asc',
       pageTitle: 'dirversityApp.curriculumTag.home.title'
     },
@@ -50,7 +50,7 @@ export const curriculumTagRoute: Routes = [
       curriculumTag: CurriculumTagResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       pageTitle: 'dirversityApp.curriculumTag.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -62,7 +62,7 @@ export const curriculumTagRoute: Routes = [
       curriculumTag: CurriculumTagResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       pageTitle: 'dirversityApp.curriculumTag.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -74,7 +74,7 @@ export const curriculumTagRoute: Routes = [
       curriculumTag: CurriculumTagResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       pageTitle: 'dirversityApp.curriculumTag.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -89,7 +89,7 @@ export const curriculumTagPopupRoute: Routes = [
       curriculumTag: CurriculumTagResolve
     },
     data: {
-      authorities: ['ROLE_USER'],
+      authorities: ['ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       pageTitle: 'dirversityApp.curriculumTag.home.title'
     },
     canActivate: [UserRouteAccessService],

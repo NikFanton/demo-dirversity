@@ -37,7 +37,7 @@ export const resourceTypeRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN', 'ROLE_STUDENT'],
       defaultSort: 'id,asc',
       pageTitle: 'dirversityApp.resourceType.home.title'
     },
@@ -50,7 +50,7 @@ export const resourceTypeRoute: Routes = [
       resourceType: ResourceTypeResolve
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN', 'ROLE_STUDENT'],
       pageTitle: 'dirversityApp.resourceType.home.title'
     },
     canActivate: [UserRouteAccessService]

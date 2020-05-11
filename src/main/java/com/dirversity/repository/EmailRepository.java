@@ -37,4 +37,8 @@ public interface EmailRepository extends JpaRepository<Email, Long> {
         " where email.shareDateTime >= :minTimestamp and email.shareDateTime <= :maxTimestamp")
     List<Email> findAllPagesReadyToBeSent(@Param("minTimestamp") Instant minTimestamp,
                                           @Param("maxTimestamp") Instant maxTimestamp);
+
+    @Query(value = "select email from Email email where email.createdBy.createdBy = ?#{principal.username}",
+        countQuery = "select count(distinct email) from Email email")
+    Page<Email> findAllByCreatedByIsCurrentUser(Pageable pageable);
 }

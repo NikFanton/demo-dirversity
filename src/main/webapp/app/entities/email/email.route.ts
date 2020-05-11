@@ -37,7 +37,7 @@ export const emailRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_STUDENT', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       defaultSort: 'id,asc',
       pageTitle: 'dirversityApp.email.home.title'
     },
@@ -50,7 +50,7 @@ export const emailRoute: Routes = [
       email: EmailResolve
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_STUDENT', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       pageTitle: 'dirversityApp.email.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -62,7 +62,7 @@ export const emailRoute: Routes = [
       email: EmailResolve
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_STUDENT', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       pageTitle: 'dirversityApp.email.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -74,7 +74,7 @@ export const emailRoute: Routes = [
       email: EmailResolve
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_STUDENT', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       pageTitle: 'dirversityApp.email.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -89,7 +89,7 @@ export const emailPopupRoute: Routes = [
       email: EmailResolve
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER'],
+      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_STUDENT', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       pageTitle: 'dirversityApp.email.home.title'
     },
     canActivate: [UserRouteAccessService],

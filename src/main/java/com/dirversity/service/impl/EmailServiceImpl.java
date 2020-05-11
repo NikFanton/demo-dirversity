@@ -123,4 +123,11 @@ public class EmailServiceImpl implements EmailService {
         log.debug("Request to delete Email : {}", id);
         emailRepository.deleteById(id);
     }
+
+    @Override
+    public Page<EmailDTO> findAllEmailsCreatedByCurrentUser(Pageable pageable) {
+        log.debug("Request to get all Emails for current user");
+        return emailRepository.findAllByCreatedByIsCurrentUser(pageable)
+            .map(emailMapper::toDto);
+    }
 }
