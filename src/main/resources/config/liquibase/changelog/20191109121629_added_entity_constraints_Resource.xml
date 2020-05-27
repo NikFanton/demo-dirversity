@@ -18,7 +18,9 @@
                                  baseTableName="resource_resource_type"
                                  constraintName="fk_resource_resource_type_resource_type_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="resource_type"/>
+                                 referencedTableName="resource_type"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"/>
 
         <addForeignKeyConstraint baseColumnNames="resource_id"
                                  baseTableName="resource_rules"
@@ -36,13 +38,17 @@
                                  baseTableName="resource_topic"
                                  constraintName="fk_resource_topic_resource_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="resource"/>
+                                 referencedTableName="resource"
+                                 onDelete="SET NULL"
+                                 onUpdate="SET NULL"/>
 
         <addForeignKeyConstraint baseColumnNames="topic_id"
                                  baseTableName="resource_topic"
                                  constraintName="fk_resource_topic_topic_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="topic"/>
+                                 referencedTableName="topic"
+                                 onDelete="SET NULL"
+                                 onUpdate="SET NULL"/>
 
     </changeSet>
 </databaseChangeLog>

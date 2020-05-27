@@ -7,12 +7,14 @@
         Added the constraints for entity ContentModule.
     -->
     <changeSet id="20200224055440-2" author="jhipster">
-        
+
         <addForeignKeyConstraint baseColumnNames="curriculum_id"
                                  baseTableName="content_module"
                                  constraintName="fk_content_module_curriculum_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="curriculum"/>
+                                 referencedTableName="curriculum"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"/>
 
     </changeSet>
 </databaseChangeLog>

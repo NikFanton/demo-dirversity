@@ -39,7 +39,7 @@ describe('Component Tests', () => {
         email: 'john.doe@mail.com',
         langKey: 'en',
         login: 'john',
-        authorities: [],
+        authorities: ['ROLE_ADMIN'],
         imageUrl: ''
       };
       mockAuth.setIdentityResponse(accountValues);

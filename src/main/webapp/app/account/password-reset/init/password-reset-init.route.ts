@@ -6,7 +6,7 @@ export const passwordResetInitRoute: Route = {
   path: 'reset/request',
   component: PasswordResetInitComponent,
   data: {
-    authorities: [],
+    authorities: ['ROLE_ADMIN'],
     pageTitle: 'global.menu.account.password'
   }
 };

@@ -37,7 +37,7 @@ export const contentModuleRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_STUDENT', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
+      authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_TEACHER', 'ROLE_STUDENT', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       defaultSort: 'id,asc',
       pageTitle: 'dirversityApp.contentModule.home.title'
     },
@@ -50,7 +50,7 @@ export const contentModuleRoute: Routes = [
       contentModule: ContentModuleResolve
     },
     data: {
-      authorities: ['ROLE_USER', 'ROLE_TEACHER', 'ROLE_STUDENT', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
+      authorities: ['ROLE_ADMIN', 'ROLE_USER', 'ROLE_TEACHER', 'ROLE_STUDENT', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       pageTitle: 'dirversityApp.contentModule.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -62,7 +62,7 @@ export const contentModuleRoute: Routes = [
       contentModule: ContentModuleResolve
     },
     data: {
-      authorities: ['ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
+      authorities: ['ROLE_ADMIN', 'ROLE_TEACHER', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       pageTitle: 'dirversityApp.contentModule.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -74,7 +74,7 @@ export const contentModuleRoute: Routes = [
       contentModule: ContentModuleResolve
     },
     data: {
-      authorities: ['ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
+      authorities: ['ROLE_ADMIN', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       pageTitle: 'dirversityApp.contentModule.home.title'
     },
     canActivate: [UserRouteAccessService]
@@ -89,7 +89,7 @@ export const contentModulePopupRoute: Routes = [
       contentModule: ContentModuleResolve
     },
     data: {
-      authorities: ['ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
+      authorities: ['ROLE_ADMIN', 'ROLE_CONTENT_MANAGER', 'ROLE_SYSTEM_ADMIN'],
       pageTitle: 'dirversityApp.contentModule.home.title'
     },
     canActivate: [UserRouteAccessService],

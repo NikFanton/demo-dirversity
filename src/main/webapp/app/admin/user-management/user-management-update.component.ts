@@ -24,7 +24,7 @@ export class UserManagementUpdateComponent implements OnInit {
     email: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(254), Validators.email]],
     activated: [true],
     langKey: [],
-    authorities: []
+    authorities: ['ROLE_ADMIN']
   });
 
   constructor(

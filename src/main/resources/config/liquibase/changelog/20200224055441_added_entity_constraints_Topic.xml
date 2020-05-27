@@ -7,12 +7,14 @@
         Added the constraints for entity Topic.
     -->
     <changeSet id="20200224055441-2" author="jhipster">
-        
+
         <addForeignKeyConstraint baseColumnNames="content_module_id"
                                  baseTableName="topic"
                                  constraintName="fk_topic_content_module_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="content_module"/>
+                                 referencedTableName="content_module"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"/>
 
     </changeSet>
 </databaseChangeLog>

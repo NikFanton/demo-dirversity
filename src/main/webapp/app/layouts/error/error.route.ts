@@ -7,7 +7,7 @@ export const errorRoute: Routes = [
     path: 'error',
     component: ErrorComponent,
     data: {
-      authorities: [],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'error.title'
     }
   },
@@ -15,7 +15,7 @@ export const errorRoute: Routes = [
     path: 'accessdenied',
     component: ErrorComponent,
     data: {
-      authorities: [],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'error.title',
       error403: true
     }
@@ -24,7 +24,7 @@ export const errorRoute: Routes = [
     path: '404',
     component: ErrorComponent,
     data: {
-      authorities: [],
+      authorities: ['ROLE_ADMIN'],
       pageTitle: 'error.title',
       error404: true
     }

@@ -12,13 +12,17 @@
                                  baseTableName="curriculum"
                                  constraintName="fk_curriculum_origin_file_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="resource"/>
+                                 referencedTableName="resource"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"/>
 
         <addForeignKeyConstraint baseColumnNames="curriculum_id"
                                  baseTableName="curriculum_curriculum_tags"
                                  constraintName="fk_curriculum_curriculum_tags_curriculum_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="curriculum"/>
+                                 referencedTableName="curriculum"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"/>
 
         <addForeignKeyConstraint baseColumnNames="curriculum_tags_id"
                                  baseTableName="curriculum_curriculum_tags"
@@ -30,7 +34,9 @@
                                  baseTableName="curriculum_teachers"
                                  constraintName="fk_curriculum_teachers_curriculum_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="curriculum"/>
+                                 referencedTableName="curriculum"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"/>
 
         <addForeignKeyConstraint baseColumnNames="teachers_id"
                                  baseTableName="curriculum_teachers"
