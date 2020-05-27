@@ -134,8 +134,8 @@ public class MailService {
             .orElse(Locale.getDefault());
     }
 
-//    @Async
-//    @Scheduled(fixedRate = 5000)
+    @Async
+    @Scheduled(fixedRate = 5000)
     public void sendReadyToSendMails() {
         List<Email> emailReadyToBeSentNow = emailService.findEmailReadyToBeSentNow(5000);
         emailReadyToBeSentNow.forEach(email -> userService.findUserByLogin(email.getCreatedBy())
