@@ -1,0 +1,24 @@
+{
+  "dirversityApp": {
+    "emailLog": {
+      "home": {
+        "title": "Email Logs",
+        "createLabel": "Создать новый Email Log",
+        "createOrEditLabel": "Создать или отредактировать Email Log",
+        "notFound": "No Email Logs found"
+      },
+      "created": "Новый Email Log создан с идентификатором {{ param }}",
+      "updated": "Email Log обновлен с идентификатором {{ param }}",
+      "deleted": "Email Log удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Email Log {{ id }}?"
+      },
+      "detail": {
+        "title": "Email Log"
+      },
+      "logMessage": "Log Message",
+      "email": "Email",
+      "sharedResources": "Shared Resources"
+    }
+  }
+}

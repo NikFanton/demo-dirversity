@@ -4,6 +4,7 @@ import com.dirversity.config.Constants;
 
 import com.dirversity.DirversityApp;
 import com.dirversity.domain.User;
+import com.dirversity.repository.EmailLogRepository;
 import io.github.jhipster.config.JHipsterProperties;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -74,13 +75,21 @@ public class MailServiceIT {
     @Captor
     private ArgumentCaptor<MimeMessage> messageCaptor;
 
+    @Mock
+    private final EmailLogRepository emailLogRepository;
+
     private MailService mailService;
+
+    public MailServiceIT(EmailLogRepository emailLogRepository) {
+        this.emailLogRepository = emailLogRepository;
+    }
 
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
         doNothing().when(javaMailSender).send(any(MimeMessage.class));
-        mailService = new MailService(jHipsterProperties, javaMailSender, messageSource, templateEngine, emailService, userService);
+        mailService = new MailService(jHipsterProperties, javaMailSender, messageSource, templateEngine, emailService,
+            userService, emailLogRepository);
     }
 
     @Test

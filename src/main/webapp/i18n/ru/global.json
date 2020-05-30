@@ -21,6 +21,7 @@
         "resource": "Resource",
         "subject": "Subject",
         "email": "Email",
+        "emailLog": "Email Log",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,0 +1,46 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="dirversityApp.emailLog.home.title">Email Logs</span>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="emailLogs?.length === 0">
+        <span jhiTranslate="dirversityApp.emailLog.home.notFound">No emailLogs found</span>
+    </div>
+    <div class="table-responsive" *ngIf="emailLogs?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="createdDate"><span jhiTranslate="dirversityApp.emailLog.createdDate">Created Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="logMessage"><span jhiTranslate="dirversityApp.emailLog.logMessage">Log Message</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"  jhiSortBy="emailId"><span jhiTranslate="dirversityApp.emailLog.email">Email</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let emailLog of emailLogs ;trackBy: trackId">
+                <td><a [routerLink]="['/email-log', emailLog.id, 'view' ]">{{emailLog.id}}</a></td>
+                <td>{{emailLog.createdDate | date:'medium'}}</td>
+                <td>{{emailLog.logMessage}}</td>
+                <td>
+                    <div *ngIf="emailLog.emailId">
+                        <a [routerLink]="['/email', emailLog.emailId , 'view' ]" >{{emailLog.emailId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/email-log', emailLog.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

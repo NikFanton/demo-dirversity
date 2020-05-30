@@ -26,6 +26,7 @@
     <include file="config/liquibase/changelog/20200224055441_added_entity_Topic.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200224055442_added_entity_CurriculumTag.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200427100525_added_entity_Email.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200530101557_added_entity_EmailLog.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20191109121627_added_entity_constraints_UserGroup.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20191109121629_added_entity_constraints_Resource.xml" relativeToChangelogFile="false"/>
@@ -37,5 +38,6 @@
     <include file="config/liquibase/changelog/20200224055441_added_entity_constraints_Topic.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200224055443_sampledata_curriculum.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20200427100525_added_entity_constraints_Email.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200530101557_added_entity_constraints_EmailLog.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

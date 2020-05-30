@@ -51,6 +51,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'email',
         loadChildren: () => import('./email/email.module').then(m => m.DirversityEmailModule)
+      },
+      {
+        path: 'email-log',
+        loadChildren: () => import('./email-log/email-log.module').then(m => m.DirversityEmailLogModule)
       }
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ])

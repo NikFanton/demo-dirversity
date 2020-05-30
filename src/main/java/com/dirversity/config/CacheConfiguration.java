@@ -76,6 +76,8 @@ public class CacheConfiguration {
             createCache(cm, com.dirversity.domain.Email.class.getName() + ".toUsersGroups");
             createCache(cm, com.dirversity.domain.Email.class.getName() + ".ccUserGroups");
             createCache(cm, com.dirversity.domain.Email.class.getName() + ".resources");
+            createCache(cm, com.dirversity.domain.EmailLog.class.getName());
+            createCache(cm, com.dirversity.domain.EmailLog.class.getName() + ".sharedResources");
             // jhipster-needle-ehcache-add-entry
         };
     }

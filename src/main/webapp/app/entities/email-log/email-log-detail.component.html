@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="emailLog">
+            <h2><span jhiTranslate="dirversityApp.emailLog.detail.title">Email Log</span> {{emailLog.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="dirversityApp.emailLog.createdDate">Created Date</span></dt>
+                <dd>
+                    <span>{{emailLog.createdDate | date:'medium'}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.emailLog.logMessage">Log Message</span></dt>
+                <dd>
+                    <span>{{emailLog.logMessage}}</span>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.emailLog.email">Email</span></dt>
+                <dd>
+                    <div *ngIf="emailLog.emailId">
+                        <a [routerLink]="['/email', emailLog.emailId, 'view']">{{emailLog.emailId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="dirversityApp.emailLog.sharedResources">Shared Resources</span></dt>
+                <dd>
+                    <span *ngFor="let sharedResource of emailLog.sharedResources; let last = last">
+                        <a [routerLink]="['/resource', sharedResource?.id, 'view' ]">{{sharedResource.name}}</a>{{last ? '' : ', '}}<br>
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+        </div>
+    </div>
+</div>

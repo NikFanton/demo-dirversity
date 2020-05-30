@@ -1,7 +1,9 @@
 package com.dirversity.service;
 
 import com.dirversity.domain.Email;
+import com.dirversity.domain.EmailLog;
 import com.dirversity.domain.User;
+import com.dirversity.repository.EmailLogRepository;
 import io.github.jhipster.config.JHipsterProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +26,8 @@ import java.util.Locale;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import static java.lang.String.format;
+
 /**
  * Service for sending emails.
  * <p>
@@ -33,6 +37,9 @@ import java.util.stream.Stream;
 public class MailService {
 
     public static final String BODY = "body";
+
+    public static final String EMAIL_SENT_MESSAGE_FORMAT = "Електронний лист з id = %d, що створив %s, відправив %s";
+
     private final Logger log = LoggerFactory.getLogger(MailService.class);
 
     private static final String USER = "user";
@@ -51,8 +58,11 @@ public class MailService {
 
     private final UserService userService;
 
+    private final EmailLogRepository emailLogRepository;
+
     public MailService(JHipsterProperties jHipsterProperties, JavaMailSender javaMailSender,
-                       MessageSource messageSource, SpringTemplateEngine templateEngine, EmailService emailService, UserService userService) {
+                       MessageSource messageSource, SpringTemplateEngine templateEngine, EmailService emailService,
+                       UserService userService, EmailLogRepository emailLogRepository) {
 
         this.jHipsterProperties = jHipsterProperties;
         this.javaMailSender = javaMailSender;
@@ -60,6 +70,7 @@ public class MailService {
         this.templateEngine = templateEngine;
         this.emailService = emailService;
         this.userService = userService;
+        this.emailLogRepository = emailLogRepository;
     }
 
     @Async
@@ -91,7 +102,7 @@ public class MailService {
         context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());
         String content = templateEngine.process(templateName, context);
         String subject = messageSource.getMessage(titleKey, null, locale);
-        sendEmail(new String[]{user.getEmail()}, new String[] {}, subject, content, false, true);
+        sendEmail(new String[]{user.getEmail()}, new String[]{}, subject, content, false, true);
     }
 
     @Async
@@ -126,6 +137,16 @@ public class MailService {
         String content = templateEngine.process("mail/resourceEmail", context);
         String subject = messageSource.getMessage("email.resource.title", null, locale);
         sendEmail(toEmails, ccEmails, subject, content, false, true);
+        logEmailSending(email, sender);
+    }
+
+    private void logEmailSending(Email email, User sender) {
+        String logMessage = format(EMAIL_SENT_MESSAGE_FORMAT, email.getId(), email.getCreatedBy(), sender.getLogin());
+        EmailLog emailLog = new EmailLog()
+            .email(email)
+            .logMessage(logMessage)
+            .sharedResources(email.getResources());
+        emailLogRepository.save(emailLog);
     }
 
     private Locale getEmailLocale(Email email) {
@@ -139,7 +160,7 @@ public class MailService {
     public void sendReadyToSendMails() {
         List<Email> emailReadyToBeSentNow = emailService.findEmailReadyToBeSentNow(5000);
         emailReadyToBeSentNow.forEach(email -> userService.findUserByLogin(email.getCreatedBy())
-                .ifPresent(user -> sendResourceEmailToEachUser(email, user)));
+            .ifPresent(user -> sendResourceEmailToEachUser(email, user)));
     }
 
     private String[] extractToEmails(Email email) {

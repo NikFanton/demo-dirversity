@@ -21,6 +21,7 @@
         "resource": "Ресурси",
         "subject": "Навчальні дисципліни",
         "email": "Електронні листи",
+        "emailLog": "Журнал відправки електронних листів",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

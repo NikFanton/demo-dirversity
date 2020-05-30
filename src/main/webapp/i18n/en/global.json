@@ -19,6 +19,7 @@
         "topic": "Topic",
         "curriculumTag": "Curriculum Tag",
         "email": "Emails",
+        "emailLog": "Email Log",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
